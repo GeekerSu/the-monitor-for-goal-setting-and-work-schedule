@@ -1,1 +1,1 @@
-# the-monitor-for-goal-setting-and-work-schedule
+# Literature-reading-notes-manager 
