@@ -13,7 +13,6 @@
         $('a.media').media({width:800, height:600});    
     });    
 </script>   
-  
 </head>  
 <body>  
 <center>  
@@ -22,7 +21,7 @@
       <h2>预览pdf文件</h2>  
    </div>  
    <div class="panel-body">  
-      <a class="media" href="yulan.pdf"></a>    
+      <a class="media" href="Web\\a.pdf"></a>    
    </div> 
    </div> 
 </center>  

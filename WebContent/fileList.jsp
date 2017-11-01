@@ -26,6 +26,7 @@
                      <c:param name="fileName" value="${fileName }"></c:param>
                  </c:url>
                  <a href="${url }">下载</a>
+                 <a href="${url }">打开</a>
              </td>
          </tr>
      </c:forEach>
