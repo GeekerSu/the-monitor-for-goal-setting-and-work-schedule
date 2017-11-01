@@ -14,9 +14,9 @@ public class UploadFile extends ActionSupport {
 	 * 	
 	 */
 	private static final long serialVersionUID = 1L;
-	private File myFile;// 实际文件的上载
-	private String myFileContentType;// 文件的内容类型
-	private String myFileFileName;// 被上传的文件名称
+	private File myFile;// 瀹為檯鏂囦欢鐨勪笂杞�
+	private String myFileContentType;// 鏂囦欢鐨勫唴瀹圭被鍨�
+	private String myFileFileName;// 琚笂浼犵殑鏂囦欢鍚嶇О
 	private String destPath;
 	public File getMyFile() {
 		return myFile;
@@ -37,12 +37,12 @@ public class UploadFile extends ActionSupport {
 		this.myFileFileName = myFileFileName;
 	}
 
-	// 方法1：使用FileUtils的copyFile来实现文件上传
+	// 鏂规硶1锛氫娇鐢‵ileUtils鐨刢opyFile鏉ュ疄鐜版枃浠朵笂浼�
 
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
-		destPath = "C:\\git-repositories\\Literature-reading-notes-manager" + usr;
+		destPath = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work\\" + usr;
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();
@@ -62,9 +62,9 @@ public class UploadFile extends ActionSupport {
 		return SUCCESS;
 	}
 
-	// 方法2：使用文件流来实现文件上传
+	// 鏂规硶2锛氫娇鐢ㄦ枃浠舵祦鏉ュ疄鐜版枃浠朵笂浼�
 	public String executeStream() throws IOException {
-		destPath = "C:\\git-repositories\\Literature-reading-notes-manager";
+		destPath = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work";
 		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);
 		FileInputStream fis = new FileInputStream(myFile);
 		byte[] buffer = new byte[1024];
