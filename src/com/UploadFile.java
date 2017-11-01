@@ -1,87 +1,77 @@
 package com;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-
 import org.apache.commons.io.FileUtils;
 import org.omg.CORBA.Object;
-
 import java.io.IOException;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import java.util.Map;
-
-public class UploadFile extends ActionSupport{
-	/**
-	 * 
+public class UploadFile extends ActionSupport {
+	/**	
+	 * 	
 	 */
 	private static final long serialVersionUID = 1L;
-	private File myFile;//Êµ¼ÊÎÄ¼şµÄÉÏÔØ
-	private String myFileContentType;//ÎÄ¼şµÄÄÚÈİÀàĞÍ
-	private String myFileFileName;//±»ÉÏ´«µÄÎÄ¼şÃû³Æ
+	private File myFile;// å®é™…æ–‡ä»¶çš„ä¸Šè½½
+	private String myFileContentType;// æ–‡ä»¶çš„å†…å®¹ç±»å‹
+	private String myFileFileName;// è¢«ä¸Šä¼ çš„æ–‡ä»¶åç§°
 	private String destPath;
-	
-	 public File getMyFile() {
-	      return myFile;
-	   }
-	   public void setMyFile(File myFile) {
-	      this.myFile = myFile;
-	   }
-	   public String getMyFileContentType() {
-	      return myFileContentType;
-	   }
-	   public void setMyFileContentType(String myFileContentType) {
-	      this.myFileContentType = myFileContentType;
-	   }
-	   public String getMyFileFileName() {
-	      return myFileFileName;
-	   }
-	   public void setMyFileFileName(String myFileFileName) {
-	      this.myFileFileName = myFileFileName; 
-	   }
-	
-//·½·¨1£ºÊ¹ÓÃFileUtilsµÄcopyFileÀ´ÊµÏÖÎÄ¼şÉÏ´«	
-	public String execute(){
-		
-		Map<String, java.lang.Object> session=ActionContext.getContext().getSession();
-		String usr=(String) session.get("username");
-		destPath="C:\\Users\\10297\\workspacee\\ReadingNotes\\work\\"+usr;
-		File dir=new File(destPath);
-		if (!dir.exists()){
+	public File getMyFile() {
+		return myFile;
+	}
+	public void setMyFile(File myFile) {
+		this.myFile = myFile;
+	}
+	public String getMyFileContentType() {
+		return myFileContentType;
+	}
+	public void setMyFileContentType(String myFileContentType) {
+		this.myFileContentType = myFileContentType;
+	}
+	public String getMyFileFileName() {
+		return myFileFileName;
+	}
+	public void setMyFileFileName(String myFileFileName) {
+		this.myFileFileName = myFileFileName;
+	}
+
+	// æ–¹æ³•1ï¼šä½¿ç”¨FileUtilsçš„copyFileæ¥å®ç°æ–‡ä»¶ä¸Šä¼ 
+
+	public String execute() {
+		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
+		String usr = (String) session.get("username");
+		destPath = "C:\\git-repositories\\Literature-reading-notes-manager" + usr;
+		File dir = new File(destPath);
+		if (!dir.exists()) {
 			dir.mkdirs();
-			System.out.println("Create director: "+ usr);
+			System.out.println("Create director: " + usr);
 		}
-		try{
-			System.out.println("Src File name: "+myFile);
-			System.out.println("Dst File name: "+myFileFileName);
-			
-			File destFile = new File (destPath, myFileFileName);
+		try {
+
+			System.out.println("Src File name: " + myFile);
+			System.out.println("Dst File name: " + myFileFileName);
+			File destFile = new File(destPath, myFileFileName);
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
-		}catch(IOException e){
+		} catch (IOException e) {
 			e.printStackTrace();
 			return ERROR;
 		}
-		
 		return SUCCESS;
 	}
-	
-//·½·¨2£ºÊ¹ÓÃÎÄ¼şÁ÷À´ÊµÏÖÎÄ¼şÉÏ´«
-	public String executeStream() throws IOException{
-		
-		destPath="C:\\Users\\10297\\workspacee\\ReadingNotes\\work\\";
 
-		FileOutputStream fos = new FileOutputStream(destPath+myFileFileName);
+	// æ–¹æ³•2ï¼šä½¿ç”¨æ–‡ä»¶æµæ¥å®ç°æ–‡ä»¶ä¸Šä¼ 
+	public String executeStream() throws IOException {
+		destPath = "C:\\git-repositories\\Literature-reading-notes-manager";
+		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);
 		FileInputStream fis = new FileInputStream(myFile);
-		
 		byte[] buffer = new byte[1024];
 		int len = 0;
-		while((len=fis.read(buffer))>0)
+		while ((len = fis.read(buffer)) > 0)
 		{
-			fos.write(buffer,0,len);
+			fos.write(buffer, 0, len);
 		}
 		fos.close();
 		fis.close();

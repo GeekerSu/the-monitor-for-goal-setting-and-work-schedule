@@ -13,79 +13,138 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 /** 
-* @author BieHongLi 
-* @version ´´½¨Ê±¼ä£º2017Äê3ÔÂ6ÈÕ ÏÂÎç1:54:00 
-* ÎÄ¼şÏÂÔØµÄ2ÖÖ·½Ê½£º
-*     ·½Ê½1£ºÍ¨¹ıresponse¶ÔÏóÏòä¯ÀÀÆ÷Ğ´Èë×Ö½ÚÁ÷Êı¾İ£¬ÉèÖÃÏÂÔØµÄÏìÓ¦Í·
-*     ·½Ê½2£ºstrutsµÄ·½Ê½
+
+* @author 
+
+* @version åˆ›å»ºæ—¶é—´ï¼š2017å¹´3æœˆ6æ—¥ ä¸‹åˆ1:54:00 
+
+* æ–‡ä»¶ä¸‹è½½çš„2ç§æ–¹å¼ï¼š
+
+*     æ–¹å¼1ï¼šé€šè¿‡responseå¯¹è±¡å‘æµè§ˆå™¨å†™å…¥å­—èŠ‚æµæ•°æ®ï¼Œè®¾ç½®ä¸‹è½½çš„å“åº”å¤´
+
+*     æ–¹å¼2ï¼šstrutsçš„æ–¹å¼
+
 */
 public class DownAction extends ActionSupport{
 
 	
     private static final long serialVersionUID = 1L;
     
-    //1:µÃµ½uploadÄ¿Â¼Â·¾¶
+  //1:å¾—åˆ°uploadç›®å½•è·¯å¾„
 	private String usr=(String) ActionContext.getContext().getSession().get("username");
-    private String path="C:\\Users\\10297\\workspacee\\ReadingNotes\\work\\"+usr;
+    private String path="C:\\git-repositories\\Literature-reading-notes-manager"+usr;
     
-    //µÚÒ»²½£ºÏÔÊ¾ËùÓĞÒªÏÂÔØµÄÎÄ¼şµÄÁĞ±í
+    //ç¬¬ä¸€æ­¥ï¼šæ˜¾ç¤ºæ‰€æœ‰è¦ä¸‹è½½çš„æ–‡ä»¶çš„åˆ—è¡¨
     public String list() throws Exception { 
-        //2:Ä¿Â¼¶ÔÏó
+        //2:ç›®å½•å¯¹è±¡
         File file=new File(path);
         if (!file.exists()){
         	file.mkdirs();
         }
-        //3:µÃµ½ËùÓĞÒªÏÂÔØµÄÎÄ¼şµÄÎÄ¼şÃû
+      //3:å¾—åˆ°æ‰€æœ‰è¦ä¸‹è½½çš„æ–‡ä»¶çš„æ–‡ä»¶å
+
         String[] fileNames=file.list();
-        //4:±£´æ
+
+        //4:ä¿å­˜
+
         ActionContext ac=ActionContext.getContext();
-        //5:µÃµ½´ú±írequestµÄMap(µÚ¶şÖÖ·½Ê½)
+
+        //5:å¾—åˆ°ä»£è¡¨requestçš„Map(ç¬¬äºŒç§æ–¹å¼)
+
         @SuppressWarnings("unchecked")
+
 		Map<String,Object> request=(Map<String,Object>)ac.get("request");
+
         
+
         request.put("fileNames", fileNames);
+
         return "list";
+
     }
+
     
-    //*************2£ºÎÄ¼şÏÂÔØ************************/
-    //2.1£º»ñÈ¡ÒªÏÂÔØµÄÎÄ¼şµÄÎÄ¼şÃû,ÉèÖÃ×Ö·û¼¯£¬Ç°Ì¨Ò³ÃæÌá½»µÄÊÇÒÔget·½Ê½Ìá½»µÄ
+
+    //*************2ï¼šæ–‡ä»¶ä¸‹è½½************************/
+
+    //2.1ï¼šè·å–è¦ä¸‹è½½çš„æ–‡ä»¶çš„æ–‡ä»¶å,è®¾ç½®å­—ç¬¦é›†ï¼Œå‰å°é¡µé¢æäº¤çš„æ˜¯ä»¥getæ–¹å¼æäº¤çš„
+
     private String fileName;
+
     
+
     public void setFileName(String fileName) {
-        //´¦Àí´«ÈëµÄ²ÎÊıÖÖÎÊÌâ£¨getÌá½»£©
+
+        //å¤„ç†ä¼ å…¥çš„å‚æ•°ç§é—®é¢˜ï¼ˆgetæäº¤ï¼‰
+
         try {
+
             fileName=new String(fileName.getBytes("ISO8859-1"),"UTF-8");
+
         } catch (UnsupportedEncodingException e) {
+
             throw new RuntimeException();
+
         }
-        //°Ñ´¦ÀíºÃµÄÎÄ¼şÃû£¬¸³Öµ
+
+        //æŠŠå¤„ç†å¥½çš„æ–‡ä»¶åï¼Œèµ‹å€¼
+
         this.fileName = fileName;
+
     }
+
     
-    //2.2£ºÏÂÔØÌá½»µÄÒµÎñ·½·¨£¨ÔÚstruts.xmlÖĞÅäÖÃ·µ»Østream£©
+
+    //2.2ï¼šä¸‹è½½æäº¤çš„ä¸šåŠ¡æ–¹æ³•ï¼ˆåœ¨struts.xmlä¸­é…ç½®è¿”å›streamï¼‰
+
     public String down() throws Exception {
+
         return "download";
+
     }
+
     
-    //2.3£º·µ»ØÁ÷µÄ·½·¨
+
+    //2.3ï¼šè¿”å›æµçš„æ–¹æ³•
+
     public InputStream getAttrInputStream() throws FileNotFoundException{
+
     	System.out.println("Start downloading...");
+
     	System.out.println(fileName);
+
 //        return ServletActionContext.getServletContext()
+
 //        		.getResourceAsStream("C:\\Users\\10297\\workspacee\\ReadingNotes\\work\\"+fileName);
+
     	return new FileInputStream(path+"\\"+fileName);
+
     }
+
     
-    //2.4:ÏÂÔØÏÔÊ¾µÄÖĞÎÄÃû£¬£¨ä¯ÀÀÆ÷ÏÔÊ¾µÄÎÄ¼şÃû£©
+
+    //2.4:ä¸‹è½½æ˜¾ç¤ºçš„ä¸­æ–‡åï¼Œï¼ˆæµè§ˆå™¨æ˜¾ç¤ºçš„æ–‡ä»¶åï¼‰
+
     public String getDownFileName(){
+
         try{
+
             //import java.net.URLEncoder;
+
             fileName = URLEncoder.encode(fileName,"UTF-8");
+
         }catch(Exception e){
+
             throw new RuntimeException();
+
         }
+
         
+
         return fileName;
+
         
+
     }
+
 }
