@@ -19,7 +19,7 @@
 				<td>密码： <input type="text" name="password" /></td>
 			</tr>
 			<tr align="center">
-				<td colspan="2"><input type="submit" /></td>
+				<td colspan="2"><input type="submit" value="Login"/></td>
 			</tr>
 		</table>
 	</form>

@@ -65,6 +65,8 @@ public class UserAction extends ActionSupport {
 				+ "','0')";
 		int i = dao.executeUpdate(sql);
 		if (i > -1) {
+			java.util.Map<String, Object> session =  ActionContext.getContext().getSession();
+			session.put("username",username);
 			return "success";
 		}
 		else{
