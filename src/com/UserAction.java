@@ -78,7 +78,7 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public void validateRegist(){
-		System.out.println("Validateæ–¹æ³•è¢«è°ƒç”¨...");
+		System.out.println("Validate·½·¨±»µ÷ÓÃ...");
 		if (username==null||username.trim().equals(""))
 		{
 			this.addFieldError("username", "The username is required");

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">    
 <html>    
 <head>  
@@ -12,7 +13,7 @@
     $(function() {    
         $('a.media').media({width:800, height:600});    
     });    
-</script>   
+</script>
 </head>  
 <body>  
 <center>  
@@ -21,7 +22,8 @@
       <h2>预览pdf文件</h2>  
    </div>  
    <div class="panel-body">  
-      <a class="media" href="Web\\a.pdf"></a>    
+
+      <a class="media" href="${filePath }"></a>    
    </div> 
    </div> 
 </center>  
