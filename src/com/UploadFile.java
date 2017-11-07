@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.omg.CORBA.Object;
 import java.io.IOException;
 import com.opensymphony.xwork2.ActionContext;
@@ -37,11 +38,12 @@ public class UploadFile extends ActionSupport {
 		this.myFileFileName = myFileFileName;
 	}
 
-	// 鏂规硶1锛氫娇鐢‵ileUtils鐨刢opyFile鏉ュ疄鐜版枃浠朵笂浼�
+	// 通过FileUtil.copyFiles
 
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
+		//destPath=ServletActionContext.getServletContext().getRealPath("\\work\\")+usr;
 		destPath = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work\\" + usr;
 		File dir = new File(destPath);
 		if (!dir.exists()) {
@@ -62,7 +64,7 @@ public class UploadFile extends ActionSupport {
 		return SUCCESS;
 	}
 
-	// 鏂规硶2锛氫娇鐢ㄦ枃浠舵祦鏉ュ疄鐜版枃浠朵笂浼�
+	//通过FileOutputStream
 	public String executeStream() throws IOException {
 		destPath = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work";
 		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);

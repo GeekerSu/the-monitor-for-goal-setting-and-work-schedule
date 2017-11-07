@@ -21,7 +21,7 @@
 <center>  
  <div class="panel panel-primary">  
    <div class="panel-heading" align="center">  
-      <h2>预览pdf文件</h2>
+      <h2>${fileName}</h2>
    </div>  
    <div class="panel-body">  
       <a class="media" href="${filePath }"></a>    

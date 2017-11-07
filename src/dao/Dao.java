@@ -22,7 +22,6 @@ public class Dao {
 
 	public ResultSet executeQuery(String sql) {
 		try {
-			System.out.println(sql);
 			rs = stat.executeQuery(sql);
 		} catch (Exception e) {
 			// TODO: handle exception
