@@ -45,8 +45,7 @@ public class DownAction extends ActionSupport {
 //			throw new RuntimeException();
 //		}
 		//System.out.println(fileName);
-		//this.fileName = fileName;
-		System.out.println(this.fileName);
+		this.fileName = fileName;
 	}
 	
 	public String down() throws Exception {
