@@ -96,18 +96,20 @@ public class DownAction extends ActionSupport{
     //2.2锛氫笅杞芥彁浜ょ殑涓氬姟鏂规硶锛堝湪struts.xml涓厤缃繑鍥瀞tream锛�
 
     public String down() throws Exception {
-
+    
         return "download";
 
     }
     
-    public String getFilePath(){
+    public String getFilePath() throws UnsupportedEncodingException{
+    	//filePath = URLEncoder.encode(filePath,"UTF-8");
     	return this.filePath;
     }
 
     public String view() throws Exception {
     	System.out.println(filePath);
     	filePath="work/"+usr+"/"+fileName;
+    	//filePath=new String (filePath.getBytes("ISO8859-1"),"UTF-8");
     	System.out.println(filePath);
     	return "view";
     }

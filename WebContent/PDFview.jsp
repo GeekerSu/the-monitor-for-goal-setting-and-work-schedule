@@ -14,18 +14,21 @@
         $('a.media').media({width:800, height:600});    
     });    
 </script>   
-
+<% String tempPath=(String)request.getAttribute("filePath"); 
+%>
 </head>  
 <body>  
 <center>  
  <div class="panel panel-primary">  
    <div class="panel-heading" align="center">  
-      <h2>预览pdf文件</h2>  
+      <h2>预览pdf文件</h2>
    </div>  
    <div class="panel-body">  
       <a class="media" href="${filePath }"></a>    
    </div> 
    </div> 
-</center>  
+</center>
+<a href="fileUpload.jsp">上传文件</a>
+<a href="down_list.action">下载文件</a>
 </body>  
 </html>  
