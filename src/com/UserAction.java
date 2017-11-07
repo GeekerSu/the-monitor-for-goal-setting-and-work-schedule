@@ -36,6 +36,7 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String login() {
+		
 		String sql = "select * from user where username='" + getUsername()
 				+ "' and password ='" + getPassword() + "'";
 	//	System.out.println(username);
@@ -78,7 +79,7 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public void validateRegist(){
-		System.out.println("Validate方法被调用...");
+		System.out.println("Validate start...");
 		if (username==null||username.trim().equals(""))
 		{
 			this.addFieldError("username", "The username is required");
