@@ -15,9 +15,9 @@ public class UploadFile extends ActionSupport {
 	 * 	
 	 */
 	private static final long serialVersionUID = 1L;
-	private File myFile;// 瀹為檯鏂囦欢鐨勪笂杞�
-	private String myFileContentType;// 鏂囦欢鐨勫唴瀹圭被鍨�
-	private String myFileFileName;// 琚笂浼犵殑鏂囦欢鍚嶇О
+	private File myFile;// 上传的文件
+	private String myFileContentType;// 上传的文件类型
+	private String myFileFileName;// 上传的文件名
 	private String destPath;
 	public File getMyFile() {
 		return myFile;
@@ -43,8 +43,8 @@ public class UploadFile extends ActionSupport {
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
-		//destPath=ServletActionContext.getServletContext().getRealPath("\\work\\")+usr;
-		destPath = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work\\" + usr;
+		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
+		//destPath = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work\\" + usr;
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();
@@ -52,8 +52,8 @@ public class UploadFile extends ActionSupport {
 		}
 		try {
 
-			System.out.println("Src File name: " + myFile);
-			System.out.println("Dst File name: " + myFileFileName);
+			//System.out.println("Src File name: " + myFile);
+			//System.out.println("Dst File name: " + myFileFileName);
 			File destFile = new File(destPath, myFileFileName);
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
@@ -66,7 +66,9 @@ public class UploadFile extends ActionSupport {
 
 	//通过FileOutputStream
 	public String executeStream() throws IOException {
-		destPath = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work";
+		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
+		String usr=(String) session.get("username");
+		destPath = ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
 		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);
 		FileInputStream fis = new FileInputStream(myFile);
 		byte[] buffer = new byte[1024];

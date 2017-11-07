@@ -42,7 +42,7 @@ public class UserAction extends ActionSupport {
 
 		String sql = "select * from user where username='" + getUsername()+"'";
 		//Map<String, Object> session = ActionContext.getContext().getSession();
-		//String realpath=ServletActionContext.getServletContext().getRealPath("");
+		//String realpath=ServletActionContext.getServletContext().getRealPath("/work/");
 		//System.out.println(realpath);
 		// + "' and password ='" + getPassword() + "'";
 		// System.out.println(username);

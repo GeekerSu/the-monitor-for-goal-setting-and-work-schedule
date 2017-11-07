@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -17,8 +18,8 @@ public class DownAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 	private String usr = (String) ActionContext.getContext().getSession().get("username");
-	private String path = "C:\\Users\\10297\\workspacee\\ReadingNotes\\WebContent\\work\\" + usr;
-	private String filePath = "";
+	private String path = ServletActionContext.getServletContext().getRealPath("/work")+"//" + usr;
+	private String filePath ="";
 
 	public String list() throws Exception {
 
@@ -38,12 +39,14 @@ public class DownAction extends ActionSupport {
 
 	public void setFileName(String fileName) {
 
-		try {
-			fileName = new String(fileName.getBytes("ISO8859-1"), "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			throw new RuntimeException();
-		}
-		this.fileName = fileName;
+//		try {
+//			fileName = new String(fileName.getBytes("UTF-8"));
+//		} catch (UnsupportedEncodingException e) {
+//			throw new RuntimeException();
+//		}
+		//System.out.println(fileName);
+		//this.fileName = fileName;
+		System.out.println(this.fileName);
 	}
 	
 	public String down() throws Exception {
@@ -61,8 +64,12 @@ public class DownAction extends ActionSupport {
 
 	public String view() throws Exception {
 		System.out.println(filePath);
+		//String tmp="work/" + usr + "/" + fileName;
+		//filePath=new String(tmp.getBytes("ISO8859-1"),"utf-8");
 		filePath = "work/" + usr + "/" + fileName;
-		// filePath=new String (filePath.getBytes("ISO8859-1"),"UTF-8");
+		//filePath = new String(tmp.getBytes("utf-8"),"ISO8859-1");
+		//filePath=URLEncoder.encode(filePath,"UTF-8");
+		
 		System.out.println(filePath);
 		return "view";
 	}
