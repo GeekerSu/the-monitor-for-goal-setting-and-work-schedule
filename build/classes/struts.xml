@@ -51,5 +51,9 @@
                 <param name="bufferSize">1024</param>
                </result>
          </action>
+         <action name="down_view" class="com.DownAction" method="view">
+             <result name="view"> PDFview.jsp
+             </result>
+         </action>
 	</package>
 </struts>

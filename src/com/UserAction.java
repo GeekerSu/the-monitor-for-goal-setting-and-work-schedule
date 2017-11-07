@@ -36,6 +36,7 @@ public class UserAction extends ActionSupport {
 	}
 	
 	public String login() {
+		
 		String sql = "select * from user where username='" + getUsername()
 				+ "' and password ='" + getPassword() + "'";
 	//	System.out.println(username);
@@ -63,6 +64,7 @@ public class UserAction extends ActionSupport {
 		
 		String sql = "insert into user(username,password,isCheck) values('" + getUsername() + "','" + getPassword()
 				+ "','0')";
+		System.out.print(sql);
 		int i = dao.executeUpdate(sql);
 		if (i > -1) {
 			java.util.Map<String, Object> session =  ActionContext.getContext().getSession();
@@ -73,10 +75,11 @@ public class UserAction extends ActionSupport {
 			message="User already exists";
 			return "error";
 		}
+	
 	}
 	
 	public void validateRegist(){
-		System.out.println("Validate方法被调用...");
+		System.out.println("Validate start...");
 		if (username==null||username.trim().equals(""))
 		{
 			this.addFieldError("username", "The username is required");
@@ -86,16 +89,5 @@ public class UserAction extends ActionSupport {
 			this.addFieldError("username","The username must consist of numbers or letters");
 		}
 	}
-	// 通用的执行方法
-	// public String execute() throws Exception {
-	// if (getUsername().equals("scott") && getPassword().equals("tiger")) {
-	// System.out.println("我是success");
-	// return "success";
-	// }
-	//
-	// else {
-	// System.out.println("我是error");
-	// return "error";
-	// }
-	// }
+	
 }

@@ -14,7 +14,8 @@
      <tr>
          <td>编号</td>
          <td>文件名</td>
-         <td>操作</td>
+         <td>下载</td>
+         <td>预览</td>
      </tr>
      <c:forEach items="${fileNames }" var="fileName" varStatus="fn">
          <tr>
@@ -26,6 +27,12 @@
                      <c:param name="fileName" value="${fileName }"></c:param>
                  </c:url>
                  <a href="${url }">下载</a>
+             </td>
+             <td>
+             	<c:url var="urlview" value="down_view">
+             		<c:param name="fileName" value="${fileName }"></c:param>
+             	</c:url>
+             	<a href="${urlview }">预览</a>
              </td>
          </tr>
      </c:forEach>
