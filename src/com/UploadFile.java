@@ -45,18 +45,16 @@ public class UploadFile extends ActionSupport {
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
-		destPath = "C:\\git-repositories\\ReadingNotes\\WebContent\\work\\" + usr;
-		
 
+		destPath = "C:\\git-repositories\\ReadingNotes\\WebContent\\work\\" + usr;
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();
 			System.out.println("Create director: " + usr);
 		}
 		try {
-
-			System.out.println("Src File name: " + myFile);
-			System.out.println("Dst File name: " + myFileFileName);
+			//System.out.println("Src File name: " + myFile);
+			//System.out.println("Dst File name: " + myFileFileName);
 			File destFile = new File(destPath, myFileFileName);
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
@@ -66,12 +64,12 @@ public class UploadFile extends ActionSupport {
 		}
 		return SUCCESS;
 	}
-
-
 	//方法2：使用文件流来实现文件上传
 	//通过FileOutputStream
 	public String executeStream() throws IOException {
-		destPath = "C:\\git-repositories\\ReadingNotes\\WebContent\\work\\";
+		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
+		String usr=(String) session.get("username");
+		destPath = ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
 		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);
 		FileInputStream fis = new FileInputStream(myFile);
 		byte[] buffer = new byte[1024];
