@@ -11,6 +11,7 @@
 	<center>error: <s:property value="message"/>
 	<br/>
 	<a href=register.jsp>Register Now</a>
+	<a href=login.jsp>Login Again</a>
 	</center>
 </body>
 </html>

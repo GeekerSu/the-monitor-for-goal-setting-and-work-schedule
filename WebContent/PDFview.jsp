@@ -5,27 +5,19 @@
 <html>    
 <head>  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>    
-<title>在线预览PDF文档</title>    
-<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">    
-<script type="text/javascript" src="js/jquery.min.js"></script>    
-<script type="text/javascript" src="js/jquery.media.js"></script>    
-<script type="text/javascript">    
-    $(function() {    
-        $('a.media').media({width:800, height:600});    
-    });    
-</script>
+<title>PDFviewer</title>    
+
 </head>  
 <body>  
-<center>  
  <div class="panel panel-primary">  
    <div class="panel-heading" align="center">  
-      <h2>预览pdf文件</h2>  
+      <h2>${fileName}</h2>
+   </div> 
+   <div id="PDF_area"  class="panel-body" style="position:relative;left:20px;top:10px;width:50%;height:80%">
+		<iframe name="myframe" src="http://localhost:8080/ReadingNotes/viewer.html?file=${filePath}" width="886" height="990"></iframe>
+	</div>
    </div>  
-   <div class="panel-body">  
-
-      <a class="media" href="${filePath }"></a>    
-   </div> 
-   </div> 
-</center>  
+<a href="fileUpload.jsp">上传文件</a>
+<a href="down_list.action">下载文件</a>
 </body>  
 </html>  

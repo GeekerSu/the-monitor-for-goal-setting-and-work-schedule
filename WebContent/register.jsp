@@ -5,25 +5,23 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Register</title>
 </head>
 <body>
 	<center>
-		<form action="regist.action" method="post">
+		<form action="regist.action" method="post" >
 			<table>
 				<caption>
 					<h2>用户注册</h2>
 				</caption>
 				<tr>
-					<td>username:</td>
-					<td><s:textfield  name="username" /></td>
+					<td><s:textfield  name="username" label="UserName"/></td>
 				</tr>
 				<tr>
-					<td>password:</td>
-					<td><s:textfield  name="password" /></td>
+					<td><s:password  name="password" label="Password"/></td>
 				</tr>
 				<tr>
-					<td><input type="submit" name="submit" /></td>
+					<td colspan="2" align="center"><input type="submit" value="Regist" /></td>
 				</tr>
 			</table>
 		</form>

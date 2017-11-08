@@ -38,13 +38,16 @@ public class UploadFile extends ActionSupport {
 		this.myFileFileName = myFileFileName;
 	}
 
+
 	//方法1：使用FileUtils的copyFile来实现文件上传
+	// 通过FileUtil.copyFiles
 
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
 		destPath = "C:\\git-repositories\\ReadingNotes\\WebContent\\work\\" + usr;
 		
+
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();
@@ -64,7 +67,9 @@ public class UploadFile extends ActionSupport {
 		return SUCCESS;
 	}
 
+
 	//方法2：使用文件流来实现文件上传
+	//通过FileOutputStream
 	public String executeStream() throws IOException {
 		destPath = "C:\\git-repositories\\ReadingNotes\\WebContent\\work\\";
 		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);

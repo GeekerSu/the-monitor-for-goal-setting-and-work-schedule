@@ -68,7 +68,8 @@ public class DownAction extends ActionSupport{
     }
 
     public String view() throws Exception {
-    	System.out.println(filePath);
+    	//System.out.println(filePath);
+    	System.out.println(fileName);
     	filePath="work/"+usr+"/"+fileName;
     	System.out.println(filePath);
     	return "view";
