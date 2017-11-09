@@ -45,8 +45,7 @@ public class UploadFile extends ActionSupport {
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
-
-		destPath = "C:\\git-repositories\\ReadingNotes\\WebContent\\work\\" + usr;
+		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();
