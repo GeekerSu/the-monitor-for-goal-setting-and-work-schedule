@@ -18,7 +18,7 @@ public class DownAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 	private String usr = (String) ActionContext.getContext().getSession().get("username");
-	private String path = ServletActionContext.getServletContext().getRealPath("/work")+"//" + usr;
+	private String path = ServletActionContext.getServletContext().getRealPath("/work")+"/" + usr;
 	private String filePath ="";
 
 	public String list() throws Exception {

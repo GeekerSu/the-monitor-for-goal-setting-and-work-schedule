@@ -46,7 +46,7 @@ public class UploadFile extends ActionSupport {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
 
-		destPath = "C:\\Literature-reading-notes-manager" + usr;
+		destPath = ServletActionContext.getServletContext().getRealPath("/work")+"/" + usr;
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();
