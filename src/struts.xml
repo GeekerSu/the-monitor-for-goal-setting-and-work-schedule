@@ -23,7 +23,6 @@
 			<result name="success">/fileUpSuccess.jsp</result>
 			<result name="error">/fileUpError.jsp</result>
 		</action>
-
 		<!-- 下载的action -->
 		<action name="down_*" class="com.DownAction" method="{1}">
 			<!-- 列表展示 -->

@@ -2,7 +2,6 @@ package com;
 
 import java.sql.*;
 import java.util.Map;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -37,6 +36,8 @@ public class UserAction extends ActionSupport {
 
 	public String login() {
 
+
+
 		String sql = "select * from user where username='" + getUsername() + "'";
 		// Map<String, Object> session =
 		// ActionContext.getContext().getSession();
@@ -54,8 +55,10 @@ public class UserAction extends ActionSupport {
 				String realpwd = rS.getString("Password");
 				if (realpwd.equals(password))
 					return "loginin";
+
 				else {
 					message = "Password not right!";
+
 					this.addFieldError("password", "Password not right!");
 					return "input";
 				}
@@ -75,11 +78,14 @@ public class UserAction extends ActionSupport {
 
 		String sql = "insert into user(username,password,isCheck) values('" + getUsername() + "','" + getPassword()
 				+ "','0')";
+
 		System.out.println(sql);
+
 		int i = dao.executeUpdate(sql);
 		if (i > -1) {
 			java.util.Map<String, Object> session = ActionContext.getContext().getSession();
 			session.put("username", username);
+
 			//Dao newDao = new Dao();
 			String tmpsql="CREATE TABLE `"+username +"` ("
 					+ "`BookName` varchar(40) NOT NULL,"
@@ -89,6 +95,7 @@ public class UserAction extends ActionSupport {
 					+"  PRIMARY KEY (`BookName`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 			//int j =newDao.executeUpdate(tmpsql);
+			System.out.println(tmpsql);
 			int j= dao.executeUpdate(tmpsql);
 			if(j>-1)
 			{ 
@@ -99,6 +106,7 @@ public class UserAction extends ActionSupport {
 				message = "Create user table failed";
 				return "error";
 			}
+
 		} else {
 			message = "User already exists";
 			return "error";
@@ -107,6 +115,7 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String logout() {
+
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		session.remove("username");
 		return "success";
@@ -125,6 +134,7 @@ public class UserAction extends ActionSupport {
 	}
 
 	public void validateLogin() {
+
 		System.out.println("Validate start...");
 		if (username == null || username.trim().equals("")) {
 			this.addFieldError("username", "The username is required");
