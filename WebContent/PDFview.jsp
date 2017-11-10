@@ -5,7 +5,7 @@
 <html>    
 <head>  
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>    
-<title>在线预览PDF文档</title>    
+<title>阅读文档</title>    
 <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">    
 <script type="text/javascript" src="js/jquery.min.js"></script>    
 <script type="text/javascript" src="js/jquery.media.js"></script>    
@@ -14,8 +14,6 @@
         $('a.media').media({width:800, height:600});    
     });    
 </script>   
-<% String tempPath=(String)request.getAttribute("filePath"); 
-%>
 </head>  
 <body>  
 <center>  
@@ -29,6 +27,11 @@
    </div> 
 </center>
 <a href="fileUpload.jsp">上传文件</a>
-<a href="down_list.action">下载文件</a>
+<a href="down_list.action">我的文件</a>
+<s:form action="down_submit">
+<s:radio label="ReadState" name="State" list="readState" value="defaultReadStateValue" />
+<input type="hidden" name="fileName" value="${fileName }"/>
+<s:submit value="submit" />
+</s:form>
 </body>  
 </html>  

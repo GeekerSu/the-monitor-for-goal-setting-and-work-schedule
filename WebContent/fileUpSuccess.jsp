@@ -11,6 +11,6 @@ file: <s:property value="myFileFileName"/><br/>
 contentType: <s:property value="myFileContentType"/> 
 </p>
 <a href="fileUpload.jsp">继续上传</a>
-<a href="down_list.action">下载文件</a>
+<a href="down_list.action">我的文件</a>
 </body>
 </html>

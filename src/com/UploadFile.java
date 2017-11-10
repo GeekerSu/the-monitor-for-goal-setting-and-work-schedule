@@ -9,6 +9,9 @@ import org.omg.CORBA.Object;
 import java.io.IOException;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import dao.Dao;
+
 import java.util.Map;
 public class UploadFile extends ActionSupport {
 	/**	
@@ -19,6 +22,8 @@ public class UploadFile extends ActionSupport {
 	private String myFileContentType;// 上传的文件类型
 	private String myFileFileName;// 上传的文件名
 	private String destPath;
+	private Dao dao=new Dao();
+	private String sql;
 	public File getMyFile() {
 		return myFile;
 	}
@@ -57,6 +62,14 @@ public class UploadFile extends ActionSupport {
 			File destFile = new File(destPath, myFileFileName);
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
+			sql="insert into "+usr+" (BookName,ReadState,BookType,BookNote) values('" 
+			+ getMyFileFileName() + "',"
+			+"'0',"
+			+"'0',"
+			+ "null)";
+			System.out.println(sql);
+			dao.executeUpdate(sql);
+			System.out.println("succeeded insert into table "+usr);
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ERROR;
