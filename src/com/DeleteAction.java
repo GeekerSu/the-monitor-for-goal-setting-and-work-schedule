@@ -55,7 +55,7 @@ public class DeleteAction extends ActionSupport{
 			{
 				i=file.delete();
 				System.out.println("Delete File Success");
-				sql = "delete from "+ usr +" where BookName ='"+fileName+"'";
+				sql = "delete from `"+ usr +"` where BookName ='"+fileName+"'";
 				System.out.println(sql);
 				dao.executeUpdate(sql);
 				System.out.println("Delete file data success");

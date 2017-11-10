@@ -62,7 +62,7 @@ public class UploadFile extends ActionSupport {
 			File destFile = new File(destPath, myFileFileName);
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
-			sql="insert into "+usr+" (BookName,ReadState,BookType,BookNote) values('" 
+			sql="insert into `"+usr+"` (BookName,ReadState,BookType,BookNote) values('" 
 			+ getMyFileFileName() + "',"
 			+"'0',"
 			+"'0',"

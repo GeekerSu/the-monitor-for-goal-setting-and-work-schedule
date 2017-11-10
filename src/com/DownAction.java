@@ -53,7 +53,7 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String getDefaultReadStateValue() throws SQLException {
-		sql = "select * from " + usr + " where BookName='" + fileName + "'";
+		sql = "select * from `" + usr + "` where BookName='" + fileName + "'";
 		System.out.println(sql);
 		ResultSet rs = dao.executeQuery(sql);
 		if (rs.next()) {
@@ -87,7 +87,7 @@ public class DownAction extends ActionSupport {
 		case DETAILED: state="2";
 		break;
 		}
-		sql = "update " + usr + " set ReadState = '" + state + "' where BookName='"+ fileName+"'";
+		sql = "update `" + usr + "` set ReadState = '" + state + "' where BookName='"+ fileName+"'";
 		System.out.println(sql);
 		int i = dao.executeUpdate(sql);
 		if (i == 0)
