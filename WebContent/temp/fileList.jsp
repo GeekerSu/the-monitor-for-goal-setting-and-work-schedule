@@ -4,37 +4,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
-<title>Reading Condition</title>
-	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<title>下载的页面</title>
 </head>
 <body>
 
-	<ul id="myTab" class="nav nav-tabs">
-		<li class="active"><a href="#All" data-toggle="tab"> 所有文件 </a></li>
-		<li><a href="#Unread" data-toggle="tab">未阅读</a></li>
-		<li><a href="#RoughlyRead" data-toggle="tab">已粗读</a></li>
-		<li><a href="#DetailedRead" data-toggle="tab">已精读</a></li>
-	</ul>
-	<div id="myTabContent" class="tab-content">
-		<div class="tab-pane fade in active" id="All">
-			<p>
-			<div class="container">
-				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+	<center>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9" style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
 					<table cellpadding="10" cellspacing="10"
-							class="table table-striped">
+						class="table table-striped">
 						<thead>
 							<tr>
 								<th>编号</th>
 								<th>文件名</th>
-								<th colspan="3" style="text-align:center">文件操作</th>
+								<th colspan="3"  style="text-align:center">文件操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -57,23 +45,13 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
+
+					<p>
+						<a href="fileUpload.jsp">上传文件</a>
+					</p>
 				</div>
 			</div>
 		</div>
-		</p>
-			
-	</div>
-	<div class="tab-pane fade" id="Unread">
-		<p>未阅读文件表</p>
-	</div>
-	<div class="tab-pane fade" id="RoughlyRead">
-		<p>已粗读文件表</p>
-	</div>
-	<div class="tab-pane fade" id="DetailedRead">
-		<p>已精读文件表</p>
-	</div>
-</div>
-
+	</center>
 </body>
 </html>

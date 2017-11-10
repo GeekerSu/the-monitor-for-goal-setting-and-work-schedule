@@ -6,8 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"
-	rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="kindeditor/themes/default/default.css" rel="stylesheet">
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="js/toastr.js"></script>
@@ -15,25 +14,7 @@
 <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
 <style>
-.city {
-	margin: 5px;
-	padding: 20px;
-	width: 100%;
-	background-color: #F9F9F9;
-}
-
-.city1 {
-	float: left;
-	margin: 5px;
-	padding: 5px;
-	width: 70%;
-	border: 1px;
-}
-
-.editor {
-	width: 100%;
-	height: 100%;
-}
+@import url(css/PDFview.css);
 </style>
 <title>阅读PDF</title>
 <!-- 文本编辑器 -->
@@ -90,9 +71,9 @@
 </script>
 </head>
 <body>
+<center>
 	<div class="container">
 		<div class="row">
-
 			<div class="col-md-9" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
 				<b>${fileName}</b><br />
 				<iframe name="myframe" src="./pdfjs/viewer.html?file=../${filePath}" style="width:100%; height:720px"></iframe>
@@ -123,7 +104,7 @@
 					<div class="row">
 					<div class="col-md-3" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444; width:100%;">
 						<s:form action="down_submit" >
-						<b>阅读程度</b></br>
+						<b>阅读程度</b>
 							<s:radio label="ReadState" name="State" list="readState"
 								value="defaultReadStateValue" theme="simple"/>
 							<input type="hidden" name="fileName" value="${fileName }" />
@@ -134,7 +115,7 @@
 			</div>
 		</div>
 	</div>
-
+</center>
 </body>
 </html>
 

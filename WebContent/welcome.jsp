@@ -8,12 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	登陆成功！
+<div>
+	登录成功！
 	<a href="logout.action">Logout</a>
 	<br /> user:
 	<s:property value="#session.username" />
 	<br />
 	<a href="fileUpload.jsp">上传文件</a>
 	<a href="down_list.action">我的文件</a>
+</div>
 </body>
 </html>
