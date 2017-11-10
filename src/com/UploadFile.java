@@ -9,16 +9,21 @@ import org.omg.CORBA.Object;
 import java.io.IOException;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import dao.Dao;
 import java.util.Map;
 public class UploadFile extends ActionSupport {
 	/**	
 	 * 	
 	 */
 	private static final long serialVersionUID = 1L;
-	private File myFile;//实际文件的上载
-	private String myFileContentType;//文件的内容类型
-	private String myFileFileName;//被上传的文件名称
+
+	private File myFile;// 上传的文件
+	private String myFileContentType;// 上传的文件类型
+	private String myFileFileName;// 上传的文件名
 	private String destPath;
+	private Dao dao=new Dao();
+	private String sql;
+
 	public File getMyFile() {
 		return myFile;
 	}
@@ -39,31 +44,44 @@ public class UploadFile extends ActionSupport {
 	}
 
 
-	//方法1：使用FileUtils的copyFile来实现文件上传
 	// 通过FileUtil.copyFiles
 
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
 		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
+
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();
 			System.out.println("Create director: " + usr);
 		}
 		try {
+
 			//System.out.println("Src File name: " + myFile);
 			//System.out.println("Dst File name: " + myFileFileName);
 			File destFile = new File(destPath, myFileFileName);
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
+
+			sql="insert into `"+usr+"` (BookName,ReadState,BookType,BookNote) values('" 
+			+ getMyFileFileName() + "',"
+			+"'0',"
+			+"'0',"
+			+ "null)";
+			System.out.println(sql);
+			dao.executeUpdate(sql);
+			System.out.println("succeeded insert into table "+usr);
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ERROR;
 		}
 		return SUCCESS;
 	}
+
 	//方法2：使用文件流来实现文件上传
+
 	//通过FileOutputStream
 	public String executeStream() throws IOException {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();

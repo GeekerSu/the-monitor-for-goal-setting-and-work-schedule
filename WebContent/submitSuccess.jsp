@@ -1,19 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>File Upload</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<form action="upload" method="post" enctype="multipart/form-data">
-		<label for="myFile">Upload your file</label>
-		<input type="file" name="myFile"/>
-		<input type="submit" value="Upload"/>
-	</form>
-	<p>
+<center><h2>Submit Success!</h2></center>
+<br />
+	<a href="fileUpload.jsp">上传文件</a>
 	<a href="down_list.action">我的文件</a>
-	</p>
 </body>
 </html>

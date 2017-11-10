@@ -2,10 +2,6 @@ package com;
 
 import java.sql.*;
 import java.util.Map;
-
-import org.apache.catalina.connector.Request;
-import org.apache.struts2.ServletActionContext;
-
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -40,10 +36,14 @@ public class UserAction extends ActionSupport {
 
 	public String login() {
 
-		String sql = "select * from user where username='" + getUsername()+"'";
-		//Map<String, Object> session = ActionContext.getContext().getSession();
-		//String realpath=ServletActionContext.getServletContext().getRealPath("/work/");
-		//System.out.println(realpath);
+
+
+		String sql = "select * from user where username='" + getUsername() + "'";
+		// Map<String, Object> session =
+		// ActionContext.getContext().getSession();
+		// String
+		// realpath=ServletActionContext.getServletContext().getRealPath("/work/");
+		// System.out.println(realpath);
 		// + "' and password ='" + getPassword() + "'";
 		// System.out.println(username);
 		// System.out.println(password);
@@ -55,8 +55,10 @@ public class UserAction extends ActionSupport {
 				String realpwd = rS.getString("Password");
 				if (realpwd.equals(password))
 					return "loginin";
-				else{
-					message="Password not right!";
+
+				else {
+					message = "Password not right!";
+
 					this.addFieldError("password", "Password not right!");
 					return "input";
 				}
@@ -76,12 +78,35 @@ public class UserAction extends ActionSupport {
 
 		String sql = "insert into user(username,password,isCheck) values('" + getUsername() + "','" + getPassword()
 				+ "','0')";
-		System.out.print(sql);
+
+		System.out.println(sql);
+
 		int i = dao.executeUpdate(sql);
 		if (i > -1) {
 			java.util.Map<String, Object> session = ActionContext.getContext().getSession();
 			session.put("username", username);
-			return "success";
+
+			//Dao newDao = new Dao();
+			String tmpsql="CREATE TABLE `"+username +"` ("
+					+ "`BookName` varchar(40) NOT NULL,"
+					+"`ReadState` varchar(1) NOT NULL DEFAULT '0',"
+					+"`BookType` tinyint(1) DEFAULT '0',"
+					+"  `BookNote` varchar(40) DEFAULT NULL,"
+					+"  PRIMARY KEY (`BookName`)"
+					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
+			//int j =newDao.executeUpdate(tmpsql);
+			System.out.println(tmpsql);
+			int j= dao.executeUpdate(tmpsql);
+			if(j>-1)
+			{ 
+				System.out.println("Create user table success");
+				return "success";
+			}
+			else{
+				message = "Create user table failed";
+				return "error";
+			}
+
 		} else {
 			message = "User already exists";
 			return "error";
@@ -89,12 +114,12 @@ public class UserAction extends ActionSupport {
 
 	}
 
-	public String logout(){
+	public String logout() {
+
 		Map<String, Object> session = ActionContext.getContext().getSession();
 		session.remove("username");
 		return "success";
 	}
-	
 
 	public void validateRegist() {
 		System.out.println("Validate start...");
@@ -103,20 +128,21 @@ public class UserAction extends ActionSupport {
 		} else if (!username.matches("[A-Za-z0-9]+")) {
 			this.addFieldError("username", "The username must consist of numbers or letters");
 		}
-		if (password==null ||password.trim().equals("")){
-			this.addFieldError("password","The password is required");
+		if (password == null || password.trim().equals("")) {
+			this.addFieldError("password", "The password is required");
 		}
 	}
-	
-	public void validateLogin(){
+
+	public void validateLogin() {
+
 		System.out.println("Validate start...");
 		if (username == null || username.trim().equals("")) {
 			this.addFieldError("username", "The username is required");
 		} else if (!username.matches("[A-Za-z0-9]+")) {
 			this.addFieldError("username", "The username must consist of numbers or letters");
 		}
-		if (password==null ||password.trim().equals("")){
-			this.addFieldError("password","The password is required");
+		if (password == null || password.trim().equals("")) {
+			this.addFieldError("password", "The password is required");
 		}
 	}
 
