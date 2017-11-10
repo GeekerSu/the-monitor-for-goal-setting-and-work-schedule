@@ -93,41 +93,39 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="col-md-9" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+			<div class="col-md-8" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
 				<b>${fileName}</b><br />
 				<iframe name="myframe" src="./pdfjs/viewer.html?file=../${filePath}" style="width:100%; height:720px"></iframe>
 			</div>
 
-			<div class="col-md-3" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
-				<b>笔记操作</b>
+			<div class="col-md-4" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<b>阅读笔记</b>
 				<div class="row">
-					<div class="col-md-3" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444; width:100%; ">
-						<form action="saveAndLeave" id="note" method="post" >
-							<!-- 标题输入  -->
-							<div class="form-group">
-								<input type="text" name="notename" value="我的笔记" class="pull-right" placeholder="输入评论标题" style="width: 100%;" />
-							</div>
-							<!-- 笔记文本域  -->
-							<textarea id="texta" name="content" style="width: 100%; height: 300%; visibility: hidden;"></textarea>
-							<br>
-							<!-- 操作按钮 -->
-							<div class="btn-toolbar" role="toolbar" style="text-align: right;">
-								<input type="button" name="getHtml" value="HTML" /> 
-								<input type="button" name="clear" value="清空" /> 
-								<input type="reset" name="reset" value="撤销" /> 
-								<input type="submit" value="提交并退出"></input>
-							</div>
-						</form>
-					</div>
-					</div>
-					<div class="row">
-					<div class="col-md-3" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444; width:100%;">
+					<div class="col-md-4" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444; width:100%; ">
+<!-- 						<form action="saveAndLeave" id="note" method="post" > -->
+<!-- 							<textarea id="texta" name="content" style="width: 100%; height: 300%; visibility: hidden;"></textarea> -->
+<!-- 							<br> -->
+<!-- 							<div class="btn-toolbar" role="toolbar" style="text-align: right;"> -->
+<!-- 								<input type="button" name="getHtml" value="HTML" />  -->
+<!-- 								<input type="button" name="clear" value="清空" />  -->
+<!-- 								<input type="reset" name="reset" value="撤销" />  -->
+<!-- 								<input type="submit" value="提交并退出"></input> -->
+<!-- 							</div> -->
+<!-- 						</form> -->
+					
+<!-- 					</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="row"> -->
+<!-- 					<div class="col-md-4" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444; width:100%;"> -->
+
 						<s:form action="down_submit" >
-						<b>阅读程度</b></br>
+						<textarea name="note" style="width:100%;height:450px;margin-top:10px;resize:vertical" placeholder="请输入笔记..."><s:property value="note"/></textarea>
+						<br/>
+						<b>阅读程度</b><br/>
 							<s:radio label="ReadState" name="State" list="readState"
 								value="defaultReadStateValue" theme="simple"/>
 							<input type="hidden" name="fileName" value="${fileName }" />
-							<s:submit value="submit" />
+							<s:submit value="submit" align="right"/>
 						</s:form>
 					</div>
 				</div>
