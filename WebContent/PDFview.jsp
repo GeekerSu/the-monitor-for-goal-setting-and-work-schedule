@@ -8,7 +8,6 @@
 	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="kindeditor/themes/default/default.css" rel="stylesheet">
-	<link href="sources/css/toastr.css" rel="stylesheet">
 	<script src="js/jquery-3.1.1.min.js"></script>
 	<script src="js/toastr.js"></script>
 	<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -106,7 +105,7 @@
 	</script>
 </head>
 <body>
-	<table>
+	<table style="width:100%;">
 	<tr>
 	<td colspan="2" style="background-color:#FFA500;">
 	<h1>${fileName}</h1>
@@ -115,7 +114,7 @@
 	<tr>
 	<td style="background-color:#FFD700;width:70%;height:990px;vertical-align:top;">
 	<b>原文</b><br/>
-		<iframe name="myframe" src="http://localhost:8080/ReadingNotes/viewer.html?file=${filePath}" style="width:100%;height:95%"></iframe>			
+		<iframe name="myframe" src="./pdfjs/viewer.html?file=../${filePath}" style="width:100%;height:95%"></iframe>			
 	</td>
 	<td style="background-color:#eeeeee;height:990px;width:30%;vertical-align:top;">
 				<b>笔记录入</b><br/>
@@ -141,7 +140,8 @@
 	</tr>
 	<tr>	
 	<td colspan="2" style="background-color:#FFA500;">
-	<a href="fileUpload.jsp">上传文件</a> <a href="down_list.action">下载文件</a></td>
+	<!--  
+	<a href="fileUpload.jsp">上传文件</a> <a href="down_list.action">下载文件</a></td> -->
 	</tr>
 	</table>	
 </body>
