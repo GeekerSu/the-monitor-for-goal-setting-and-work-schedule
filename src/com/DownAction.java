@@ -3,7 +3,10 @@ package com;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.ResultSet;
@@ -24,9 +27,13 @@ public class DownAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 	private String usr = (String) ActionContext.getContext().getSession().get("username");
-	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr;
+	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/books";
+	private String notePath=ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/notes";
 	private String filePath = "";
 	private String fileName;
+	private String noteName;
+	private String note;
+	private String noteRealPath;
 	private List<String> readState;
 	private Dao dao = new Dao();
 	private String sql;
@@ -51,10 +58,45 @@ public class DownAction extends ActionSupport {
 	public List<String> getReadState() {
 		return readState;
 	}
-
+		
+	public void setNote(String note){
+		this.note=note;
+	}
+	
+	public String getNoteRealPath(){
+		return noteRealPath;
+	}
+	
+	public String getNote() throws SQLException, IOException{
+		//notePath=notePath.replace("\\", "/");
+		noteRealPath=notePath.replace("\\","/")+"/"+noteName;
+		String tmp=null;
+		sql = "select * from `"+usr+"` where BookName='"+ fileName +"'";
+		ResultSet rs = dao.executeQuery(sql);
+		if(rs.next()){
+			tmp=rs.getString("BookNote");
+			System.out.println(tmp);
+		}
+		if(tmp!=null)
+		{
+			File file=new File(noteRealPath);
+			FileInputStream fis=new FileInputStream(file);
+			System.out.println("Total file size to read (in bytes) : "
+					+ fis.available());
+			byte[] b = new byte[fis.available()];
+			fis.read(b);
+			fis.close();
+			note=new String(b);
+			System.out.println(note);
+		}
+		else{
+			note=null;
+		}
+		return note;
+	}
+	
 	public String getDefaultReadStateValue() throws SQLException {
 		sql = "select * from `" + usr + "` where BookName='" + fileName + "'";
-		System.out.println(sql);
 		ResultSet rs = dao.executeQuery(sql);
 		if (rs.next()) {
 			String state = rs.getString("ReadState");
@@ -77,8 +119,22 @@ public class DownAction extends ActionSupport {
 		this.state = state;
 	}
 
-	public String submit() throws SQLException {
+	public String submit() throws SQLException, IOException {
 		//sql = "update book set authorID=?,Publisher=?,PublishDate=?,Price=? where ISBN=?";
+		File notedir= new File(notePath);
+		if(!notedir.exists()){
+			notedir.mkdirs();
+		}
+		noteRealPath=notePath.replace("\\", "/")+"/"+noteName;
+		System.out.println(noteRealPath);
+		File notefile=new File(noteRealPath);
+		if(!notefile.exists()){
+			notefile.createNewFile();
+		}
+		PrintStream ps = new PrintStream(new FileOutputStream(notefile));
+		ps.print(note);
+		ps.close();
+		System.out.println("Add note Success");
 		switch(state){
 		case UNREAD: state="0";
 		break;
@@ -90,7 +146,10 @@ public class DownAction extends ActionSupport {
 		sql = "update `" + usr + "` set ReadState = '" + state + "' where BookName='"+ fileName+"'";
 		System.out.println(sql);
 		int i = dao.executeUpdate(sql);
-		if (i == 0)
+		sql = "update `" + usr + "` set BookNote = '" + noteRealPath + "' where BookName='"+ fileName+"'";
+		System.out.println(sql);
+		int j= dao.executeUpdate(sql);
+		if (i == 0&&j == 0)
 			return "submitsuccess";
 		else {
 			message = "Submit state error";
@@ -115,6 +174,7 @@ public class DownAction extends ActionSupport {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+		this.noteName = fileName.substring(0,fileName.length()-4)+"note.txt";
 	}
 
 	public String down() throws Exception {
@@ -131,9 +191,9 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String view() throws Exception {
-		System.out.println(filePath);
-		filePath = "work/" + usr + "/" + fileName;
-		System.out.println(filePath);
+		//System.out.println(filePath);
+		filePath = "work/" + usr + "/" +"books/"+ fileName;
+		//System.out.println(filePath);
 		return "view";
 	}
 

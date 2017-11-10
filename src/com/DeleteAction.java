@@ -13,7 +13,7 @@ public class DeleteAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 
 	private String usr = (String) ActionContext.getContext().getSession().get("username");
-	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr;
+	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/books";
 	private String filePath = "";
 	private String fileName;
 	private String message;

@@ -91,7 +91,7 @@ public class UserAction extends ActionSupport {
 					+ "`BookName` varchar(40) NOT NULL,"
 					+"`ReadState` varchar(1) NOT NULL DEFAULT '0',"
 					+"`BookType` tinyint(1) DEFAULT '0',"
-					+"  `BookNote` varchar(40) DEFAULT NULL,"
+					+"  `BookNote` varchar(256) DEFAULT NULL,"
 					+"  PRIMARY KEY (`BookName`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 			//int j =newDao.executeUpdate(tmpsql);

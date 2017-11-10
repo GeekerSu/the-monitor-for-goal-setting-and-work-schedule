@@ -49,7 +49,7 @@ public class UploadFile extends ActionSupport {
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
-		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
+		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/books";
 
 		File dir = new File(destPath);
 		if (!dir.exists()) {
@@ -63,7 +63,6 @@ public class UploadFile extends ActionSupport {
 			File destFile = new File(destPath, myFileFileName);
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
-
 			sql="insert into `"+usr+"` (BookName,ReadState,BookType,BookNote) values('" 
 			+ getMyFileFileName() + "',"
 			+"'0',"
@@ -86,7 +85,7 @@ public class UploadFile extends ActionSupport {
 	public String executeStream() throws IOException {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr=(String) session.get("username");
-		destPath = ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
+		destPath = ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/books";
 		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);
 		FileInputStream fis = new FileInputStream(myFile);
 		byte[] buffer = new byte[1024];
