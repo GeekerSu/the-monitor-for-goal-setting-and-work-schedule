@@ -13,7 +13,7 @@
 		<input type="submit" value="Upload"/>
 	</form>
 	<p>
-	<a href="down_list.action">下载文件</a>
+	<a href="down_list.action">我的文件</a>
 	</p>
 </body>
 </html>

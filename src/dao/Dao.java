@@ -11,11 +11,12 @@ public class Dao {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?"
-					+ "	useUnicode=true&characterEncoding=UTF-8&oldsyntax=true&zeroDateTimeBehavior=convertToNull", "kaigegao", "");
+					+ "useUnicode=true&characterEncoding=UTF-8&oldsyntax=true&zeroDateTimeBehavior=convertToNull", "root", "19970219gkg");
 
 			System.out.println("Success Connecting to Database");
 			stat = con.createStatement();
 		} catch (Exception e) {
+			System.out.println("fail Connecting to Database");
 			// TODO: handle exception
 			con = null;
 		}

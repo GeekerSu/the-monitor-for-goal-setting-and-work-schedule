@@ -14,6 +14,6 @@
 	<s:property value="#session.username" />
 	<br />
 	<a href="fileUpload.jsp">上传文件</a>
-	<a href="down_list.action">下载文件</a>
+	<a href="down_list.action">我的文件</a>
 </body>
 </html>
