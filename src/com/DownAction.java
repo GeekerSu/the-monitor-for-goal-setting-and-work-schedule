@@ -160,16 +160,44 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String list() throws Exception {
-
-		File file = new File(path);
-		if (!file.exists()) {
-			file.mkdirs();
-		}
-		String[] fileNames = file.list();
+		
+		List<String> fileNames=new ArrayList<String>();
+		List<String> fileNamesUnread=new ArrayList<String>();
+		List<String> fileNamesRoughly=new ArrayList<String>();
+		List<String> fileNamesDetailed=new ArrayList<String>();
 		ActionContext ac = ActionContext.getContext();
 		@SuppressWarnings("unchecked")
 		Map<String, Object> request = (Map<String, Object>) ac.get("request");
+		Dao dao1=new Dao();
+		Dao dao2=new Dao();
+		Dao dao3=new Dao();
+		sql="select * from `"+usr+"`";
+		ResultSet rs=dao.executeQuery(sql);
+		while(rs.next()){
+			fileNames.add(rs.getString("BookName"));
+		}
+		sql="select * from `"+usr+"` where ReadState='0'";
+		//System.out.println(sql);
+		ResultSet rsUnread=dao1.executeQuery(sql);
+		while(rsUnread.next()){
+			fileNamesUnread.add(rsUnread.getString("BookName"));
+		}
+		sql="select * from `"+usr+"` where ReadState='1'";
+		//System.out.println(sql);
+		ResultSet rsRoughly=dao2.executeQuery(sql);
+		while(rsRoughly.next()){
+			fileNamesRoughly.add(rsRoughly.getString("BookName"));
+		}
+		sql="select * from `"+usr+"` where ReadState='2'";
+		//System.out.println(sql);
+		ResultSet rsDetailed=dao3.executeQuery(sql);
+		while(rsDetailed.next()){
+			fileNamesDetailed.add(rsDetailed.getString("BookName"));
+		}
 		request.put("fileNames", fileNames);
+		request.put("fileNamesUnread", fileNamesUnread);
+		request.put("fileNamesRoughly", fileNamesRoughly);
+		request.put("fileNamesDetailed", fileNamesDetailed);
 		return "list";
 	}
 
@@ -182,8 +210,7 @@ public class DownAction extends ActionSupport {
 		return "download";
 	}
 
-	public String getFilePath() throws UnsupportedEncodingException {
-		// filePath = URLEncoder.encode(filePath,"UTF-8");
+	public String getFilePath() {
 		return filePath;
 	}
 
@@ -192,9 +219,14 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String view() throws Exception {
-		//System.out.println(filePath);
 		filePath = "work/" + usr + "/" +"books/"+ fileName;
 		//System.out.println(filePath);
+//		sql="select * from `"+usr+"` where BookName='"+fileName+"'";
+//		ResultSet rs=dao.executeQuery(sql);
+//		while(rs.next()){
+//			filePath=rs.getString("BookURL");
+//		}
+//		System.out.println(filePath);
 		return "view";
 	}
 

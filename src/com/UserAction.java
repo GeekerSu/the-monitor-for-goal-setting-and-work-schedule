@@ -39,14 +39,6 @@ public class UserAction extends ActionSupport {
 
 
 		String sql = "select * from user where username='" + getUsername() + "'";
-		// Map<String, Object> session =
-		// ActionContext.getContext().getSession();
-		// String
-		// realpath=ServletActionContext.getServletContext().getRealPath("/work/");
-		// System.out.println(realpath);
-		// + "' and password ='" + getPassword() + "'";
-		// System.out.println(username);
-		// System.out.println(password);
 		ResultSet rS = dao.executeQuery(sql);
 		try {
 			if (rS.next()) {
@@ -85,17 +77,15 @@ public class UserAction extends ActionSupport {
 		if (i > -1) {
 			java.util.Map<String, Object> session = ActionContext.getContext().getSession();
 			session.put("username", username);
-
-			//Dao newDao = new Dao();
 			String tmpsql="CREATE TABLE `"+username +"` ("
 					+ "`BookName` varchar(40) NOT NULL,"
 					+"`ReadState` varchar(1) NOT NULL DEFAULT '0',"
 					+"`BookType` tinyint(1) DEFAULT '0',"
-					+"  `BookNote` varchar(256) DEFAULT NULL,"
+
+					+"`BookNote` varchar(256) DEFAULT NULL,"
+					+"`BookURL` varchar(256) DEFAULT NULL,"
 					+"  PRIMARY KEY (`BookName`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
-			//int j =newDao.executeUpdate(tmpsql);
-			System.out.println(tmpsql);
 			int j= dao.executeUpdate(tmpsql);
 			if(j>-1)
 			{ 

@@ -9,8 +9,19 @@
 <body>
 	<form action="upload" method="post" enctype="multipart/form-data">
 		<label for="myFile">Upload your file</label>
+		<br/>
 		<input type="file" name="myFile"/>
 		<input type="submit" value="Upload"/>
+	</form>
+	<br/>
+	<form action="uploadURL" method="post" >
+		<label >上传URL</label>
+		<br/>
+		BookName:<input type="text" name="bookName" />
+		<br/>
+		BookURL:<input type="text" name="bookURL" />
+		<br/>
+		<input type="submit" value="UploadURL"/>
 	</form>
 	<p>
 	<a href="down_list.action">我的文件</a>

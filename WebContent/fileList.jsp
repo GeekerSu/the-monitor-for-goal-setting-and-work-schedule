@@ -64,7 +64,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="FileManage.jsp">上传文件</a>
+					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
@@ -72,13 +72,128 @@
 			
 	</div>
 	<div class="tab-pane fade" id="Unread">
-		<p>未阅读文件表</p>
+			<p>
+			<div class="container">
+				<div class="row">
+				<div class="col-md-9"
+						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+					<table cellpadding="10" cellspacing="10"
+							class="table table-striped">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>文件名</th>
+								<th colspan="3" style="text-align:center">文件操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${fileNamesUnread}" var="fileNameU" varStatus="fn">
+								<tr>
+									<td>${fn.count}</td>
+									<td>${fileNameU}</td>
+									<td>
+										<!-- 构建一个url --> <c:url var="url" value="down_down">
+											<c:param name="fileName" value="${fileNameU}"></c:param>
+										</c:url> <a href="${url }">下载</a>
+									</td>
+									<td><c:url var="urlview" value="down_view">
+											<c:param name="fileName" value="${fileNameU}"></c:param>
+										</c:url> <a href="${urlview}">阅读</a></td>
+									<td><c:url var="urldelete" value="delete">
+											<c:param name="fileName" value="${fileNameU}"></c:param>
+										</c:url> <a href="${urldelete}">删除</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
+				</div>
+			</div>
+		</div>
+		</p>
+		
 	</div>
 	<div class="tab-pane fade" id="RoughlyRead">
-		<p>已粗读文件表</p>
+		<p>
+			<div class="container">
+				<div class="row">
+				<div class="col-md-9"
+						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+					<table cellpadding="10" cellspacing="10"
+							class="table table-striped">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>文件名</th>
+								<th colspan="3" style="text-align:center">文件操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${fileNamesRoughly}" var="fileNameR" varStatus="fn">
+								<tr>
+									<td>${fn.count}</td>
+									<td>${fileNameR}</td>
+									<td>
+										<!-- 构建一个url --> <c:url var="url" value="down_down">
+											<c:param name="fileName" value="${fileNameR}"></c:param>
+										</c:url> <a href="${url }">下载</a>
+									</td>
+									<td><c:url var="urlview" value="down_view">
+											<c:param name="fileName" value="${fileNameR}"></c:param>
+										</c:url> <a href="${urlview}">阅读</a></td>
+									<td><c:url var="urldelete" value="delete">
+											<c:param name="fileName" value="${fileNameR}"></c:param>
+										</c:url> <a href="${urldelete}">删除</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
+				</div>
+			</div>
+		</div>
+		</p>
 	</div>
 	<div class="tab-pane fade" id="DetailedRead">
-		<p>已精读文件表</p>
+		<p>
+			<div class="container">
+				<div class="row">
+				<div class="col-md-9"
+						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+					<table cellpadding="10" cellspacing="10"
+							class="table table-striped">
+						<thead>
+							<tr>
+								<th>编号</th>
+								<th>文件名</th>
+								<th colspan="3" style="text-align:center">文件操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach items="${fileNamesDetailed}" var="fileNameD" varStatus="fn">
+								<tr>
+									<td>${fn.count}</td>
+									<td>${fileNameD}</td>
+									<td>
+										<!-- 构建一个url --> <c:url var="url" value="down_down">
+											<c:param name="fileName" value="${fileNameD}"></c:param>
+										</c:url> <a href="${url }">下载</a>
+									</td>
+									<td><c:url var="urlview" value="down_view">
+											<c:param name="fileName" value="${fileNameD}"></c:param>
+										</c:url> <a href="${urlview}">阅读</a></td>
+									<td><c:url var="urldelete" value="delete">
+											<c:param name="fileName" value="${fileNameD}"></c:param>
+										</c:url> <a href="${urldelete}">删除</a></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
+				</div>
+			</div>
+		</div>
+		</p>
 	</div>
 </div>
 </div>
