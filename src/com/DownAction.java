@@ -30,6 +30,7 @@ public class DownAction extends ActionSupport {
 
 	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/books";
 	private String notePath=ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/notes";
+	private String URL;
 	private String filePath = "";
 	private String fileName;
 	private String noteName;
@@ -53,6 +54,10 @@ public class DownAction extends ActionSupport {
 		readState.add(DETAILED);
 	}
 
+	public String getURL(){
+		return URL;
+	}
+	
 	public String getMessage() {
 		return message;
 	}
@@ -219,14 +224,22 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String view() throws Exception {
-		filePath = "work/" + usr + "/" +"books/"+ fileName;
+		
+		
+		
 		//System.out.println(filePath);
-//		sql="select * from `"+usr+"` where BookName='"+fileName+"'";
-//		ResultSet rs=dao.executeQuery(sql);
-//		while(rs.next()){
-//			filePath=rs.getString("BookURL");
-//		}
-//		System.out.println(filePath);
+		sql="select * from `"+usr+"` where BookName='"+fileName+"'";
+		ResultSet rs=dao.executeQuery(sql);
+		while(rs.next()){
+			String bookType=rs.getString("BookType");
+			if(bookType.equals("1")){
+				URL=rs.getString("BookURL");
+			}
+			else{
+				filePath = "work/" + usr + "/" +"books/"+ fileName;
+				URL="./pdfjs/viewer.html?file=../"+filePath;
+			}
+		}
 		return "view";
 	}
 

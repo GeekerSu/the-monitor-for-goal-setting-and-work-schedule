@@ -6,22 +6,60 @@
 <html>
 <head>
 <meta charset="utf-8">
+<style>
+.city {
+	margin: 5px;
+	padding: 20px;
+	width: 100%;
+	background-color: #F9F9F9;
+}
+
+.city1 {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	width: 70%;
+	border: 1px;
+}
+
+.editor {
+	width: 100%;
+	height: 100%;
+}
+</style>
 <title>Reading Condition</title>
-	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
-	<a href="logout.action">Logout</a>
-	<br /> user:
-	<s:property value="#session.username" />
-	<br />
-</div>	
-<div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">文献阅读笔记</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<li><a href="home.jsp">首页</a></li>
+				<li><a href="#">阅读笔记</a></li>
+				<li class="active"><a href="#">我的文件</a></li>
+				<li><a href="#">文件管理</a></li>
+			</ul>		
+			<ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span> UserID:<s:property value="#session.username" /><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+						<li><a href="login.jsp">登出</a></li>
+				</ul>          
+            </li>
+        </ul>
+			
+		</div>
+		</div>
+</nav>
+<div class="col-md-12" >
 	<ul id="myTab" class="nav nav-tabs">
 		<li class="active"><a href="#All" data-toggle="tab"> 所有文件 </a></li>
 		<li><a href="#Unread" data-toggle="tab">未阅读</a></li>
@@ -30,7 +68,6 @@
 	</ul>
 	<div id="myTabContent" class="tab-content">
 		<div class="tab-pane fade in active" id="All">
-			<p>
 			<div class="container">
 				<div class="row">
 				<div class="col-md-9"
@@ -67,12 +104,9 @@
 					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
-		</div>
-		</p>
-			
+		</div>		
 	</div>
 	<div class="tab-pane fade" id="Unread">
-			<p>
 			<div class="container">
 				<div class="row">
 				<div class="col-md-9"
@@ -110,11 +144,8 @@
 				</div>
 			</div>
 		</div>
-		</p>
-		
 	</div>
 	<div class="tab-pane fade" id="RoughlyRead">
-		<p>
 			<div class="container">
 				<div class="row">
 				<div class="col-md-9"
@@ -152,10 +183,8 @@
 				</div>
 			</div>
 		</div>
-		</p>
 	</div>
 	<div class="tab-pane fade" id="DetailedRead">
-		<p>
 			<div class="container">
 				<div class="row">
 				<div class="col-md-9"
@@ -193,7 +222,6 @@
 				</div>
 			</div>
 		</div>
-		</p>
 	</div>
 </div>
 </div>

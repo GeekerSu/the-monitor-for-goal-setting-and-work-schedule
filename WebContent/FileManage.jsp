@@ -7,16 +7,13 @@
 <head>
 <meta charset="utf-8">
 <title>File Management</title>
-	<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<a href="down_list.action">我的文件</a>
-<div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+<div class="col-md-12" >
 	<ul id="myTab" class="nav nav-tabs">
 		<li class="active"><a href="#PDF" data-toggle="tab"> 上传PDF文件 </a></li>
 		<li><a href="#URL" data-toggle="tab">上传URL</a></li>
@@ -25,18 +22,27 @@
 	</ul>
 	<div id="myTabContent" class="tab-content">
 		<div class="tab-pane fade in active" id="PDF">
-			<p>
-		<form action="upload" method="post" enctype="multipart/form-data">
-		<label for="myFile">Upload your file</label>
-		<input type="file" name="myFile"/>
-		<input type="submit" value="Upload"/>
-	</form>
-	
-		</p>
-			
+		<p>
+			<form action="upload" method="post" enctype="multipart/form-data">
+			<label for="myFile">Upload your file</label>
+			<br/>
+			<input type="file" name="myFile"/>
+			<input type="submit" value="Upload"/>
+			</form>
+		</p>			
 	</div>
 	<div class="tab-pane fade" id="URL">
-		<p>上传URL实现</p>
+		<p>
+		<form action="uploadURL" method="post" >
+		<label >上传URL</label>
+		<br/>
+		BookName:<input type="text" name="bookName" />
+		<br/>
+		BookURL:<input type="text" name="bookURL" value="http://"/>
+		<br/>
+		<input type="submit" value="UploadURL"/>
+		</form>
+		</p>
 	</div>
 	<div class="tab-pane fade" id="ClassTree">
 		<p>文献分类树实现</p>

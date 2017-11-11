@@ -4,16 +4,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"
 	rel="stylesheet">
-<script src="js/jquery-3.1.1.min.js"></script>
 <link href="kindeditor/themes/default/default.css" rel="stylesheet">
-<script src="js/toastr.js"></script>
+<script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
@@ -38,9 +34,6 @@
 	height: 100%;
 }
 </style>
-
-
-
 <title>阅读PDF</title>
 <!-- 文本编辑器 -->
 <script>
@@ -96,53 +89,44 @@
 </script>
 </head>
 <body>
-
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container-fluid">
-	<div class="navbar-header">
-		<a class="navbar-brand" href="#">文献阅读笔记</a>
-	</div>
-	<div>
-		<ul class="nav navbar-nav">
-			<li class="active"><a href="home.jsp">home</a></li>
-			<li><a href="filelist.jsp">reading notes</a></li>
-			<li><a href="#">class tree</a></li>
-			<li><a href="#">reading line</a></li>
-			<li><a href="fileUpload.jsp">add on article</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					user operation
-					<b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="#">userID:<s:property value="#session.username" /></a></li>
-					<li><a href="login.jsp">log out</a></li>
-					<!-- 
-					<li><a href="#">Jasper Report</a></li>
-					<li class="divider"></li>
-					<li><a href="#">分离的链接</a></li>
-					<li class="divider"></li>
-					<li><a href="#">另一个分离的链接</a></li> 
-					-->
-				</ul>
-			</li>
-		</ul>
-	</div>
-	</div>
-</nav>
-
-	<center>
+	<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">文献阅读笔记</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<li><a href="home.jsp">首页</a></li>
+				<li class="active"><a href="#">阅读笔记</a></li>
+				<li><a href="#">我的文件</a></li>
+				<li><a href="#">文件管理</a></li>
+			</ul>		
+			<ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span> UserID:<s:property value="#session.username" /><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+						<li><a href="login.jsp">登出</a></li>
+				</ul>          
+            </li>
+        </ul>
+			
+		</div>
+		</div>
+	</nav>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+
+			<div class="col-md-8">
 				<b>${fileName}</b><br />
-				<iframe name="myframe" src="./pdfjs/viewer.html?file=../${filePath}" style="width:100%; height:720px"></iframe>
+				<iframe name="myframe" src="${URL}" style="width:100%; height:720px"></iframe>
 			</div>
 
-			<div class="col-md-4" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+			<div class="col-md-4" >
 				<b>阅读笔记</b>
 				<div class="row">
-					<div class="col-md-4" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444; width:100%; ">
+					<div class="col-md-4">
 <!-- 						<form action="saveAndLeave" id="note" method="post" > -->
 <!-- 							<textarea id="texta" name="content" style="width: 100%; height: 300%; visibility: hidden;"></textarea> -->
 <!-- 							<br> -->
@@ -160,7 +144,6 @@
 <!-- 					<div class="col-md-4" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444; width:100%;"> -->
 
 						<s:form action="down_submit" >
-
 						<textarea name="note" style="width:100%;height:450px;margin-top:10px;resize:vertical" placeholder="请输入笔记..."><s:property value="note"/></textarea>
 						<br/>
 						<b>阅读程度</b><br/>
@@ -174,7 +157,6 @@
 			</div>
 		</div>
 	</div>
-</center>
+
 </body>
 </html>
-
