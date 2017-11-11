@@ -64,7 +64,7 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
+					<a style="text-align:center" href="FileManage.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
