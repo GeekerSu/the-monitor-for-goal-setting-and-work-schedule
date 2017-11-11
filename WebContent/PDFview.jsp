@@ -95,7 +95,7 @@
 
 			<div class="col-md-8" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
 				<b>${fileName}</b><br />
-				<iframe name="myframe" src="./pdfjs/viewer.html?file=../${filePath}" style="width:100%; height:720px"></iframe>
+				<iframe name="myframe" src="${URL}" style="width:100%; height:720px"></iframe>
 			</div>
 
 			<div class="col-md-4" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">

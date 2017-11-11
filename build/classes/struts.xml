@@ -67,7 +67,7 @@
 		</action>
 		<action name="uploadURL" class="com.UploadURL">
 		    <result name="success" type="redirect">down_list.action</result>
-		    <result name="error">eror.jsp</result>
+		    <result name="error">error.jsp</result>
 		</action>
 	</package>
 </struts>

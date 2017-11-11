@@ -19,7 +19,7 @@
 		<br/>
 		BookName:<input type="text" name="bookName" />
 		<br/>
-		BookURL:<input type="text" name="bookURL" />
+		BookURL:<input type="text" name="bookURL" value="http://"/>
 		<br/>
 		<input type="submit" value="UploadURL"/>
 	</form>
