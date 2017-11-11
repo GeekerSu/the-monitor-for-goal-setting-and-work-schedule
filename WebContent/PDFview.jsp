@@ -4,18 +4,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="kindeditor/themes/default/default.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"
+	rel="stylesheet">
 <script src="js/jquery-3.1.1.min.js"></script>
+<link href="kindeditor/themes/default/default.css" rel="stylesheet">
 <script src="js/toastr.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script charset="utf-8" src="kindeditor/kindeditor-min.js"></script>
 <script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
 <style>
-@import url(css/PDFview.css);
+.city {
+	margin: 5px;
+	padding: 20px;
+	width: 100%;
+	background-color: #F9F9F9;
+}
+
+.city1 {
+	float: left;
+	margin: 5px;
+	padding: 5px;
+	width: 70%;
+	border: 1px;
+}
+
+.editor {
+	width: 100%;
+	height: 100%;
+}
 </style>
+
+
+
 <title>阅读PDF</title>
 <!-- 文本编辑器 -->
 <script>
@@ -71,7 +96,42 @@
 </script>
 </head>
 <body>
-<center>
+
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="#">文献阅读笔记</a>
+	</div>
+	<div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="home.jsp">home</a></li>
+			<li><a href="filelist.jsp">reading notes</a></li>
+			<li><a href="#">class tree</a></li>
+			<li><a href="#">reading line</a></li>
+			<li><a href="fileUpload.jsp">add on article</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					user operation
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">userID:<s:property value="#session.username" /></a></li>
+					<li><a href="login.jsp">log out</a></li>
+					<!-- 
+					<li><a href="#">Jasper Report</a></li>
+					<li class="divider"></li>
+					<li><a href="#">分离的链接</a></li>
+					<li class="divider"></li>
+					<li><a href="#">另一个分离的链接</a></li> 
+					-->
+				</ul>
+			</li>
+		</ul>
+	</div>
+	</div>
+</nav>
+
+	<center>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">

@@ -27,6 +27,7 @@ public class DownAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 	private String usr = (String) ActionContext.getContext().getSession().get("username");
+
 	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/books";
 	private String notePath=ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/notes";
 	private String filePath = "";
@@ -34,6 +35,7 @@ public class DownAction extends ActionSupport {
 	private String noteName;
 	private String note;
 	private String noteRealPath;
+
 	private List<String> readState;
 	private Dao dao = new Dao();
 	private String sql;
@@ -57,8 +59,7 @@ public class DownAction extends ActionSupport {
 
 	public List<String> getReadState() {
 		return readState;
-	}
-		
+	}	
 	public void setNote(String note){
 		this.note=note;
 	}

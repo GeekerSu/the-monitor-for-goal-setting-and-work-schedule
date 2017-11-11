@@ -51,6 +51,7 @@ public class UploadFile extends ActionSupport {
 		String usr = (String) session.get("username");
 		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/books";
 
+
 		File dir = new File(destPath);
 		if (!dir.exists()) {
 			dir.mkdirs();

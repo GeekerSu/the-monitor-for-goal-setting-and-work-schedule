@@ -13,9 +13,11 @@ public class Dao {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test?"
 					+ "useUnicode=true&characterEncoding=UTF-8&oldsyntax=true", "root", "");
 
+
 			System.out.println("Success Connecting to Database");
 			stat = con.createStatement();
 		} catch (Exception e) {
+			System.out.println("fail Connecting to Database");
 			// TODO: handle exception
 			con = null;
 		}
