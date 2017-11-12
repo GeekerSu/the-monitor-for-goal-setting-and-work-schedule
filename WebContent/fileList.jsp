@@ -26,6 +26,7 @@
 	width: 100%;
 	height: 100%;
 }
+		body {background-color: #0CA3D2}
 </style>
 <title>Reading Condition</title>
 	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
@@ -42,8 +43,8 @@
 			<ul class="nav navbar-nav">
 				<li><a href="home.jsp">首页</a></li>
 				<li><a href="#">阅读笔记</a></li>
-				<li class="active"><a href="#">我的文件</a></li>
-				<li><a href="#">文件管理</a></li>
+				<li class="active"><a href="down_list.action">我的文件</a></li>
+				<li><a href="fileUpload.jsp">文件管理</a></li>
 			</ul>		
 			<ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -70,8 +71,7 @@
 		<div class="tab-pane fade in active" id="All">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-9">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -109,8 +109,7 @@
 	<div class="tab-pane fade" id="Unread">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-9">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -148,8 +147,7 @@
 	<div class="tab-pane fade" id="RoughlyRead">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-9">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -187,8 +185,7 @@
 	<div class="tab-pane fade" id="DetailedRead">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-9">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>

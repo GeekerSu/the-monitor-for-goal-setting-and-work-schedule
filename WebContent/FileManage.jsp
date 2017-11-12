@@ -10,6 +10,11 @@
 	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
 	<script src="js/jquery.min.js"></script>
 	<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<script src="bootstrap-3.3.7/js/jasny-bootstrap.js"></script>
+	<link rel="stylesheet" href="bootstrap-3.3.7/css/jasny-bootstrap.css">
+	<style>
+		body {background-color: #0CA3D2}
+	</style>
 </head>
 <body>
 	<a href="down_list.action">我的文件</a>
@@ -21,18 +26,15 @@
 		<li><a href="#TimeLine" data-toggle="tab">阅读时间线</a></li>
 	</ul>
 	<div id="myTabContent" class="tab-content">
+	
 		<div class="tab-pane fade in active" id="PDF">
-		<p>
 			<form action="upload" method="post" enctype="multipart/form-data">
 			<label for="myFile">Upload your file</label>
-			<br/>
 			<input type="file" name="myFile"/>
 			<input type="submit" value="Upload"/>
-			</form>
-		</p>			
+			</form>			
 	</div>
 	<div class="tab-pane fade" id="URL">
-		<p>
 		<form action="uploadURL" method="post" >
 		<label >上传URL</label>
 		<br/>
@@ -42,7 +44,6 @@
 		<br/>
 		<input type="submit" value="UploadURL"/>
 		</form>
-		</p>
 	</div>
 	<div class="tab-pane fade" id="ClassTree">
 		<p>文献分类树实现</p>

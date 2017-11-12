@@ -18,8 +18,8 @@
 	 	width: 500px;
 		
 		padding: 50px;			
-	}
-	body {background-color: #0CA3D2} 
+	} 
+		body {background-color: #0CA3D2} 
 	</style>
 </head>
 	<body >
@@ -30,9 +30,9 @@
 		<div class="alert  animated wobble"  style="background-color: rgba(255,255,255,	 0.60);">
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
-			 <h4><strong>笔记保存成功！</strong></h4>
-			 <a href="fileUpload.jsp">文件管理</a>
-			<a href="down_list.action">我的文件</a>
+			 <h4><strong>错误: <s:property value="message"/></strong></h4>
+			<a href=register.jsp>注册账号</a>
+			<a href=login.jsp>重新登陆</a>
 		</div>
 </div>
 </body>
