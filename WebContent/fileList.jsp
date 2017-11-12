@@ -71,7 +71,7 @@
 		<div class="tab-pane fade in active" id="All">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -109,7 +109,7 @@
 	<div class="tab-pane fade" id="Unread">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -147,7 +147,7 @@
 	<div class="tab-pane fade" id="RoughlyRead">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -185,7 +185,7 @@
 	<div class="tab-pane fade" id="DetailedRead">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>

@@ -63,7 +63,7 @@
 		</div>
 		</div>
 </nav>
-<div class="col-md-8" >
+<div class="col-md-12" >
 	<ul id="myTab" class="nav nav-tabs">
 		<li class="active"><a href="#PDF" data-toggle="tab"> 上传PDF文件 </a></li>
 		<li><a href="#URL" data-toggle="tab">上传URL</a></li>
@@ -79,7 +79,7 @@
 			<div class="col-md-4">
 				<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 			    <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span></div>
-			    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
+			    <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="myFile"></span>
 			    <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 			    </div>
 			    </div>

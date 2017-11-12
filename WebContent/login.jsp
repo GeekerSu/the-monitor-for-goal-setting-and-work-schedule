@@ -11,21 +11,21 @@
 <body>
   <section class="container">
     <div class="login">
-      <h1>Login</h1>
+      <h1>登录</h1>
       <form method="post" action="login.action">
-        <p><s:textfield name="username" label="UserName"/></p>
-        <p><s:password name="password" label="Password"/></p>
+        <p><s:textfield name="username" label="用户名"/></p>
+        <p><s:password name="password" label="密码"/></p>
         <p class="remember_me">
           <label>
             <input type="checkbox" name="remember_me" id="remember_me">
-            Remember me on this computer
+            记住密码
           </label>
         </p>
-        <p class="submit"><input type="submit" name="commit" value="Login"></p>
+        <p class="submit"><input type="submit" name="commit" value="登录"></p>
       </form>
     </div>
     <div class="login-help">
-      <p>Haven't use it before? <a href="register.jsp">Click here to sign up</a>.</p>
+      <p>你是新手？<a href="register.jsp">点击这里注册账号</a>。</p>
     </div>
   </section>
 </body>

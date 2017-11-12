@@ -60,6 +60,8 @@ public class UploadFile extends ActionSupport {
 
 			//System.out.println("Src File name: " + myFile);
 			//System.out.println("Dst File name: " + myFileFileName);
+			System.out.println(destPath);
+			System.out.println(myFileFileName);
 			File destFile = new File(destPath, myFileFileName);
 			String filePath=destPath.replace("\\","/")+"/"+myFileFileName;
 			ActionContext.getContext().put("message", "Uploading Success!");

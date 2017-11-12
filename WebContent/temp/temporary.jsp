@@ -30,9 +30,13 @@
 		<div class="alert  animated wobble"  style="background-color: rgba(255,255,255,	 0.60);">
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
-			 <h4><strong>错误: <s:property value="message"/></strong></h4>
-			<a href=register.jsp>注册账号</a>
-			<a href=login.jsp>重新登陆</a>
+			 <h4><strong>上传成功！<s:property value="message"/></strong></h4>
+				<p>
+				你成功地上传了：<s:property value="myFileFileName"/><br/>  
+				内容类型：<s:property value="myFileContentType"/> 
+				</p>
+			<a href="fileUpload.jsp">文件管理</a>
+			<a href="down_list.action">我的文件</a>
 		</div>
 </div>
 </body>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,7 +31,7 @@
 		<div class="alert  animated wobble"  style="background-color: rgba(255,255,255,	 0.60);">
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
-			 <h4><strong>错误: <s:property value="message"/></strong></h4>
+			 <h4><strong>错误：<s:property value="message"/></strong></h4>
 			<a href=register.jsp>注册账号</a>
 			<a href=login.jsp>重新登陆</a>
 		</div>
