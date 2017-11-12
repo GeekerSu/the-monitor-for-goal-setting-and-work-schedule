@@ -17,6 +17,7 @@
 <body>
 <div class="col-md-12" style=" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
 	<a href="logout.action">Logout</a>
+	<a href="getTree.action">ClassTree</a>
 	<br /> user:
 	<s:property value="#session.username" />
 	<br />

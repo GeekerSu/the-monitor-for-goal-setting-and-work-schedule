@@ -35,9 +35,6 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String login() {
-
-
-
 		String sql = "select * from user where username='" + getUsername() + "'";
 		ResultSet rS = dao.executeQuery(sql);
 		try {
@@ -75,8 +72,8 @@ public class UserAction extends ActionSupport {
 
 		int i = dao.executeUpdate(sql);
 		if (i > -1) {
-			java.util.Map<String, Object> session = ActionContext.getContext().getSession();
-			session.put("username", username);
+			//java.util.Map<String, Object> session = ActionContext.getContext().getSession();
+			//session.put("username", username);
 			String tmpsql="CREATE TABLE `"+username +"` ("
 					+ "`BookName` varchar(40) NOT NULL,"
 					+"`ReadState` varchar(1) NOT NULL DEFAULT '0',"
@@ -86,7 +83,17 @@ public class UserAction extends ActionSupport {
 					+"  PRIMARY KEY (`BookName`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 			int j= dao.executeUpdate(tmpsql);
-			if(j>-1)
+			
+			tmpsql="CREATE TABLE `"+username +"Tree` ("
+					+ "`ID` int NOT NULL AUTO_INCREMENT,"
+					+"`PID` int NOT NULL DEFAULT 1,"
+					+"`NodeName` varchar(40) NOT NULL UNIQUE,"
+					+"  PRIMARY KEY (`ID`)"
+					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
+			int k=dao.executeUpdate(tmpsql);
+			tmpsql="insert into `"+username+"Tree` (ID,PID,NodeName) values(1,-1,'root')";
+			int m=dao.executeUpdate(tmpsql);
+			if(j>-1&&k>-1&&m>-1)
 			{ 
 				System.out.println("Create user table success");
 				return "success";
