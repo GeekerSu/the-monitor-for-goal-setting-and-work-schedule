@@ -6,14 +6,20 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.multipart.maxSize" value="10485760" />
 	<package name="com" extends="struts-default">
+			<action name = "enter1" class = "com.UserAction">
+		<result>login.jsp</result>
+		</action>
+				<action name = "enter2" class = "com.UserAction">
+		<result>register.jsp</result>
+		</action>
 		<action name="login" class="com.UserAction" method="login">
 			<result name="loginout">/error.jsp</result>
-			<result name="loginin">/welcome.jsp</result>
+			<result name="loginin" type="redirect">down_list.action</result>
 			<result name="input">/login.jsp</result>
 		</action>
 		<action name="regist" class="com.UserAction" method="regist">
 			<result name="error">/error.jsp</result>
-			<result name="success">/welcome.jsp</result>
+			<result name="success">/register.jsp</result>
 			<result name="input">/register.jsp</result>
 		</action>
 		<action name="logout" class="com.UserAction" method="logout">
@@ -65,5 +71,10 @@
 		    <result name="success" type="redirect">down_list.action</result>
 		    <result name="error">error.jsp</result>
 		</action>
+		<action name="uploadURL" class="com.UploadURL">
+		    <result name="success" type="redirect">down_list.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+
 	</package>
 </struts>

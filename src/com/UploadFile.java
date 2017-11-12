@@ -45,11 +45,11 @@ public class UploadFile extends ActionSupport {
 
 
 	// 通过FileUtil.copyFiles
-
 	public String execute() {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr = (String) session.get("username");
-		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
+		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/books";
+
 
 		File dir = new File(destPath);
 		if (!dir.exists()) {
@@ -60,15 +60,19 @@ public class UploadFile extends ActionSupport {
 
 			//System.out.println("Src File name: " + myFile);
 			//System.out.println("Dst File name: " + myFileFileName);
+			System.out.println(destPath);
+			System.out.println(myFileFileName);
 			File destFile = new File(destPath, myFileFileName);
+			String filePath=destPath.replace("\\","/")+"/"+myFileFileName;
 			ActionContext.getContext().put("message", "Uploading Success!");
 			FileUtils.copyFile(myFile, destFile);
-
-			sql="insert into `"+usr+"` (BookName,ReadState,BookType,BookNote) values('" 
+			sql="insert into `"+usr+"` (BookName,ReadState,BookType,BookNote,BookURL) values('" 
 			+ getMyFileFileName() + "',"
 			+"'0',"
 			+"'0',"
-			+ "null)";
+			+ "null,'"
+			+filePath
+			+"')";
 			System.out.println(sql);
 			dao.executeUpdate(sql);
 			System.out.println("succeeded insert into table "+usr);
@@ -81,12 +85,11 @@ public class UploadFile extends ActionSupport {
 	}
 
 	//方法2：使用文件流来实现文件上传
-
 	//通过FileOutputStream
 	public String executeStream() throws IOException {
 		Map<String, java.lang.Object> session = ActionContext.getContext().getSession();
 		String usr=(String) session.get("username");
-		destPath = ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr;
+		destPath = ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/books";
 		FileOutputStream fos = new FileOutputStream(destPath + myFileFileName);
 		FileInputStream fis = new FileInputStream(myFile);
 		byte[] buffer = new byte[1024];
@@ -99,4 +102,5 @@ public class UploadFile extends ActionSupport {
 		fis.close();
 		return SUCCESS;
 	}
+	
 }

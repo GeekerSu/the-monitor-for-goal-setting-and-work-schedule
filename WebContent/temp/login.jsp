@@ -31,4 +31,5 @@
 		</table>
 	</form>
 </body>
+<s:property value="message"/></strong>
 </html>
