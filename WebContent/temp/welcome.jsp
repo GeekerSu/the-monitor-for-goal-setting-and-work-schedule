@@ -8,12 +8,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	登陆成功！
+<div>
+<div>
+	登录成功！
 	<a href="logout.action">Logout</a>
 	<br /> user:
 	<s:property value="#session.username" />
 	<br />
+</div>	
 	<a href="fileUpload.jsp">上传文件</a>
 	<a href="down_list.action">我的文件</a>
+<<<<<<< HEAD:WebContent/temp/welcome.jsp
+</div>
+=======
+>>>>>>> GKG:WebContent/welcome.jsp
 </body>
+<s:property value="message"/>
 </html>
