@@ -38,9 +38,9 @@
 <h3>Create a new Class</h3>
 <br/>
 <form action="addClassNode">
-ClassName:<input type="text" name="className" />
+ClassName:<input type="text" name="newclass" />
 <br/>
-ParentNode:<input type="text" name="parentNode" />
+ParentNode:<input type="text" name="parent" />
 <br/>
 <input type="submit" value="Create"/>
 </form>

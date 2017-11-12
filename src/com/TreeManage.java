@@ -19,28 +19,20 @@ public class TreeManage extends ActionSupport {
 	private String sql;
 	private String usr=(String) ActionContext.getContext().getSession().get("username");
 	private List<Node> list=new ArrayList<Node>();
-	private String parentNode;
-	private String className;
+	private String parent;
+	private String newclass;
 	private String message;
 	
 	public List<Node> getList(){
 		return list;
 	}
 	
-	public void setParentNode(String parentNode){
-		this.parentNode=parentNode;
+	public void setParent(String parent){
+		this.parent=parent;
 	}
 	
-	public String getParentNode(){
-		return parentNode;
-	}
-	
-	public void setClassName(String className){
-		this.className=className;
-	}
-	
-	public String getClassName(){
-		return className;
+	public void setNewclass(String newclass){
+		this.newclass=newclass;
 	}
 	
 	public String getMessage(){
@@ -62,7 +54,7 @@ public class TreeManage extends ActionSupport {
 	}
 	
 	public String addClassNode() throws SQLException{
-		sql="select * from `"+usr+"Tree` where NodeName='"+parentNode+"'";
+		sql="select * from `"+usr+"Tree` where NodeName='"+parent+"'";
 		System.out.println(sql);
 		ResultSet rs=dao.executeQuery(sql);
 		if(rs.next()){
@@ -70,10 +62,10 @@ public class TreeManage extends ActionSupport {
 		sql="insert into `"+usr+"Tree`(ID,PID,NodeName) values(0,"
 				+pid
 				+",'"
-				+className
+				+newclass
 				+"')";
 		dao.executeUpdate(sql);
-		System.out.println("Create ClassNode "+className+" Success");
+		System.out.println("Create ClassNode "+newclass+" Success");
 		}
 		else{
 			message="∏∏¿‡≤ª¥Ê‘⁄£°";
