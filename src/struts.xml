@@ -82,6 +82,9 @@
 		    <result name="success" type="redirect">getTree.action</result>
 		    <result name="error">error.jsp</result>
 		</action>
-
+		<action name="addBookNode" class="com.TreeManage" method="addBookNode">
+		    <result name="success" type="redirect">getTree.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
 	</package>
 </struts>
