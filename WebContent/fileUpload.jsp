@@ -30,9 +30,12 @@
 	body {background-color: #0CA3D2}
 </style>
 <title>File Management</title>
-	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
+<link href="kindeditor/themes/default/default.css" rel="stylesheet">
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 	<script src="bootstrap-3.3.7/js/jasny-bootstrap.js"></script>
 	<link rel="stylesheet" href="bootstrap-3.3.7/css/jasny-bootstrap.css">
 </head>
@@ -47,7 +50,8 @@
 				<li><a href="home.jsp">首页</a></li>
 				<li><a href="#">阅读笔记</a></li>
 				<li><a href="down_list.action">我的文件</a></li>
-				<li class="active"><a href="#fileUpload.jsp">文件管理</a></li>
+				<li class="active"><a href="#fileUpload.jsp">上传文件</a></li>
+				<li><a href="getTree.action">分类树</a></li>
 			</ul>		
 			<ul class="nav navbar-nav navbar-right">
             <li class="dropdown">

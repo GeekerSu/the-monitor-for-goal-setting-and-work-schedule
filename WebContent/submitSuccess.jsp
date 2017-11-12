@@ -31,7 +31,7 @@
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
 			 <h4><strong>笔记保存成功！</strong></h4>
-			 <a href="fileUpload.jsp">文件管理</a>
+			 <a href="fileUpload.jsp">继续上传</a>
 			<a href="down_list.action">我的文件</a>
 		</div>
 </div>

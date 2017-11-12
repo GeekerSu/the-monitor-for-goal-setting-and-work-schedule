@@ -73,9 +73,12 @@ public class UploadFile extends ActionSupport {
 			+ "null,'"
 			+filePath
 			+"')";
-			System.out.println(sql);
 			dao.executeUpdate(sql);
 			System.out.println("succeeded insert into table "+usr);
+			sql="insert into `"+usr+"Tree` (ID,PID,NodeName) values(0,1,'"+getMyFileFileName()+"')";
+			System.out.println(sql);
+			dao.executeUpdate(sql);
+			System.out.println("succeeded insert into table "+usr+"Tree");
 
 		} catch (IOException e) {
 			e.printStackTrace();
