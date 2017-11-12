@@ -6,37 +6,30 @@
 <head>
 <meta charset="utf-8">
 <style>
-@import url(navigationBarStyle4.css);
+body 
+{
+background-color:#0CA3D2;
+background-repeat:no-repeat;
+background-attachment:fixed;
+background-position:center center;
+}
 </style>
+<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+<script src="js/jquery-3.1.1.min.js"></script>
 <title>home</title>
 </head>
 <body>
-	<ul>
-		<li><a href="login.jsp" title='login'>登录</a></li>
-		<li><a href="register.jsp"title='reg'>注册</a></li>
-		<li style="float: right"><a class="active" href="home.jsp">home</a></li>
-	</ul>
-		<div
-		style="padding: 20px; margin-top: 30px; height: 1500px; color: white"
-		align="center">
-		<div class="center">
-		<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
-			<font size="300%">文献阅读笔记</font>
-			
-			<br>
-		</div>
-	</div>
-	
+	<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">文献阅读笔记</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="register.jsp"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+      <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+    </ul>
+  </div>
+</nav>		
 </body>
 </html>

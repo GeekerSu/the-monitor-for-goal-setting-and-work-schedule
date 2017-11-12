@@ -14,12 +14,12 @@
 		</action>
 		<action name="login" class="com.UserAction" method="login">
 			<result name="loginout">/error.jsp</result>
-			<result name="loginin">/welcome.jsp</result>
+			<result name="loginin" type="redirect">down_list.action</result>
 			<result name="input">/login.jsp</result>
 		</action>
 		<action name="regist" class="com.UserAction" method="regist">
 			<result name="error">/error.jsp</result>
-			<result name="success">/welcome.jsp</result>
+			<result name="success">/register.jsp</result>
 			<result name="input">/register.jsp</result>
 		</action>
 		<action name="logout" class="com.UserAction" method="logout">
@@ -68,6 +68,10 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="delete" class="com.DeleteAction" >
+		    <result name="success" type="redirect">down_list.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="uploadURL" class="com.UploadURL">
 		    <result name="success" type="redirect">down_list.action</result>
 		    <result name="error">error.jsp</result>
 		</action>
