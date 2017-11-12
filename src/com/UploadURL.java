@@ -41,7 +41,9 @@ public class UploadURL extends ActionSupport{
 		+getBookURL()
 		+"')";
 		int i=dao.executeUpdate(sql);
-		if(i==0)
+		sql="insert into `"+usr+"Tree` (ID,PID,NodeName) values(0,1,'"+getBookName()+"')";
+		int j=dao.executeUpdate(sql);
+		if(i==0&&j==0)
 			return SUCCESS;
 		else
 			return ERROR;

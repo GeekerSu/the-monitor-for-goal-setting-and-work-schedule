@@ -6,6 +6,12 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.multipart.maxSize" value="10485760" />
 	<package name="com" extends="struts-default">
+			<action name = "enter1" class = "com.UserAction">
+		<result>login.jsp</result>
+		</action>
+				<action name = "enter2" class = "com.UserAction">
+		<result>register.jsp</result>
+		</action>
 		<action name="login" class="com.UserAction" method="login">
 			<result name="loginout">/error.jsp</result>
 			<result name="loginin" type="redirect">down_list.action</result>
@@ -73,6 +79,10 @@
 		    <result name="success">classTree.jsp</result>
 		</action>
 		<action name="addClassNode" class="com.TreeManage" method="addClassNode">
+		    <result name="success" type="redirect">getTree.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="addBookNode" class="com.TreeManage" method="addBookNode">
 		    <result name="success" type="redirect">getTree.action</result>
 		    <result name="error">error.jsp</result>
 		</action>

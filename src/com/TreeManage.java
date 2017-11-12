@@ -21,6 +21,8 @@ public class TreeManage extends ActionSupport {
 	private List<Node> list=new ArrayList<Node>();
 	private String parent;
 	private String newclass;
+	private String parentb;
+	private String bookName;
 	private String message;
 	
 	public List<Node> getList(){
@@ -37,6 +39,14 @@ public class TreeManage extends ActionSupport {
 	
 	public String getMessage(){
 		return message;
+	}
+	
+	public void setParentb(String parentb){
+		this.parentb=parentb;
+	}
+	
+	public void setBookName(String bookName){
+		this.bookName=bookName;
 	}
 	
 	public String queryTreeList()  throws SQLException{
@@ -64,6 +74,32 @@ public class TreeManage extends ActionSupport {
 				+",'"
 				+newclass
 				+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Create ClassNode "+newclass+" Success");
+		}
+		else{
+			message="父类不存在！";
+			return ERROR;
+		}
+		return SUCCESS;
+	}
+	
+	public String addBookNode() throws SQLException{
+		sql="select * from `"+usr+"` where BookName='"+bookName+"'";
+		System.out.println(sql);
+		ResultSet rstmp=(new Dao()).executeQuery(sql);
+		if(!rstmp.next()){
+			message="该图书不存在！";
+			return ERROR;
+		}
+		sql="select * from `"+usr+"Tree` where NodeName='"+parentb+"'";
+		System.out.println(sql);
+		ResultSet rs=dao.executeQuery(sql);
+		if(rs.next()){
+		int pid=rs.getInt("ID");
+//		"update `" + usr + "` set BookNote = '" + noteRealPath + "' where BookName='"+ fileName+"'";
+		sql="update `"+usr+"Tree` set PID="+pid+" where NodeName='"+bookName+"'";
+		System.out.println(sql);
 		dao.executeUpdate(sql);
 		System.out.println("Create ClassNode "+newclass+" Success");
 		}
