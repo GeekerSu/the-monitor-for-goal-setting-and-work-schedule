@@ -32,8 +32,7 @@
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
 			 <h4><strong>错误：<s:property value="message"/></strong></h4>
-			<a href=register.jsp>注册账号</a>
-			<a href=login.jsp>重新登陆</a>
+			<a onclick ="javascript:history.go(-1);"><font color=blue >点击这里</font></a>返回上一页面。<br>
 		</div>
 </div>
 </body>

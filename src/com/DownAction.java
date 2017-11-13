@@ -159,7 +159,7 @@ public class DownAction extends ActionSupport {
 		int j= dao.executeUpdate(sql);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
-		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'修改了阅读笔记和阅读状态:"+fileName+"','4','"
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'修改了阅读笔记和阅读状态："+fileName+"','4','"
 				+current+"','"+fileName+"')";
 		dao.executeUpdate(sql);
 		System.out.println("Insert into Userlog success");
@@ -222,7 +222,7 @@ public class DownAction extends ActionSupport {
 	public String down() throws Exception {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
-		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'下载了文章:"+fileName+"','5','"
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'下载了文章："+fileName+"','5','"
 				+current+"','"+fileName+"')";
 		dao.executeUpdate(sql);
 		System.out.println("Insert into Userlog success");
@@ -242,7 +242,7 @@ public class DownAction extends ActionSupport {
 		//System.out.println(filePath);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
-		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'阅读了文章:"+fileName+"','3','"
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'阅读了文章："+fileName+"','3','"
 				+current+"','"+fileName+"')";
 		dao.executeUpdate(sql);
 		System.out.println("Insert into Userlog success");

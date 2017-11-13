@@ -30,7 +30,7 @@
 body {
   background: #0ca3d2;
 }
-.login {
+.double {
   position: relative;
   margin: 0 auto;
   padding: 20px 20px 20px;
@@ -39,7 +39,7 @@ body {
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-.login:before {
+.double:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -68,12 +68,12 @@ body {
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
-				<li><a href="home.jsp">首页</a></li>
+<!-- 				<li><a href="home.jsp">首页</a></li> -->
 				<li><a href="#">阅读笔记</a></li>
 				<li class="active"><a href="down_list.action">我的文件</a></li>
 				<li><a href="fileUpload.jsp">上传文件</a></li>
 				<li><a href="getTree.action">分类树</a></li>
-				<li><a href="userLog.action">用户Log日志</a>
+				<li><a href="userLog.action">用户日志</a>
 			</ul>		
 			<ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -131,7 +131,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>		
@@ -170,7 +169,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
@@ -208,7 +206,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
@@ -246,7 +243,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
