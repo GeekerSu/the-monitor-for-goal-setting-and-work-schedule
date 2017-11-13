@@ -103,6 +103,7 @@ public class UserAction extends ActionSupport {
 					+"`Operation` varchar(127) NOT NULL,"
 					+"`Otype` varchar(1) NOT NULL,"
 					+"`Time` varchar(31) NOT NULL,"
+					+"`Target` varchar(40) DEFAULT NULL,"
 					+" PRIMARY KEY (`OID`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 /*

@@ -30,6 +30,7 @@ public class UserLog extends ActionSupport{
 			tmp.setOperation(rs.getString("Operation"));
 			tmp.setOtype(rs.getString("Otype"));
 			tmp.setTime(rs.getString("Time"));
+			tmp.setTarget(rs.getString("Target"));
 			logList.add(tmp);
 		}
 		return SUCCESS;

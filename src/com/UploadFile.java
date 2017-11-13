@@ -84,8 +84,8 @@ public class UploadFile extends ActionSupport {
 			dao.executeUpdate(sql);
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String current=df.format(new Date());
-			sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'上传了文件"+myFileFileName+"','1','"
-					+current+"')";
+			sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'上传了文件"+myFileFileName+"','1','"
+					+current+"','"+myFileFileName+"')";
 			dao.executeUpdate(sql);
 			System.out.println("succeeded insert into table "+usr+"Tree");
 		} catch (IOException e) {
