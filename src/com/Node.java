@@ -20,7 +20,7 @@ public class Node {
 	public void setPID(int PID){
 		this.PID=PID;
 	}
-	
+ 
 	public String getNodeName(){
 		return nodeName;
 	}

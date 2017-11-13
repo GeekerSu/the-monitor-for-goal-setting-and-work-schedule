@@ -11,6 +11,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
@@ -19,6 +20,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import dao.Dao;
 
@@ -155,6 +157,12 @@ public class DownAction extends ActionSupport {
 		sql = "update `" + usr + "` set BookNote = '" + noteRealPath + "' where BookName='"+ fileName+"'";
 		System.out.println(sql);
 		int j= dao.executeUpdate(sql);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'修改了阅读笔记和阅读状态："+fileName+"','4','"
+				+current+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Insert into Userlog success");
 		if (i == 0&&j == 0)
 			return "submitsuccess";
 		else {
@@ -212,6 +220,12 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String down() throws Exception {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'下载了文章："+fileName+"','5','"
+				+current+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Insert into Userlog success");
 		return "download";
 	}
 
@@ -225,9 +239,13 @@ public class DownAction extends ActionSupport {
 
 	public String view() throws Exception {
 		
-		
-		
 		//System.out.println(filePath);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'阅读了文章："+fileName+"','3','"
+				+current+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Insert into Userlog success");
 		sql="select * from `"+usr+"` where BookName='"+fileName+"'";
 		ResultSet rs=dao.executeQuery(sql);
 		while(rs.next()){

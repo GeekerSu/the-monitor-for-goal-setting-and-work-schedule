@@ -47,11 +47,12 @@ body {
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
-				<li><a href="home.jsp">首页</a></li>
+<!-- 				<li><a href="home.jsp">首页</a></li> -->
 				<li class="active"><a href="#">阅读笔记</a></li>
 				<li><a href="down_list.action">我的文件</a></li>
 				<li><a href="fileUpload.jsp">上传文件</a></li>
 				<li><a href="getTree.action">分类树</a></li>
+				<li><a href="userLog.action">用户日志</a>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -72,7 +73,7 @@ body {
 		<div class="row">
 			<div class="col-md-8">
 				<b>${fileName}</b><br />
-				<iframe name="myframe" src="./pdfjs/viewer.html?file=../${filePath}" style="width:100%;border-radius:4px; height:720px"></iframe>
+				<iframe name="myframe" src="${URL }" style="width:100%; height:720px"></iframe>
 			</div>
 
 			<div class="col-md-4">
