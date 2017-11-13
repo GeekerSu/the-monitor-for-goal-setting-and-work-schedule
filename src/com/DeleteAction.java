@@ -4,6 +4,8 @@ package com;
 import java.io.File;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -32,6 +34,13 @@ public class DeleteAction extends ActionSupport {
 	}
 
 	public String execute() throws SQLException {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'и╬ЁЩакндуб:"+fileName+"','6','"
+				+current+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Insert into Userlog success");
+		
 		String bookType = "0";
 		sql = "select * from `" + usr + "` where BookName = '" + fileName + "'";
 		ResultSet rs = dao.executeQuery(sql);
@@ -52,6 +61,8 @@ public class DeleteAction extends ActionSupport {
 					sql = "delete from `" + usr + "` where BookName ='" + fileName + "'";
 					System.out.println(sql);
 					dao.executeUpdate(sql);
+					sql = "delete from `"+usr+"Tree` where NodeName ='"+fileName+"'";
+					dao.executeUpdate(sql);
 					System.out.println("Delete file data success");
 				}
 				return "success";
@@ -59,6 +70,8 @@ public class DeleteAction extends ActionSupport {
 		} else {
 			sql = "delete from `" + usr + "` where BookName ='" + fileName + "'";
 			System.out.println(sql);
+			dao.executeUpdate(sql);
+			sql = "delete from `"+usr+"Tree` where NodeName ='"+fileName+"'";
 			dao.executeUpdate(sql);
 			System.out.println("Delete URL success");
 			return "success";

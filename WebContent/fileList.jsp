@@ -26,11 +26,39 @@
 	width: 100%;
 	height: 100%;
 }
+		
+body {
+  background: #0ca3d2;
+}
+.login {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 20px 20px;
+  background: white;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.login:before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  bottom: -8px;
+  left: -8px;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
 </style>
+
 <title>Reading Condition</title>
-	<link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
+<link href="kindeditor/themes/default/default.css" rel="stylesheet">
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -42,8 +70,10 @@
 			<ul class="nav navbar-nav">
 				<li><a href="home.jsp">首页</a></li>
 				<li><a href="#">阅读笔记</a></li>
-				<li class="active"><a href="#">我的文件</a></li>
-				<li><a href="#">文件管理</a></li>
+				<li class="active"><a href="down_list.action">我的文件</a></li>
+				<li><a href="fileUpload.jsp">上传文件</a></li>
+				<li><a href="getTree.action">分类树</a></li>
+				<li><a href="userLog.action">用户Log日志</a>
 			</ul>		
 			<ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -59,6 +89,7 @@
 		</div>
 		</div>
 </nav>
+
 <div class="col-md-12" >
 	<ul id="myTab" class="nav nav-tabs">
 		<li class="active"><a href="#All" data-toggle="tab"> 所有文件 </a></li>
@@ -70,8 +101,7 @@
 		<div class="tab-pane fade in active" id="All">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -106,11 +136,11 @@
 			</div>
 		</div>		
 	</div>
+	
 	<div class="tab-pane fade" id="Unread">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -148,8 +178,7 @@
 	<div class="tab-pane fade" id="RoughlyRead">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -187,8 +216,7 @@
 	<div class="tab-pane fade" id="DetailedRead">
 			<div class="container">
 				<div class="row">
-				<div class="col-md-9"
-						style="box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+				<div class="col-md-12">
 					<table cellpadding="10" cellspacing="10"
 							class="table table-striped">
 						<thead>
@@ -224,6 +252,8 @@
 		</div>
 	</div>
 </div>
+
 </div>
 </body>
 </html>
+

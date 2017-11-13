@@ -23,4 +23,5 @@
 =======
 >>>>>>> GKG:WebContent/welcome.jsp
 </body>
+<s:property value="message"/>
 </html>

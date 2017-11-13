@@ -3,11 +3,15 @@ package com;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
@@ -16,6 +20,7 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import dao.Dao;
 
@@ -24,9 +29,16 @@ public class DownAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 
 	private String usr = (String) ActionContext.getContext().getSession().get("username");
-	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr;
+
+	private String path = ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/books";
+	private String notePath=ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/notes";
+	private String URL;
 	private String filePath = "";
 	private String fileName;
+	private String noteName;
+	private String note;
+	private String noteRealPath;
+
 	private List<String> readState;
 	private Dao dao = new Dao();
 	private String sql;
@@ -44,17 +56,55 @@ public class DownAction extends ActionSupport {
 		readState.add(DETAILED);
 	}
 
+	public String getURL(){
+		return URL;
+	}
+	
 	public String getMessage() {
 		return message;
 	}
 
 	public List<String> getReadState() {
 		return readState;
+	}	
+	public void setNote(String note){
+		this.note=note;
 	}
-
+	
+	public String getNoteRealPath(){
+		return noteRealPath;
+	}
+	
+	public String getNote() throws SQLException, IOException{
+		//notePath=notePath.replace("\\", "/");
+		noteRealPath=notePath.replace("\\","/")+"/"+noteName;
+		String tmp=null;
+		sql = "select * from `"+usr+"` where BookName='"+ fileName +"'";
+		ResultSet rs = dao.executeQuery(sql);
+		if(rs.next()){
+			tmp=rs.getString("BookNote");
+			System.out.println(tmp);
+		}
+		if(tmp!=null)
+		{
+			File file=new File(noteRealPath);
+			FileInputStream fis=new FileInputStream(file);
+			System.out.println("Total file size to read (in bytes) : "
+					+ fis.available());
+			byte[] b = new byte[fis.available()];
+			fis.read(b);
+			fis.close();
+			note=new String(b);
+			System.out.println(note);
+		}
+		else{
+			note=null;
+		}
+		return note;
+	}
+	
 	public String getDefaultReadStateValue() throws SQLException {
 		sql = "select * from `" + usr + "` where BookName='" + fileName + "'";
-		System.out.println(sql);
 		ResultSet rs = dao.executeQuery(sql);
 		if (rs.next()) {
 			String state = rs.getString("ReadState");
@@ -77,8 +127,22 @@ public class DownAction extends ActionSupport {
 		this.state = state;
 	}
 
-	public String submit() throws SQLException {
+	public String submit() throws SQLException, IOException {
 		//sql = "update book set authorID=?,Publisher=?,PublishDate=?,Price=? where ISBN=?";
+		File notedir= new File(notePath);
+		if(!notedir.exists()){
+			notedir.mkdirs();
+		}
+		noteRealPath=notePath.replace("\\", "/")+"/"+noteName;
+		System.out.println(noteRealPath);
+		File notefile=new File(noteRealPath);
+		if(!notefile.exists()){
+			notefile.createNewFile();
+		}
+		PrintStream ps = new PrintStream(new FileOutputStream(notefile));
+		ps.print(note);
+		ps.close();
+		System.out.println("Add note Success");
 		switch(state){
 		case UNREAD: state="0";
 		break;
@@ -90,7 +154,16 @@ public class DownAction extends ActionSupport {
 		sql = "update `" + usr + "` set ReadState = '" + state + "' where BookName='"+ fileName+"'";
 		System.out.println(sql);
 		int i = dao.executeUpdate(sql);
-		if (i == 0)
+		sql = "update `" + usr + "` set BookNote = '" + noteRealPath + "' where BookName='"+ fileName+"'";
+		System.out.println(sql);
+		int j= dao.executeUpdate(sql);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'修改了阅读笔记和阅读状态:"+fileName+"','4','"
+				+current+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Insert into Userlog success");
+		if (i == 0&&j == 0)
 			return "submitsuccess";
 		else {
 			message = "Submit state error";
@@ -100,29 +173,63 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String list() throws Exception {
-
-		File file = new File(path);
-		if (!file.exists()) {
-			file.mkdirs();
-		}
-		String[] fileNames = file.list();
+		
+		List<String> fileNames=new ArrayList<String>();
+		List<String> fileNamesUnread=new ArrayList<String>();
+		List<String> fileNamesRoughly=new ArrayList<String>();
+		List<String> fileNamesDetailed=new ArrayList<String>();
 		ActionContext ac = ActionContext.getContext();
 		@SuppressWarnings("unchecked")
 		Map<String, Object> request = (Map<String, Object>) ac.get("request");
+		Dao dao1=new Dao();
+		Dao dao2=new Dao();
+		Dao dao3=new Dao();
+		sql="select * from `"+usr+"`";
+		ResultSet rs=dao.executeQuery(sql);
+		while(rs.next()){
+			fileNames.add(rs.getString("BookName"));
+		}
+		sql="select * from `"+usr+"` where ReadState='0'";
+		//System.out.println(sql);
+		ResultSet rsUnread=dao1.executeQuery(sql);
+		while(rsUnread.next()){
+			fileNamesUnread.add(rsUnread.getString("BookName"));
+		}
+		sql="select * from `"+usr+"` where ReadState='1'";
+		//System.out.println(sql);
+		ResultSet rsRoughly=dao2.executeQuery(sql);
+		while(rsRoughly.next()){
+			fileNamesRoughly.add(rsRoughly.getString("BookName"));
+		}
+		sql="select * from `"+usr+"` where ReadState='2'";
+		//System.out.println(sql);
+		ResultSet rsDetailed=dao3.executeQuery(sql);
+		while(rsDetailed.next()){
+			fileNamesDetailed.add(rsDetailed.getString("BookName"));
+		}
 		request.put("fileNames", fileNames);
+		request.put("fileNamesUnread", fileNamesUnread);
+		request.put("fileNamesRoughly", fileNamesRoughly);
+		request.put("fileNamesDetailed", fileNamesDetailed);
 		return "list";
 	}
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+		this.noteName = fileName.substring(0,fileName.length()-4)+"note.txt";
 	}
 
 	public String down() throws Exception {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'下载了文章:"+fileName+"','5','"
+				+current+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Insert into Userlog success");
 		return "download";
 	}
 
-	public String getFilePath() throws UnsupportedEncodingException {
-		// filePath = URLEncoder.encode(filePath,"UTF-8");
+	public String getFilePath() {
 		return filePath;
 	}
 
@@ -131,9 +238,26 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String view() throws Exception {
-		System.out.println(filePath);
-		filePath = "work/" + usr + "/" + fileName;
-		System.out.println(filePath);
+		
+		//System.out.println(filePath);
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'阅读了文章:"+fileName+"','3','"
+				+current+"')";
+		dao.executeUpdate(sql);
+		System.out.println("Insert into Userlog success");
+		sql="select * from `"+usr+"` where BookName='"+fileName+"'";
+		ResultSet rs=dao.executeQuery(sql);
+		while(rs.next()){
+			String bookType=rs.getString("BookType");
+			if(bookType.equals("1")){
+				URL=rs.getString("BookURL");
+			}
+			else{
+				filePath = "work/" + usr + "/" +"books/"+ fileName;
+				URL="./pdfjs/viewer.html?file=../"+filePath;
+			}
+		}
 		return "view";
 	}
 
