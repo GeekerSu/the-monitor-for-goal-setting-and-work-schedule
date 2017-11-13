@@ -2,6 +2,9 @@ package com;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.Dao;
@@ -43,7 +46,12 @@ public class UploadURL extends ActionSupport{
 		int i=dao.executeUpdate(sql);
 		sql="insert into `"+usr+"Tree` (ID,PID,NodeName) values(0,1,'"+getBookName()+"')";
 		int j=dao.executeUpdate(sql);
-		if(i==0&&j==0)
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String current=df.format(new Date());
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'ÉÏ´«ÁËURL:"+getBookName()+"','2','"
+				+current+"')";
+		int k=dao.executeUpdate(sql);
+		if(i==0&&j==0&&k==0)
 			return SUCCESS;
 		else
 			return ERROR;
