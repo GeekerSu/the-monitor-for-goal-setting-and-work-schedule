@@ -50,9 +50,9 @@ body {
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
-				<li>
-					<a href="home.jsp">首页</a>
-				</li>
+<!-- 				<li> -->
+<!-- 					<a href="home.jsp">首页</a> -->
+<!-- 				</li> -->
 				<li>
 					<a href="#">阅读笔记</a>
 				</li>
@@ -65,15 +65,13 @@ body {
 				<li class="active">
 					<a href="getTree.action">分类树</a>
 				</li>
+				<li><a href="userLog.action">用户日志</a>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<span class="glyphicon glyphicon-user"></span>
-						UserID:
-						<s:property value="#session.username" />
-						<b class="caret"></b>
-					</a>
+                    <span class="glyphicon glyphicon-user"></span> UserID:<s:property value="#session.username" /><b class="caret"></b>
+                </a>
 					<ul class="dropdown-menu">
 						<li>
 							<a href="login.jsp">登出</a>

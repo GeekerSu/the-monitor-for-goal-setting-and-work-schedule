@@ -122,7 +122,7 @@ public class UserAction extends ActionSupport {
 			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
 			String current=df.format(new Date());//new Date() 获取当前系统时间
 			System.out.println(current);
-			tmpsql="insert into `"+username+"Log`(OID,Operation,Otype,Time) values(0,'注册了账户"+username+"','0','"
+			tmpsql="insert into `"+username+"Log`(OID,Operation,Otype,Time) values(0,'注册了账户："+username+"','0','"
 					+current+"')";
 			//System.out.println(tmpsql);
 			int p=dao.executeUpdate(tmpsql);

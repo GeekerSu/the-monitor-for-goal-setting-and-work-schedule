@@ -48,7 +48,7 @@ public class UploadURL extends ActionSupport{
 		int j=dao.executeUpdate(sql);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
-		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'上传了URL:"+getBookName()+"','2','"
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'上传了URL："+getBookName()+"','2','"
 				+current+"')";
 		int k=dao.executeUpdate(sql);
 		if(i==0&&j==0&&k==0)

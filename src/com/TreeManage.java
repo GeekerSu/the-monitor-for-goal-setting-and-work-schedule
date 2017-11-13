@@ -80,7 +80,7 @@ public class TreeManage extends ActionSupport {
 		System.out.println("Create ClassNode "+newclass+" Success");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
-		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'添加了新的分类:"+newclass+"','7','"
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'添加了新的分类："+newclass+"','7','"
 				+current+"')";
 		dao.executeUpdate(sql);
 		}
@@ -105,7 +105,7 @@ public class TreeManage extends ActionSupport {
 		System.out.println("Create ClassNode "+bookName+" Success");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
-		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'修改了文章的分类:"+bookName+"','8','"
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'修改了文章的分类："+bookName+"','8','"
 				+current+"')";
 		dao.executeUpdate(sql);
 		System.out.println("Insert into Userlog success");
