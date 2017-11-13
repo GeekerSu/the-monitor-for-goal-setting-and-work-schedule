@@ -72,7 +72,7 @@ body {
 		<div class="row">
 			<div class="col-md-8">
 				<b>${fileName}</b><br />
-				<iframe name="myframe" src="${URL }" style="width:100%;border-radius:4px; height:720px"></iframe>
+				<iframe name="myframe" src="${URL }" style="width:100%; height:720px"></iframe>
 			</div>
 
 			<div class="col-md-4">

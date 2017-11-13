@@ -30,7 +30,7 @@
 body {
   background: #0ca3d2;
 }
-.login {
+.double {
   position: relative;
   margin: 0 auto;
   padding: 20px 20px 20px;
@@ -39,7 +39,7 @@ body {
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-.login:before {
+.double:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -130,7 +130,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>		
@@ -169,7 +168,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
@@ -207,7 +205,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
@@ -245,7 +242,6 @@ body {
 							</c:forEach>
 						</tbody>
 					</table>
-					<a style="text-align:center" href="fileUpload.jsp">上传文件</a>
 				</div>
 			</div>
 		</div>
