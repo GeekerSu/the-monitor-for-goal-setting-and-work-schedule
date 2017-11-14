@@ -7,9 +7,13 @@ import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.omg.CORBA.Object;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import dao.Dao;
+
+import java.util.Date;
 import java.util.Map;
 public class UploadFile extends ActionSupport {
 	/**	
@@ -60,6 +64,8 @@ public class UploadFile extends ActionSupport {
 
 			//System.out.println("Src File name: " + myFile);
 			//System.out.println("Dst File name: " + myFileFileName);
+			System.out.println(destPath);
+			System.out.println(myFileFileName);
 			File destFile = new File(destPath, myFileFileName);
 			String filePath=destPath.replace("\\","/")+"/"+myFileFileName;
 			ActionContext.getContext().put("message", "Uploading Success!");
@@ -71,10 +77,17 @@ public class UploadFile extends ActionSupport {
 			+ "null,'"
 			+filePath
 			+"')";
-			System.out.println(sql);
 			dao.executeUpdate(sql);
 			System.out.println("succeeded insert into table "+usr);
-
+			sql="insert into `"+usr+"Tree` (ID,PID,NodeName) values(0,1,'"+getMyFileFileName()+"')";
+			System.out.println(sql);
+			dao.executeUpdate(sql);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String current=df.format(new Date());
+			sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'上传了文件："+myFileFileName+"','1','"
+					+current+"','"+myFileFileName+"')";
+			dao.executeUpdate(sql);
+			System.out.println("succeeded insert into table "+usr+"Tree");
 		} catch (IOException e) {
 			e.printStackTrace();
 			return ERROR;

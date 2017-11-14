@@ -5,18 +5,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<style>
-body 
-{
-background-color:#0CA3D2;
-background-repeat:no-repeat;
-background-attachment:fixed;
-background-position:center center;
-}
-</style>
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
 <script src="js/jquery-3.1.1.min.js"></script>
+<style>
+body {background-color: #0CA3D2}
+</style>
 <title>home</title>
 </head>
 <body>
@@ -30,6 +24,6 @@ background-position:center center;
       <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
     </ul>
   </div>
-</nav>		
+</nav>
 </body>
 </html>
