@@ -242,13 +242,25 @@ public class DownAction extends ActionSupport {
 	}
 
 	public String down() throws Exception {
+		
+		sql="select * from `"+usr+"` where BookName ='"+fileName+"'";
+		ResultSet rs = (new Dao()).executeQuery(sql);
+		int booktype=0;
+		while(rs.next()){
+			booktype=rs.getInt("BookType");
+		}
+		if(booktype==0){
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
 		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'下载了文章："+fileName+"','5','"
 				+current+"','"+fileName+"')";
 		dao.executeUpdate(sql);
 		System.out.println("Insert into Userlog success");
-		return "download";
+		return "download";}
+		else{
+			message="URL不支持下载";
+			return ERROR;
+		}
 	}
 
 	public String getFilePath() {

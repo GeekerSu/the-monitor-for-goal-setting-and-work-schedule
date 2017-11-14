@@ -45,6 +45,7 @@
 				<!-- 缓冲区大小设置 -->
 				<param name="bufferSize">1024</param>
 			</result>
+			<result name="error" >error.jsp</result>
 		</action>
 		<action name="down_multi" class="com.DownAction" method="downMuiltiFile">
 		    <result name="downMulti" type="stream">
@@ -53,6 +54,7 @@
 		        <param name="contentDisposition">attachment;filename="${downZipName}"</param>
 		        <param name="bufferSize"> 1024</param>
 		    </result>
+		    <result name="error">error.jsp</result>
 		</action>
 		<action name="down_view" class="com.DownAction" method="view">
 			<result name="view"> PDFview.jsp

@@ -190,14 +190,14 @@ body {
 								<a href="javascript: p.closeAll();">close all</a>
 							</p>
 							<script type="text/javascript">
-								p = new dTree('p');
+								q = new dTree('q');
 								<s:iterator value="list" >
-								p.add(<s:property value="ID"/>,
+								q.add(<s:property value="ID"/>,
 										<s:property value="PID"/>,
 										'<s:property value="nodeName"/>',
 										'getTree.action');
 								</s:iterator>
-								document.write(p);
+								document.write(q);
 							</script>
 						</div>
 					</div>
