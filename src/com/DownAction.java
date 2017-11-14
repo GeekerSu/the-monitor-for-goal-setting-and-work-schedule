@@ -1,5 +1,7 @@
 package com;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,12 +9,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Map;
+import org.apache.tools.zip.ZipEntry;
+import org.apache.tools.zip.ZipOutputStream;
+//import java.util.zip.ZipEntry;
+//import java.util.zip.ZipOutputStream;
+
 
 import org.apache.struts2.ServletActionContext;
 
@@ -34,10 +40,13 @@ public class DownAction extends ActionSupport {
 	private String notePath=ServletActionContext.getServletContext().getRealPath("/work") + "/" + usr+"/notes";
 	private String URL;
 	private String filePath = "";
+	private String zipName;
 	private String fileName;
 	private String noteName;
 	private String note;
 	private String noteRealPath;
+	private String classNodeName;
+	private String zipFilePath;
 
 	private List<String> readState;
 	private Dao dao = new Dao();
@@ -56,6 +65,19 @@ public class DownAction extends ActionSupport {
 		readState.add(DETAILED);
 	}
 
+	public void setClassNodeName(String classNodeName){
+		this.classNodeName=classNodeName;
+	}
+	
+	public String getDownZipName(){
+		try {
+			zipName = URLEncoder.encode(zipName, "UTF-8");
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+		return zipName;
+	}
+	
 	public String getURL(){
 		return URL;
 	}
@@ -274,5 +296,85 @@ public class DownAction extends ActionSupport {
 			throw new RuntimeException();
 		}
 		return fileName;
+	}
+	
+	public InputStream getMultiInputStream() throws FileNotFoundException{
+		System.out.println("Start downloading...");
+		System.out.println(zipFilePath);
+		return new FileInputStream(zipFilePath);
+	}
+	
+	public String downMuiltiFile() throws SQLException, IOException{
+		zipName=classNodeName+".zip";
+		String zipPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/zip";
+		int ID=1;
+		List<String> fileNamesList=new ArrayList<String>();
+		List<File> filesList=new ArrayList<File>();
+		sql="select * from `"+usr+"Tree` where NodeName='"+classNodeName+"'";
+		System.out.println(sql);
+		ResultSet rs=dao.executeQuery(sql);
+		if(rs.next()){
+			ID=rs.getInt("ID");
+		}
+		else{
+			message="所选分类不存在！";
+			return ERROR;
+		}
+		sql="select * from `"+usr+"Tree` where PID="+ID;
+		System.out.println(sql);
+		ResultSet rsname=(new Dao()).executeQuery(sql);
+		while(rsname.next()){
+			fileNamesList.add(rsname.getString("NodeName"));
+		}
+		
+		for(String e:fileNamesList){
+			sql="select * from `"+usr+"` where BookName='"+e+"'";
+			System.out.println(sql);
+			ResultSet rstmp=(new Dao()).executeQuery(sql);
+			if(rstmp.next()){
+			if(!rstmp.getBoolean("BookType")){
+			File filetmp=new File(rstmp.getString("BookURL"));
+			filesList.add(filetmp);
+			}
+			}
+		}
+		
+		zipFilePath=zipPath+"/"+zipName;
+		File zipdir=new File(zipPath);
+		
+		if(!zipdir.exists()){
+			zipdir.mkdirs();
+		}
+		
+		File zipFile=new File(zipPath,zipName);
+		if(!zipFile.exists()){
+			zipFile.createNewFile();
+		}
+		int size=filesList.size();
+		File[] sourceFiles=(File[]) filesList.toArray(new File[size]);
+		
+		FileOutputStream fos=new FileOutputStream(zipFile);
+		FileInputStream fis=null;
+		BufferedInputStream bis=null;
+		ZipOutputStream zos=new ZipOutputStream(new BufferedOutputStream(fos));
+		byte[] bufs=new byte[1024*10];
+		
+		for(int i =0;i<sourceFiles.length;i++){
+			//创建ZIP实体并添加进压缩包
+			ZipEntry zipEntry = new ZipEntry(sourceFiles[i].getName());
+			zos.putNextEntry(zipEntry);
+			//读取待压缩的文件并写入压缩包
+			fis=new FileInputStream(sourceFiles[i]);
+			bis=new BufferedInputStream(fis,1024*10);
+			int read=0;
+			while((read=bis.read(bufs,0,1024*10))!=-1){
+				zos.write(bufs, 0, read);
+			}
+		}
+		if(fis!=null) fis.close();
+		if(bis!=null) bis.close();
+		if(zos!=null) zos.close();
+		System.out.println("Zip File Success!");
+		return "downMulti";
 	}
 }

@@ -46,6 +46,14 @@
 				<param name="bufferSize">1024</param>
 			</result>
 		</action>
+		<action name="down_multi" class="com.DownAction" method="downMuiltiFile">
+		    <result name="downMulti" type="stream">
+		        <param name="contentType">application/octet-stream</param>
+		        <param name="inputName">multiInputStream</param>
+		        <param name="contentDisposition">attachment;filename="${downZipName}"</param>
+		        <param name="bufferSize"> 1024</param>
+		    </result>
+		</action>
 		<action name="down_view" class="com.DownAction" method="view">
 			<result name="view"> PDFview.jsp
 			</result>
@@ -77,6 +85,9 @@
 		</action>
 		<action name="userLog" class="com.UserLog">
 		    <result name="success">userLog.jsp</result>
+		</action>
+		<action name="readingTimeLine" class="com.UserLog" method="readingTimeLine">
+		    <result name="success">readingTimeLine.jsp</result>
 		</action>
 	</package>
 </struts>
