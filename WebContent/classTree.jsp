@@ -60,7 +60,7 @@ body {
 					<a href="down_list.action">我的文件</a>
 				</li>
 				<li>
-					<a href="fileUpload.jsp">上传文件</a>
+					<a href="FetchClasses.action">上传文件</a>
 				</li>
 				<li class="active">
 					<a href="getTree.action">分类树</a>
