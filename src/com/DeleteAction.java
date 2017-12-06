@@ -36,8 +36,9 @@ public class DeleteAction extends ActionSupport {
 	public String execute() throws SQLException {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
-		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time) values(0,'删除了文章:"+fileName+"','6','"
-				+current+"')";
+
+		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'删除了文章："+fileName+"','6','"
+				+current+"','"+fileName+"')";
 		dao.executeUpdate(sql);
 		System.out.println("Insert into Userlog success");
 		
