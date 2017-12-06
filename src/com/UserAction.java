@@ -1,7 +1,9 @@
 package com;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.Map;
+import java.util.Date;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -35,9 +37,6 @@ public class UserAction extends ActionSupport {
 	}
 
 	public String login() {
-
-
-
 		String sql = "select * from user where username='" + getUsername() + "'";
 		ResultSet rS = dao.executeQuery(sql);
 		try {
@@ -75,8 +74,8 @@ public class UserAction extends ActionSupport {
 
 		int i = dao.executeUpdate(sql);
 		if (i > -1) {
-			java.util.Map<String, Object> session = ActionContext.getContext().getSession();
-			session.put("username", username);
+			//java.util.Map<String, Object> session = ActionContext.getContext().getSession();
+			//session.put("username", username);
 			String tmpsql="CREATE TABLE `"+username +"` ("
 					+ "`BookName` varchar(40) NOT NULL,"
 					+"`ReadState` varchar(1) NOT NULL DEFAULT '0',"
@@ -86,9 +85,53 @@ public class UserAction extends ActionSupport {
 					+"  PRIMARY KEY (`BookName`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 			int j= dao.executeUpdate(tmpsql);
-			if(j>-1)
+			System.out.println("Create table "+username+ "success");
+			
+			tmpsql="CREATE TABLE `"+username +"Tree` ("
+					+ "`ID` int NOT NULL AUTO_INCREMENT,"
+					+"`PID` int NOT NULL DEFAULT 1,"
+					+"`NodeName` varchar(40) NOT NULL UNIQUE,"
+					+"`NodeType` tinyint(1) NOT NULL,"//0:leaf  1:not leaf
+					+"  PRIMARY KEY (`ID`)"
+					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
+			int k=dao.executeUpdate(tmpsql);
+			tmpsql="insert into `"+username+"Tree` (ID,PID,NodeName,NodeType) values(1,-1,'root',1)";
+			int m=dao.executeUpdate(tmpsql);
+			System.out.println("Create table "+username+"Tree success");
+			
+			tmpsql="CREATE TABLE `"+username +"Log` ("
+					+ "`OID` int NOT NULL AUTO_INCREMENT,"
+					+"`Operation` varchar(127) NOT NULL,"
+					+"`Otype` varchar(1) NOT NULL,"
+					+"`Time` varchar(31) NOT NULL,"
+					+"`Target` varchar(40) DEFAULT NULL,"
+					+" PRIMARY KEY (`OID`)"
+					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
+/*
+ * Otype映射：
+ * 0：注册
+ * 1：上传文件
+ * 2：上传URL
+ * 3：阅读某篇文章
+ * 4：修改阅读笔记
+ * 5：下载某篇文章
+ * 6：删除某篇文章
+ * 7：添加新的分类
+ * 8：修改分类
+ */
+			int n=dao.executeUpdate(tmpsql);
+			System.out.println("Create table "+username+"Log success");
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+			String current=df.format(new Date());//new Date() 获取当前系统时间
+			System.out.println(current);
+			tmpsql="insert into `"+username+"Log`(OID,Operation,Otype,Time) values(0,'注册了账户："+username+"','0','"
+					+current+"')";
+			//System.out.println(tmpsql);
+			int p=dao.executeUpdate(tmpsql);
+			
+			if(j>-1&&k>-1&&m>-1&&n>-1&&p>-1)
 			{ 
-				System.out.println("Create user table success");
+				System.out.println("Register user success");
 				return "success";
 			}
 			else{
