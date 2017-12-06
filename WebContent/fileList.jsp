@@ -232,7 +232,7 @@ body {
 									<td>
 										<!-- 构建一个url --> <c:url var="url" value="down_down">
 											<c:param name="fileName" value="${fileNameD}"></c:param>
-										</c:url> <a href="${url }">下载</a>
+										</c:url> <a href="${url}">下载</a>
 									</td>
 									<td><c:url var="urlview" value="down_view">
 											<c:param name="fileName" value="${fileNameD}"></c:param>
