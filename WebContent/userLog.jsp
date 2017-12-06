@@ -12,33 +12,7 @@
 
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<!--<style>
-body {
 
-  background: #0ca3d2;
-}
-.login {
-  position: relative;
-  margin: 0 auto;
-  padding: 20px 20px 20px;
- 
-  background: white;
-  border-radius: 3px;
-  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-.login:before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  bottom: -8px;
-  left: -8px;
-  z-index: -1;
-  background: rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-}
-</style>-->
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -51,9 +25,10 @@ body {
 <!-- 				<li><a href="home.jsp">首页</a></li> -->
 				<li><a href="#">阅读笔记</a></li>
 				<li><a href="down_list.action">我的文件</a></li>
-				<li><a href="fileUpload.jsp">上传文件</a></li>
+				<li><a href="FetchClasses.action">上传文件</a></li>
 				<li><a href="getTree.action">分类树</a></li>
 				<li class="active"><a href="userLog.action">用户日志</a>
+				<li><a href="readingTimeLine.action">阅读时间线</a>
 			</ul>		
 			<ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -70,22 +45,6 @@ body {
 		</div>
 </nav>
 
-<!--  <div align="center">
-<div class="login">
-	<table border="0" style="margin-top:20px" class="gridtable">
-		<tr>
-			<th>Operation</th>
-			<th>Time</th>
-			</tr>
-		<s:iterator value="logList" status="stat">
-			<tr>
-				<td><s:property value="Operation" /></td>
-				<td><s:property value="Time"/></td>
-			</tr>
-		</s:iterator>
-	</table>
-</div>
-</div>-->
 <div class="myTabContent" id="tab-content">
 <div class="tab-pane fade in active" id="All">
 			<div class="container">

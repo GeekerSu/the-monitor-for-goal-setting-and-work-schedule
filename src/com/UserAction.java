@@ -91,10 +91,11 @@ public class UserAction extends ActionSupport {
 					+ "`ID` int NOT NULL AUTO_INCREMENT,"
 					+"`PID` int NOT NULL DEFAULT 1,"
 					+"`NodeName` varchar(40) NOT NULL UNIQUE,"
+					+"`NodeType` tinyint(1) NOT NULL,"//0:leaf  1:not leaf
 					+"  PRIMARY KEY (`ID`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 			int k=dao.executeUpdate(tmpsql);
-			tmpsql="insert into `"+username+"Tree` (ID,PID,NodeName) values(1,-1,'root')";
+			tmpsql="insert into `"+username+"Tree` (ID,PID,NodeName,NodeType) values(1,-1,'root',1)";
 			int m=dao.executeUpdate(tmpsql);
 			System.out.println("Create table "+username+"Tree success");
 			
@@ -103,6 +104,7 @@ public class UserAction extends ActionSupport {
 					+"`Operation` varchar(127) NOT NULL,"
 					+"`Otype` varchar(1) NOT NULL,"
 					+"`Time` varchar(31) NOT NULL,"
+					+"`Target` varchar(40) DEFAULT NULL,"
 					+" PRIMARY KEY (`OID`)"
 					+") ENGINE=InnoDB DEFAULT CHARSET=utf8";
 /*

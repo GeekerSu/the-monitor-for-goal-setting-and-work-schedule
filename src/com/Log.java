@@ -5,6 +5,7 @@ public class Log {
 	private String Operation;
 	private String Otype;
 	private String Time;
+	private String Target;
 	
 	public void setOID(int OID){
 		this.OID=OID;
@@ -36,5 +37,13 @@ public class Log {
 	
 	public String getTime(){
 		return Time;
+	}
+	
+	public void setTarget(String Target){
+		this.Target=Target;
+	}
+	
+	public String getTarget(){
+		return Target;
 	}
 }

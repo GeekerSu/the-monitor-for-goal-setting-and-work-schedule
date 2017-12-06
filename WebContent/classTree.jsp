@@ -60,12 +60,13 @@ body {
 					<a href="down_list.action">我的文件</a>
 				</li>
 				<li>
-					<a href="fileUpload.jsp">上传文件</a>
+					<a href="FetchClasses.action">上传文件</a>
 				</li>
 				<li class="active">
 					<a href="getTree.action">分类树</a>
 				</li>
 				<li><a href="userLog.action">用户日志</a>
+				<li><a href="readingTimeLine.action">阅读时间线</a>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
@@ -91,6 +92,9 @@ body {
 			</li>
 			<li>
 				<a href="#CHANGE" data-toggle="tab">更改论文所在分类</a>
+			</li>
+			<li>
+				<a href="#DOWNMULTI" data-toggle="tab">批量下载</a>
 			</li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
@@ -141,18 +145,18 @@ body {
 						<h4>分类树</h4>
 						<div class="dtree" style="border-radius: 4px; inset; border: 2px solid #DCDCDC;">
 							<p>
-								<a href="javascript: d.openAll();">open all</a>								
-								<a href="javascript: d.closeAll();">close all</a>
+								<a href="javascript: p.openAll();">open all</a>								
+								<a href="javascript: p.closeAll();">close all</a>
 							</p>
 							<script type="text/javascript">
-								d = new dTree('d');
+								p = new dTree('p');
 								<s:iterator value="list" >
-								d.add(<s:property value="ID"/>,
+								p.add(<s:property value="ID"/>,
 										<s:property value="PID"/>,
 										'<s:property value="nodeName"/>',
 										'getTree.action');
 								</s:iterator>
-								document.write(d);
+								document.write(p);
 							</script>
 						</div>
 					</div>
@@ -169,6 +173,42 @@ body {
 							<div class="form-group">
 								<div class="col-md-6">
 									<input type="text" class="form-control" name="parentb" />
+								</div>
+							</div>
+							<button type="submit" value="Create" class="btn btn-default" />确定</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="tab-pane fade" id="DOWNMULTI">
+				<div class="row">
+					<div class="col-md-4">
+						<h4>分类树</h4>
+						<div class="dtree" style="border-radius: 4px; inset; border: 2px solid #DCDCDC;">
+							<p>
+								<a href="javascript: p.openAll();">open all</a>								
+								<a href="javascript: p.closeAll();">close all</a>
+							</p>
+							<script type="text/javascript">
+								q = new dTree('q');
+								<s:iterator value="list" >
+								q.add(<s:property value="ID"/>,
+										<s:property value="PID"/>,
+										'<s:property value="nodeName"/>',
+										'getTree.action');
+								</s:iterator>
+								document.write(q);
+							</script>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<form action="down_multi" class="form-horizontal">
+							<h4>批量下载</h4>
+							
+							<label for="classNodeName">下载结点：</label>
+							<div class="form-group">
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="classNodeName" />
 								</div>
 							</div>
 							<button type="submit" value="Create" class="btn btn-default" />确定</button>

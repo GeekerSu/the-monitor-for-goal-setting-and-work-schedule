@@ -25,9 +25,13 @@
 		<action name="logout" class="com.UserAction" method="logout">
 			<result name="success">/login.jsp</result>
 		</action>
+		<!-- 上传的action-->
 		<action name="upload" class="com.UploadFile" method="execute">
 			<result name="success">/fileUpSuccess.jsp</result>
 			<result name="error">/fileUpError.jsp</result>
+		</action>
+		<action name="FetchClasses" class="com.UploadFile" method="fetchTree">
+		    <result name="success">/fileUpload.jsp</result>
 		</action>
 		<!-- 下载的action -->
 		<action name="down_list" class="com.DownAction" method="list">
@@ -45,6 +49,16 @@
 				<!-- 缓冲区大小设置 -->
 				<param name="bufferSize">1024</param>
 			</result>
+			<result name="error" >error.jsp</result>
+		</action>
+		<action name="down_multi" class="com.DownAction" method="downMuiltiFile">
+		    <result name="downMulti" type="stream">
+		        <param name="contentType">application/octet-stream</param>
+		        <param name="inputName">multiInputStream</param>
+		        <param name="contentDisposition">attachment;filename="${downZipName}"</param>
+		        <param name="bufferSize"> 1024</param>
+		    </result>
+		    <result name="error">error.jsp</result>
 		</action>
 		<action name="down_view" class="com.DownAction" method="view">
 			<result name="view"> PDFview.jsp
@@ -77,6 +91,9 @@
 		</action>
 		<action name="userLog" class="com.UserLog">
 		    <result name="success">userLog.jsp</result>
+		</action>
+		<action name="readingTimeLine" class="com.UserLog" method="readingTimeLine">
+		    <result name="success">readingTimeLine.jsp</result>
 		</action>
 	</package>
 </struts>
