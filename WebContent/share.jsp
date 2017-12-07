@@ -48,22 +48,12 @@ body {
 		<div>
 			<ul class="nav navbar-nav">
 <!-- 				<li><a href="home.jsp">首页</a></li> -->
-				<li class="active"><a href="#">阅读笔记</a></li>
-				<li><a href="down_list.action">我的文件</a></li>
-				<li><a href="FetchClasses.action">上传文件</a></li>
-				<li><a href="getTree.action">分类树</a></li>
-				<li><a href="userLog.action">用户日志</a>
+				<li ><a href="#">阅读笔记</a></li>
+				<li class="active"><a href="#">分享页</a></li> 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
-						UserID:<s:property value="#session.username" /><b class="caret"></b>
-				</a>
-					<ul class="dropdown-menu">
-						<li><a href="login.jsp">登出</a></li>
-					</ul></li>
+				<li ><a href="login.jsp">登录</a></li>
 			</ul>
-
 		</div>
 	</div>
 	</nav>
@@ -71,27 +61,14 @@ body {
 	<div class="container">
 		<div class="login">
 		<div class="row">
-			<div class="col-md-8">
-				<b>${fileName}</b><br />
-				<iframe name="myframe" src="${URL }" style="width:100%; height:720px"></iframe>
+			<div class="col-md-12">
+				<b>${standardFileName}</b><br />
+				<iframe name="myframe" src="${sharePath }" style="width:100%; height:720px"></iframe>
 			</div>
-
-			<div class="col-md-4">
-				<b>阅读笔记</b>
-						<s:form action="down_submit" >
-						<textarea name="note"  style="width:100%;height:450px;margin-top:10px;resize:vertical;border-radius:4px;" placeholder="请输入笔记..."><s:property value="note"/></textarea>
-						<br/>
-						<b>阅读程度</b><br/>
-							<s:radio label="ReadState" name="State" list="readState"
-								value="defaultReadStateValue" theme="simple"/>
-							<input type="hidden" name="fileName" value="${fileName }" />
-							<button value="submit" class="btn btn-default" align="right"/>保存笔记</button>
-						</s:form>
-				<br/><s:form action="share" target="blank">
-						<input type="hidden" name="fileName" value="${fileName }"/>
-						<button value="submit" class="btn btn-defualt" align="right"/>分享</button>
-					</s:form>
-				</div>
+			<div>
+<div class="bshare-custom icon-medium"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到朋友网" class="bshare-qqxiaoyou"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a>
+<a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+</div>
 			</div>
 		</div>
 	</div>

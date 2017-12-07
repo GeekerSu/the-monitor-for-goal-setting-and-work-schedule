@@ -52,7 +52,7 @@ body {
 }
 </style>
 
-<title>Reading Condition</title>
+<title>My Files</title>
 	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
 <link href="kindeditor/themes/default/default.css" rel="stylesheet">
@@ -251,6 +251,9 @@ body {
 </div>
 
 </div>
+
+
+
 </body>
 </html>
 
