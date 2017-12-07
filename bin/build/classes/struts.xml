@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.multipart.maxSize" value="10485760" />
+	<package name="com" extends="struts-default">
+			<action name = "enter1" class = "com.UserAction">
+		<result>login.jsp</result>
+		</action>
+				<action name = "enter2" class = "com.UserAction">
+		<result>register.jsp</result>
+		</action>
+		<action name="login" class="com.UserAction" method="login">
+			<result name="loginout">/error.jsp</result>
+			<result name="loginin" type="redirect">down_list.action</result>
+			<result name="input">/login.jsp</result>
+		</action>
+		<action name="regist" class="com.UserAction" method="regist">
+			<result name="error">/error.jsp</result>
+			<result name="success">/login.jsp</result>
+			<result name="input">/register.jsp</result>
+		</action>
+		<action name="logout" class="com.UserAction" method="logout">
+			<result name="success">/login.jsp</result>
+		</action>
+		<!-- 上传的action-->
+		<action name="upload" class="com.UploadFile" method="execute">
+			<result name="success">/fileUpSuccess.jsp</result>
+			<result name="error">/fileUpError.jsp</result>
+		</action>
+		<action name="FetchClasses" class="com.UploadFile" method="fetchTree">
+		    <result name="success">/fileUpload.jsp</result>
+		</action>
+		<!-- 下载的action -->
+		<action name="down_list" class="com.DownAction" method="list">
+			<!-- 列表展示 -->
+			<result name="list">/fileList.jsp</result>
+		</action>
+		<action name="down_down" class="com.DownAction" method="down">
+			<result name="download" type="stream">
+				<!-- 允许下载的文件的类型：指定为所有的二进制的文件类型，去tomcat的wen.xml里面搜索.exe -->
+				<param name="contentType">application/octet-stream</param>
+				<!-- 对应的就是Action种的属性，返回流的属性，【其实就是getAttrInputStream()】 -->
+				<param name="inputName">attrInputStream</param>
+				<!-- 下载头，包括：浏览器显示的文件名 -->
+				<param name="contentDisposition">attachment;filename="${downFileName}"</param>
+				<!-- 缓冲区大小设置 -->
+				<param name="bufferSize">1024</param>
+			</result>
+			<result name="error" >error.jsp</result>
+		</action>
+		<action name="down_multi" class="com.DownAction" method="downMuiltiFile">
+		    <result name="downMulti" type="stream">
+		        <param name="contentType">application/octet-stream</param>
+		        <param name="inputName">multiInputStream</param>
+		        <param name="contentDisposition">attachment;filename="${downZipName}"</param>
+		        <param name="bufferSize"> 1024</param>
+		    </result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="down_view" class="com.DownAction" method="view">
+			<result name="view"> PDFview.jsp
+			</result>
+		</action>
+		<action name="down_submit" class="com.DownAction" method="submit">
+			<result name="submitsuccess" >
+				submitSuccess.jsp
+			</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="delete" class="com.DeleteAction" >
+		    <result name="success" type="redirect">down_list.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="uploadURL" class="com.UploadURL">
+		    <result name="success" type="redirect">down_list.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="getTree" class="com.TreeManage" method="queryTreeList">
+		    <result name="success">classTree.jsp</result>
+		</action>
+		<action name="addClassNode" class="com.TreeManage" method="addClassNode">
+		    <result name="success" type="redirect">getTree.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="addBookNode" class="com.TreeManage" method="addBookNode">
+		    <result name="success" type="redirect">getTree.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="userLog" class="com.UserLog">
+		    <result name="success">userLog.jsp</result>
+		</action>
+		<action name="readingTimeLine" class="com.UserLog" method="readingTimeLine">
+		    <result name="success">readingTimeLine.jsp</result>
+		</action>
+		<action name="share" class="com.ShareAction">
+		    <result name="success" type="redirect">
+		        <param name="location">viewshare.action</param>
+		        <param name="usr">${usr}</param>
+		        <param name="fileName">${fileName}</param>
+		    </result>
+		</action>
+		<action name="viewshare" class="com.CommonAction">
+		    <result name="success">share.jsp</result>
+		</action>
+	</package>
+</struts>

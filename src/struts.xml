@@ -95,5 +95,15 @@
 		<action name="readingTimeLine" class="com.UserLog" method="readingTimeLine">
 		    <result name="success">readingTimeLine.jsp</result>
 		</action>
+		<action name="share" class="com.ShareAction">
+		    <result name="success" type="redirect">
+		        <param name="location">viewshare.action</param>
+		        <param name="usr">${usr}</param>
+		        <param name="fileName">${fileName}</param>
+		    </result>
+		</action>
+		<action name="viewshare" class="com.CommonAction">
+		    <result name="success">share.jsp</result>
+		</action>
 	</package>
 </struts>

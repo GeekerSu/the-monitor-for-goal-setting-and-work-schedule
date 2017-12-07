@@ -87,6 +87,10 @@ body {
 							<input type="hidden" name="fileName" value="${fileName }" />
 							<button value="submit" class="btn btn-default" align="right"/>保存笔记</button>
 						</s:form>
+				<br/><s:form action="share" target="blank">
+						<input type="hidden" name="fileName" value="${fileName }"/>
+						<button value="submit" class="btn btn-defualt" align="right"/>分享</button>
+					</s:form>
 				</div>
 			</div>
 		</div>
