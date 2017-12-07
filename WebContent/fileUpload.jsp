@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,8 +32,7 @@ body {
 </style>
 <title>File Management</title>
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"
-	rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
 <link href="kindeditor/themes/default/default.css" rel="stylesheet">
 
 <script src="js/jquery-3.1.1.min.js"></script>
@@ -59,9 +57,7 @@ body {
 				<li><a href="readingTimeLine.action">阅读时间线</a>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
-						UserID:<s:property value="#session.username" /><b class="caret"></b>
+				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> UserID:<s:property value="#session.username" /><b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
 						<li><a href="login.jsp">登出</a></li>
@@ -73,67 +69,54 @@ body {
 	</nav>
 	<div class="col-md-12">
 		<ul id="myTab" class="nav nav-tabs">
-			<li class="active"><a href="#PDF" data-toggle="tab"> 上传PDF文件
-			</a></li>
+			<li class="active"><a href="#PDF" data-toggle="tab"> 上传PDF文件 </a></li>
 			<li><a href="#URL" data-toggle="tab">上传URL</a></li>
-			<li><a href="#ClassTree" data-toggle="tab">文献分类树</a></li>
-			<li><a href="#TimeLine" data-toggle="tab">阅读时间线</a></li>
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane fade in active" id="PDF">
-				<form action="upload" method="post" enctype="multipart/form-data">
+				<form action="upload" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
+
 					<div class="form-group">
-						<label for="myFile">请选择要上传的文件：</label> <br>
-						<div class="col-md-4">
-							<div class="fileinput fileinput-new input-group"
-								data-provides="fileinput">
+					<div class="col-md-4">
+						<label for="myFile">请选择要上传的文件：</label>
+						
+							<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 								<div class="form-control" data-trigger="fileinput">
-									<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
-										class="fileinput-filename"></span>
+									<i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
 								</div>
-								<span class="input-group-addon btn btn-default btn-file"><span
-									class="fileinput-new">Select file</span><span
-									class="fileinput-exists">Change</span><input type="file"
-									name="myFile"></span> <a href="#"
-									class="input-group-addon btn btn-default fileinput-exists"
-									data-dismiss="fileinput">Remove</a>
+								<span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Select file</span><span class="fileinput-exists">Change</span><input type="file" name="myFile"></span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
 							</div>
 						</div>
-						<div class="col-md-4">
-							<label for="pnode">请选择所属分类：</label>
+					</div>
+
+					<div class="form-group">
+					<div class="col-md-4">
+						<label for="pnode">请选择文件所属分类：</label><br>
+						
 							<select id="pnode" name="pnode">
 								<c:forEach items="${nodeList}" var="node">
 									<option value="${node }">${node }</option>
 								</c:forEach>
 							</select>
 						</div>
-						<button type="submit" class="btn btn-default" value="Upload">确定</button>
 					</div>
+					<button type="submit" class="btn btn-default" value="Upload">确定</button>
 				</form>
 			</div>
 			<div class="tab-pane fade" id="URL">
-				<form action="uploadURL" method="post" class="form-horizontal"
-					role="form">
+				<form action="uploadURL" method="post" class="form-horizontal" role="form">
 					<div class="form-group">
 						<div class="col-md-4">
-							<label for="bookName">请输入文献名称：</label> <input type="text"
-								class="form-control" name="bookName" />
+							<label for="bookName">请输入文献名称：</label> <input type="text" class="form-control" name="bookName" />
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-4">
-							<label for="bookName">请输入URL：</label> <input type="text"
-								class="form-control" name="bookURL" value="http://" />
+							<label for="bookName">请输入URL：</label> <input type="text" class="form-control" name="bookURL" value="http://" />
 						</div>
 					</div>
 					<button type="submit" class="btn btn-default" value="UploadURL">确定</button>
 				</form>
-			</div>
-			<div class="tab-pane fade" id="ClassTree">
-				<p>文献分类树实现</p>
-			</div>
-			<div class="tab-pane fade" id="TimeLine">
-				<p>阅读时间线实现</p>
 			</div>
 		</div>
 	</div>
