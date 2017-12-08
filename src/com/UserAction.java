@@ -118,6 +118,8 @@ public class UserAction extends ActionSupport {
  * 6：删除某篇文章
  * 7：添加新的分类
  * 8：修改分类
+ * 9：分享文章
+ * 10:删除分类
  */
 			int n=dao.executeUpdate(tmpsql);
 			System.out.println("Create table "+username+"Log success");

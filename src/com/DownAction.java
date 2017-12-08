@@ -320,8 +320,7 @@ public class DownAction extends ActionSupport {
 		zipName=classNodeName+".zip";
 		String zipPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/zip";
 		int ID=1;
-		List<String> fileNamesList=new ArrayList<String>();
-		List<File> filesList=new ArrayList<File>();
+		
 		sql="select * from `"+usr+"Tree` where NodeName='"+classNodeName+"'";
 		System.out.println(sql);
 		ResultSet rs=dao.executeQuery(sql);
@@ -332,12 +331,9 @@ public class DownAction extends ActionSupport {
 			message="所选分类不存在！";
 			return ERROR;
 		}
-		sql="select * from `"+usr+"Tree` where PID="+ID;
-		System.out.println(sql);
-		ResultSet rsname=(new Dao()).executeQuery(sql);
-		while(rsname.next()){
-			fileNamesList.add(rsname.getString("NodeName"));
-		}
+		
+		List<String> fileNamesList=getfileNames(ID);
+		List<File> filesList=new ArrayList<File>();
 		
 		for(String e:fileNamesList){
 			sql="select * from `"+usr+"` where BookName='"+e+"'";
@@ -388,5 +384,22 @@ public class DownAction extends ActionSupport {
 		if(zos!=null) zos.close();
 		System.out.println("Zip File Success!");
 		return "downMulti";
+	}
+	
+	public List<String> getfileNames(int ID) throws SQLException{
+		List<String > tmp=new ArrayList<String>();
+		sql="select * from `"+usr+"Tree` where PID="+ID;
+		System.out.println(sql);
+		ResultSet rsname=(new Dao()).executeQuery(sql);
+		while(rsname.next()){
+			int tmpid=rsname.getInt("ID");
+			if(!rsname.getBoolean("NodeType")){
+				tmp.add(rsname.getString("NodeName"));
+			}
+			else{
+				tmp.addAll(getfileNames(tmpid));
+			}	
+		}
+		return tmp;
 	}
 }

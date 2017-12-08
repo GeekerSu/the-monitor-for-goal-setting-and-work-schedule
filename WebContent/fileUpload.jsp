@@ -115,6 +115,17 @@ body {
 							<label for="bookName">请输入URL：</label> <input type="text" class="form-control" name="bookURL" value="http://" />
 						</div>
 					</div>
+					<div class="form-group">
+					<div class="col-md-4">
+						<label for="pnode">请选择URL所属分类：</label><br>
+						
+							<select id="pnode" name="pnode">
+								<c:forEach items="${nodeList}" var="node">
+									<option value="${node }">${node }</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
 					<button type="submit" class="btn btn-default" value="UploadURL">确定</button>
 				</form>
 			</div>

@@ -94,8 +94,12 @@ body {
 				<a href="#CHANGE" data-toggle="tab">更改论文所在分类</a>
 			</li>
 			<li>
+				<a href="#DELETE" data-toggle="tab">删除分类</a>
+			</li>
+			<li>
 				<a href="#DOWNMULTI" data-toggle="tab">批量下载</a>
 			</li>
+			
 		</ul>
 		<div id="myTabContent" class="tab-content">
 			<div class="tab-pane fade in active" id="NEW">
@@ -180,14 +184,14 @@ body {
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane fade" id="DOWNMULTI">
+			<div class="tab-pane fade" id="DELETE">
 				<div class="row">
 					<div class="col-md-4">
 						<h4>分类树</h4>
 						<div class="dtree" style="border-radius: 4px; inset; border: 2px solid #DCDCDC;">
 							<p>
-								<a href="javascript: p.openAll();">open all</a>								
-								<a href="javascript: p.closeAll();">close all</a>
+								<a href="javascript: q.openAll();">open all</a>								
+								<a href="javascript: q.closeAll();">close all</a>
 							</p>
 							<script type="text/javascript">
 								q = new dTree('q');
@@ -198,6 +202,43 @@ body {
 										'getTree.action');
 								</s:iterator>
 								document.write(q);
+							</script>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<form action="deleteNode" class="form-horizontal">
+							<h4>删除分类</h4>
+							<label for="nodeToDelete">文献/类名称：</label>
+							<div class="form-group">
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="nodeToDelete" />
+								</div>
+							</div>
+							<button type="submit"  class="btn btn-default" />删除</button>
+						</form>
+					</div>
+				</div>
+			</div>
+					
+					
+			<div class="tab-pane fade" id="DOWNMULTI">
+				<div class="row">
+					<div class="col-md-4">
+						<h4>分类树</h4>
+						<div class="dtree" style="border-radius: 4px; inset; border: 2px solid #DCDCDC;">
+							<p>
+								<a href="javascript: r.openAll();">open all</a>								
+								<a href="javascript: r.closeAll();">close all</a>
+							</p>
+							<script type="text/javascript">
+								r = new dTree('r');
+								<s:iterator value="list" >
+								r.add(<s:property value="ID"/>,
+										<s:property value="PID"/>,
+										'<s:property value="nodeName"/>',
+										'getTree.action');
+								</s:iterator>
+								document.write(r);
 							</script>
 						</div>
 					</div>
