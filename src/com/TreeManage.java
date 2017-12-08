@@ -25,6 +25,7 @@ public class TreeManage extends ActionSupport {
 	private String newclass;
 	private String parentb;
 	private String bookName;
+	private String nodeToDelete;
 	private String message;
 	
 	public List<Node> getList(){
@@ -51,6 +52,10 @@ public class TreeManage extends ActionSupport {
 		this.bookName=bookName;
 	}
 	
+	public void setNodeToDelete(String nodeToDelete){
+		this.nodeToDelete=nodeToDelete;
+	}
+	
 	public String queryTreeList()  throws SQLException{
 		sql="select * from `"+usr+"Tree`";
 		ResultSet rs=dao.executeQuery(sql);
@@ -71,11 +76,11 @@ public class TreeManage extends ActionSupport {
 		ResultSet rs=dao.executeQuery(sql);
 		if(rs.next()){
 		int pid=rs.getInt("ID");
-		sql="insert into `"+usr+"Tree`(ID,PID,NodeName) values(0,"
+		sql="insert into `"+usr+"Tree`(ID,PID,NodeName,NodeType) values(0,"
 				+pid
 				+",'"
 				+newclass
-				+"')";
+				+"',1)";
 		dao.executeUpdate(sql);
 		System.out.println("Create ClassNode "+newclass+" Success");
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -93,7 +98,6 @@ public class TreeManage extends ActionSupport {
 	
 	public String addBookNode() throws SQLException{
 		sql="select * from `"+usr+"Tree` where NodeName='"+parentb+"'";
-		System.out.println(sql);
 		ResultSet rs=dao.executeQuery(sql);
 		if(rs.next()){
 		int pid=rs.getInt("ID");
@@ -114,5 +118,37 @@ public class TreeManage extends ActionSupport {
 			return ERROR;
 		}
 		return SUCCESS;
+	}
+	
+	public String deleteNode() throws SQLException{
+		sql="select * from `"+usr+"Tree` where NodeName='"+nodeToDelete+"'";
+		ResultSet rs=dao.executeQuery(sql);
+		int pid=1;
+		int id=1;
+		if(rs.next()){
+			pid=rs.getInt("PID");
+			id=rs.getInt("ID");
+			Boolean type=rs.getBoolean("NodeType");
+			if(!type){
+				message="所选分类不是父类";
+				return ERROR;
+			}
+			sql="update `"+usr+"Tree` set PID="+pid+" where PID="+id;
+			dao.executeUpdate(sql);
+			sql="delete from `"+usr+"Tree` where ID="+id;
+			dao.executeUpdate(sql);
+			SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String current=df.format(new Date());
+			sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'删除了分类："+nodeToDelete+"','10','"
+					+current+"','"+nodeToDelete+"')";
+			dao.executeUpdate(sql);
+			System.out.println("Success Deleted Node:"+nodeToDelete);
+		}
+		else{
+			message="所要删除的分类不存在！";
+			return ERROR;
+		}
+		return SUCCESS;
+		
 	}
 }

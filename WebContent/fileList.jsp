@@ -52,20 +52,36 @@ body {
 }
 </style>
 
-<title>Reading Condition</title>
-	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
+<title>My Files</title>
 <link href="kindeditor/themes/default/default.css" rel="stylesheet">
-
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
 </head>
 <body>
+<div class="banner">
+	<nav class="navbar navbar-default">
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					 <ul class="nav navbar-nav">
+						<li class="active"><a href="index.jsp">Home</a></li>
+						<li><a href="services.html">Services</a></li>
+						
+						<li><a href="contact.html">Contact Us</a></li>
+					  </ul>
+					</div>
+					</nav>
 <nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
-		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
-		</div>
+<div class="logo">
+							<a class="navbar-brand" href="index.jsp">ReadingNotes
+</div>
+
+<nav class="navbar navbar-default" role="navigation">
+		<div class="container-fluid">
+
 		<div>
 			<ul class="nav navbar-nav">
 <!-- 				<li><a href="home.jsp">首页</a></li> -->
@@ -82,7 +98,7 @@ body {
                     <span class="glyphicon glyphicon-user"></span> UserID:<s:property value="#session.username" /><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-						<li><a href="login.jsp">登出</a></li>
+						<li><a href="index.jsp">登出</a></li>
 				</ul>          
             </li>
         </ul>
@@ -249,8 +265,12 @@ body {
 		</div>
 	</div>
 </div>
+</div>
 
 </div>
+
+
+
 </body>
 </html>
 

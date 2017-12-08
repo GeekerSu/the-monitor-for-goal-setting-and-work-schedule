@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<span class="icon-bar"></span>
 					  </button>
 						<div class="logo">
-							<a class="navbar-brand" href="index.html">Macrosoft <span>Creative and Useful</span></a>
+							<a class="navbar-brand" href="index.jsp">Macrosoft <span>Creative and Useful</span></a>
 						</div>
 					</div>
 
@@ -73,13 +73,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
 						quis nostrud exercitation ullamco.</p>
 					<ul>
-						<li><a href="#" class="twitter"></a></li>
-						<li><a href="#" class="g"></a></li>
-						<li><a href="#" class="v"></a></li>
-						<li><a href="#" class="dribble"></a></li>
+						<li><a href="https://www.baidu.com/" class="twitter"></a></li>
+						<li><a href="https://www.baidu.com/" class="g"></a></li>
+						<li><a href="https://www.baidu.com/" class="v"></a></li>
+						<li><a href="https://www.baidu.com/" class="dribble"></a></li>
 					</ul>
 					<div class="more">
-						<a href="single.html">Learn More</a>
+						<a href="services.html">Learn More</a>
 					</div>
 				</div>
 				<div class="col-md-6 banner-info-right">
@@ -102,9 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<div class="ckeck-bg">
 													<div class="checkbox-form">
 														<div class="check-left">
-															<div class="check">
-																<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Keep me Logged in</label>
-															</div>
+															
 															<div class="check">
 																<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Remember my Password</label>
 															</div>
@@ -162,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 <!-- //banner -->
-<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >手机网站模板</a></div>
+<div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >2075</a></div>
 <!-- welcome -->
 	<div class="welcome">
 		<div class="container">
@@ -175,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 				<div class="clearfix"> </div>
 			</div>
-			<h2><i>For More suppose</i>Contact Us : <span>+miaomiaomiao</span></h2>
+			<h2><i>For More suppose</i>Contact Us : <span>+86 15504661150</span></h2>
 		
 		</div>
 	</div>
@@ -188,17 +186,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<ul class="slides">
 						<li>
 							<div class="welcome-bottom-info">
-								<h3>HXX</h3>
+								<h3>Produced by HXX</h3>
 							</div>
 						</li>
 						<li>
 							<div class="welcome-bottom-info">
-								<h3>SZC</h3>
+								<h3>Produced by SZC</h3>
 							</div>
 						</li>
 						<li>
 							<div class="welcome-bottom-info">
-								<h3>GKG</h3>
+								<h3>Produced by GKG</h3>
 							</div>
 						</li>
 					</ul>
@@ -208,32 +206,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //about -->
 <!--footer-->
-	<div class="footer">
+<div class="footer">
 		<div class="container">
 			<div class="footer-row">
 				<div class="col-md-3 footer-grids">
-					<h4><a href="index.html">Macrosoft</a></h4>
-					<p><a href="mailto:info@example.com">mail@qq.com</a></p>
-					<p>+110</p>
+					<h4><a href="index.jsp">Macrosoft</a></h4>
+					<p><a href="mailto:info@example.com">545071061@qq.com</a></p>
+					<p>+86 15504661150</p>
 				</div>
 				<div class="col-md-3 footer-grids">
 					<h3>Navigation</h3>					
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="#">About us</a></li>
-						<li><a href="menu.html">Menu</a></li>
-						<li><a href="typo.html">Typo</a></li>
-						<li><a href="contact.html">Contact</a></li>
+						<li><a href="index.jsp">Home</a></li>
+						<li><a href="#">Services</a></li>
+		
+						<li><a href="contact.html">Contact Us</a></li>
 					</ul>
 				</div>
 				
 				<div class="col-md-3 footer-grids">	
 					<h3>Version</h3>
 					<p>Version2017. <p>
-					<form>					 
-					    <input type="text" class="text" value="Enter Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Email';}">
-						<input type="submit" value="Go">					 
-				 </form>
+					
 				</div>
 				<div class="clearfix"> </div>
 			</div>
