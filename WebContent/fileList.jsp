@@ -132,7 +132,7 @@ body {
 										</c:url> <a href="${urldelete}">删除</a></td>
 								<td><c:url var="urlshare" value="share">
 											<c:param name="fileName" value="${fileName}"></c:param>
-										</c:url> <a href="${urlshare}">分享</a></td>
+										</c:url> <a href="${urlshare}" target="blank">分享</a></td>
 								</tr>								
 							</c:forEach>
 						</tbody>

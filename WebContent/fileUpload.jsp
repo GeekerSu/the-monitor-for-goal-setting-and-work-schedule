@@ -39,9 +39,9 @@
 }
 
 body {
-                margin-bottom: 200px;
-                background-color: #0CA3D2
-            }
+	margin-bottom: 200px;
+	background-color: #0CA3D2
+}
 </style>
 </head>
 <body>
@@ -81,9 +81,9 @@ body {
 				<form action="upload" method="post" enctype="multipart/form-data" class="form-horizontal" role="form">
 
 					<div class="form-group">
-					<div class="col-md-4">
-						<label for="myFile">请选择要上传的文件：</label>
-						
+						<div class="col-md-4">
+							<label for="myFile">请选择要上传的文件：</label>
+
 							<div class="fileinput fileinput-new input-group" data-provides="fileinput">
 								<div class="form-control" data-trigger="fileinput">
 									<i class="glyphicon glyphicon-file fileinput-exists"></i> <span class="fileinput-filename"></span>
@@ -94,10 +94,8 @@ body {
 					</div>
 
 					<div class="form-group">
-					<div class="col-md-4">
-						<label for="pnode">请选择文件所属分类：</label><br>
-						
-							<select id="pnode" name="pnode" class="selectpicker show-menu-arrow form-control">
+						<div class="col-md-4">
+							<label for="pnode">请选择文件所属分类：</label><br> <select id="pnode" name="pnode" class="selectpicker show-menu-arrow form-control">
 								<c:forEach items="${nodeList}" var="node">
 									<option value="${node }">${node }</option>
 								</c:forEach>
@@ -117,6 +115,15 @@ body {
 					<div class="form-group">
 						<div class="col-md-4">
 							<label for="bookName">请输入URL：</label> <input type="text" class="form-control" name="bookURL" value="http://" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-4">
+							<label for="pnode">请选择URL所属分类：</label><br> <select id="pnode" name="pnode" class="selectpicker show-menu-arrow form-control">
+								<c:forEach items="${nodeList}" var="node">
+									<option value="${node }">${node }</option>
+								</c:forEach>
+							</select>
 						</div>
 					</div>
 					<button type="submit" class="btn btn-default" value="UploadURL">确定</button>

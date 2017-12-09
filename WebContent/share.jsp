@@ -37,7 +37,7 @@ body {
   border-radius: 4px;
 }
 </style>
-<title>${standardFileName}</title>
+<title>>您的好友给您分享了一篇文章，快来看看吧！</title>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
@@ -67,7 +67,7 @@ body {
 				<iframe name="myframe" src="${sharePath }" style="width:100%; height:720px"></iframe>
 			</div>
 			<div>
-<div class="bshare-custom icon-medium"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到朋友网" class="bshare-qqxiaoyou"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a>
+<div class="bshare-custom icon-medium" align="right"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到朋友网" class="bshare-qqxiaoyou"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a>
 <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 </div>
 			</div>
