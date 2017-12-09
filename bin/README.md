@@ -1,1 +1,0 @@
-# Literature-reading-notes-manager 
