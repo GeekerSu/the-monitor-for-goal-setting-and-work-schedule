@@ -6,6 +6,15 @@
 <html>
 <head>
 <meta charset="utf-8">
+
+<title>My Files</title>
+	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
+<link href="kindeditor/themes/default/default.css" rel="stylesheet">
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
 <style>
 .city {
 	margin: 5px;
@@ -28,7 +37,8 @@
 }
 		
 body {
-  background: #0ca3d2;
+  margin-bottom: 200px;
+                background-color: #0CA3D2
 }
 .double {
   position: relative;
@@ -51,20 +61,12 @@ body {
   border-radius: 4px;
 }
 </style>
-
-<title>My Files</title>
-	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
-<link href="kindeditor/themes/default/default.css" rel="stylesheet">
-
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
@@ -109,7 +111,7 @@ body {
 							<tr>
 								<th>编号</th>
 								<th>文件名</th>
-								<th colspan="3" style="text-align:center">文件操作</th>
+								<th colspan="4" style="text-align:center">文件操作</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -128,7 +130,10 @@ body {
 									<td><c:url var="urldelete" value="delete">
 											<c:param name="fileName" value="${fileName}"></c:param>
 										</c:url> <a href="${urldelete}">删除</a></td>
-								</tr>
+								<td><c:url var="urlshare" value="share">
+											<c:param name="fileName" value="${fileName}"></c:param>
+										</c:url> <a href="${urlshare}" target="blank">分享</a></td>
+								</tr>								
 							</c:forEach>
 						</tbody>
 					</table>
@@ -166,6 +171,9 @@ body {
 									<td><c:url var="urldelete" value="delete">
 											<c:param name="fileName" value="${fileNameU}"></c:param>
 										</c:url> <a href="${urldelete}">删除</a></td>
+										<td><c:url var="urlshare" value="share">
+											<c:param name="fileName" value="${fileName}"></c:param>
+										</c:url> <a href="${urlshare}">分享</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -203,6 +211,9 @@ body {
 									<td><c:url var="urldelete" value="delete">
 											<c:param name="fileName" value="${fileNameR}"></c:param>
 										</c:url> <a href="${urldelete}">删除</a></td>
+										<td><c:url var="urlshare" value="share">
+											<c:param name="fileName" value="${fileName}"></c:param>
+										</c:url> <a href="${urlshare}">分享</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>
@@ -232,7 +243,7 @@ body {
 									<td>
 										<!-- 构建一个url --> <c:url var="url" value="down_down">
 											<c:param name="fileName" value="${fileNameD}"></c:param>
-										</c:url> <a href="${url}">下载</a>
+										</c:url> <a href="${url }">下载</a>
 									</td>
 									<td><c:url var="urlview" value="down_view">
 											<c:param name="fileName" value="${fileNameD}"></c:param>
@@ -240,6 +251,9 @@ body {
 									<td><c:url var="urldelete" value="delete">
 											<c:param name="fileName" value="${fileNameD}"></c:param>
 										</c:url> <a href="${urldelete}">删除</a></td>
+										<td><c:url var="urlshare" value="share">
+											<c:param name="fileName" value="${fileName}"></c:param>
+										</c:url> <a href="${urlshare}">分享</a></td>
 								</tr>
 							</c:forEach>
 						</tbody>

@@ -36,7 +36,7 @@
 				你成功地上传了：<s:property value="myFileFileName"/><br/>  
 				内容类型：<s:property value="myFileContentType"/> 
 				</p>
-			<a href="fileUpload.jsp">上传文件</a>
+			<a href="FetchClasses.action">上传文件</a>
 			<a href="down_list.action">我的文件</a>
 		</div>
 </div>

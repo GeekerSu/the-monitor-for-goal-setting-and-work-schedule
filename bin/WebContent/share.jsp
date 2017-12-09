@@ -13,9 +13,9 @@
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
-
-  background: #0ca3d2;
-}
+                margin-bottom: 200px;
+                background-color: #0CA3D2
+            }
 .login {
   position: relative;
   margin: 0 auto;
@@ -37,13 +37,13 @@ body {
   border-radius: 4px;
 }
 </style>
-<title>阅读PDF</title>
+<title>>您的好友给您分享了一篇文章，快来看看吧！</title>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
@@ -52,8 +52,9 @@ body {
 				<li class="active"><a href="#">分享页</a></li> 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li ><a href="login.jsp">登录</a></li>
-			</ul>
+      <li><a href="register.jsp"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+      <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+    </ul>
 		</div>
 	</div>
 	</nav>
@@ -66,7 +67,7 @@ body {
 				<iframe name="myframe" src="${sharePath }" style="width:100%; height:720px"></iframe>
 			</div>
 			<div>
-<div class="bshare-custom icon-medium"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到朋友网" class="bshare-qqxiaoyou"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a>
+<div class="bshare-custom icon-medium" align="right"><a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到朋友网" class="bshare-qqxiaoyou"></a><a title="分享到腾讯微博" class="bshare-qqmb"></a>
 <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
 </div>
 			</div>

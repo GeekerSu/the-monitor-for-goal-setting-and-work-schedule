@@ -75,7 +75,7 @@
 		    <result name="error">error.jsp</result>
 		</action>
 		<action name="uploadURL" class="com.UploadURL">
-		    <result name="success" type="redirect">down_list.action</result>
+		    <result name="success" type="redirect">submitSuccess.jsp</result>
 		    <result name="error">error.jsp</result>
 		</action>
 		<action name="getTree" class="com.TreeManage" method="queryTreeList">
@@ -86,6 +86,10 @@
 		    <result name="error">error.jsp</result>
 		</action>
 		<action name="addBookNode" class="com.TreeManage" method="addBookNode">
+		    <result name="success" type="redirect">getTree.action</result>
+		    <result name="error">error.jsp</result>
+		</action>
+		<action name="deleteNode" class="com.TreeManage" method="deleteNode">
 		    <result name="success" type="redirect">getTree.action</result>
 		    <result name="error">error.jsp</result>
 		</action>
@@ -100,6 +104,7 @@
 		        <param name="location">viewshare.action</param>
 		        <param name="usr">${usr}</param>
 		        <param name="fileName">${fileName}</param>
+		        <param name="type">${type}</param>
 		    </result>
 		</action>
 		<action name="viewshare" class="com.CommonAction">

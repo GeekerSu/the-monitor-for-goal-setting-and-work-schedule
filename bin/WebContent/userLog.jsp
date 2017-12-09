@@ -9,16 +9,22 @@
 	<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
 <link href="kindeditor/themes/default/default.css" rel="stylesheet">
-
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-
+<style>
+body {
+                margin-bottom: 200px;
+                background-color: #0CA3D2
+            }
+.back {background:url(images/coupon-logo.gif) no-repeat;}
+.top {height:100px;background-color:#fff;filter:Alpha(Opacity=60);opacity:0.6;}
+</style>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
@@ -44,7 +50,6 @@
 		</div>
 		</div>
 </nav>
-
 <div class="myTabContent" id="tab-content">
 <div class="tab-pane fade in active" id="All">
 			<div class="container">
