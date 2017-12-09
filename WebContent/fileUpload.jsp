@@ -5,6 +5,18 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>File Management</title>
+<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-select.css" rel="stylesheet">
+<link href="kindeditor/themes/default/default.css" rel="stylesheet">
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="bootstrap-3.3.7/js/jasny-bootstrap.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap-select.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.7/css/jasny-bootstrap.css">
+
 <style>
 .city {
 	margin: 5px;
@@ -27,24 +39,16 @@
 }
 
 body {
-	background-color: #0CA3D2
-}
+                margin-bottom: 200px;
+                background-color: #0CA3D2
+            }
 </style>
-<title>File Management</title>
-<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="kindeditor/themes/default/default.css" rel="stylesheet">
-
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="bootstrap-3.3.7/js/jasny-bootstrap.js"></script>
-<link rel="stylesheet" href="bootstrap-3.3.7/css/jasny-bootstrap.css">
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
@@ -93,7 +97,7 @@ body {
 					<div class="col-md-4">
 						<label for="pnode">请选择文件所属分类：</label><br>
 						
-							<select id="pnode" name="pnode">
+							<select id="pnode" name="pnode" class="selectpicker show-menu-arrow form-control">
 								<c:forEach items="${nodeList}" var="node">
 									<option value="${node }">${node }</option>
 								</c:forEach>

@@ -5,6 +5,17 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>Class Tree</title>
+<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="kindeditor/themes/default/default.css" rel="stylesheet">
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<script src="bootstrap-3.3.7/js/jasny-bootstrap.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.7/css/jasny-bootstrap.css">
+<link rel="StyleSheet" href="css/dtree.css" type="text/css" />
+<script type="text/javascript" src="js/dtree.js"></script>
 <style>
 .city {
 	margin: 5px;
@@ -27,26 +38,16 @@
 }
 
 body {
-	background-color: #0CA3D2
-}
+                margin-bottom: 200px;
+                background-color: #0CA3D2
+            }
 </style>
-<title>Class Tree</title>
-<link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="kindeditor/themes/default/default.css" rel="stylesheet">
-
-<script src="js/jquery-3.1.1.min.js"></script>
-<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="bootstrap-3.3.7/js/jasny-bootstrap.js"></script>
-<link rel="stylesheet" href="bootstrap-3.3.7/css/jasny-bootstrap.css">
-<link rel="StyleSheet" href="css/dtree.css" type="text/css" />
-<script type="text/javascript" src="js/dtree.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">

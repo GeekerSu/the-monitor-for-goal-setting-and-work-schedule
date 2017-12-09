@@ -13,9 +13,9 @@
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
-
-  background: #0ca3d2;
-}
+                margin-bottom: 200px;
+                background-color: #0CA3D2
+            }
 .login {
   position: relative;
   margin: 0 auto;
@@ -37,13 +37,13 @@ body {
   border-radius: 4px;
 }
 </style>
-<title>阅读PDF</title>
+<title>${standardFileName}</title>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
@@ -52,8 +52,9 @@ body {
 				<li class="active"><a href="#">分享页</a></li> 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li ><a href="login.jsp">登录</a></li>
-			</ul>
+      <li><a href="register.jsp"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+      <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+    </ul>
 		</div>
 	</div>
 	</nav>
