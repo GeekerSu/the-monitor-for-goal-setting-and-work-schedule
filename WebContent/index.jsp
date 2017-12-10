@@ -124,7 +124,9 @@ font-weight: bold
 			<div style="margin-left:40px;margin-top:10px">
 				<br />
 				<h1>文献阅读笔记</h1>
-				<br /> <br /> <br />
+				<br />
+				<h4 style="margin-left:180px;font-weight:bold;color:#696969">——为了更好的阅读</h4>
+				 <br /> <br />
 				<br />
 				</div>
 			<div class="services-grid" align="center">
@@ -210,7 +212,7 @@ font-weight: bold
 						<div class="col-md-12 column">
 							<a href="mailto:suzichao1996@sina.com">联系我们</a> <a href="https://github.com/GeekerSu/Literature-reading-notes-manager" target="blank">项目地址</a> <br>
 							<hr style="height: 1px; border: none; border-top: 1px solid #555555;" />
-							Developed by: 胡锡鑫 高凯戈 苏子超
+							Powered by: 胡锡鑫 高凯戈 苏子超
 						</div>
 					</div>
 				</div>
