@@ -15,8 +15,8 @@ html {
 }
 
 body {
-	margin-bottom: 200px;
-	background-color: #0CA3D2
+	background: url(img/bgp.jpg) no-repeat;
+	background-size: cover;
 }
 
 .footer {
@@ -26,15 +26,21 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 200px;
+	height: 150px;
 	font-family: "Microsoft YaHei", "Arial", "Times Roman", "Courier",
 		"Verdana", "Century Gothic";
+}
+h1{
+font-size:3.0em;
+color:#696969;
+font-weight: bold
 }
 /*-- services --*/
 .services-grd1 h4 {
 	font-size: 1.4em;
-	color: #000000;
+	color: #696969;
 	margin: 0 0 0.8em;
+	
 }
 
 .services-grd:nth-child(4) {
@@ -51,6 +57,14 @@ body {
 	line-height: 1.8em;
 	margin: 0;
 	font-size: 14px;
+}
+
+.services-grd p {
+	color: #000000;
+	line-height: 1.8em;
+	margin: 0;
+	font-size: 14px;
+	
 }
 
 .services-overview {
@@ -87,16 +101,6 @@ body {
 	margin: 3em 0;
 }
 /*-- //services --*/
-.back {
-	background: url(images/coupon-logo.gif) no-repeat;
-}
-
-.top {
-	height: 100px;
-	background-color: #fff;
-	filter: Alpha(Opacity = 60);
-	opacity: 0.6;
-}
 </style>
 
 <title>home</title>
@@ -114,113 +118,86 @@ body {
 		</div>
 	</nav>
 	<div class="services">
-		<div class="container">
-			<div class="services-grid" align="center">
-				<br /> 
-<!-- 				<h2>文献阅读笔记</h2> -->
-				<br /> <br /> 
-<!-- 				<section class="container">
-					<div class="login">
-						<h1>登录</h1>
-						<form method="post" action="login.action">
-							<p>
-								<s:textfield name="username" label="用户名" />
-							</p>
-							<p>
-								<s:password name="password" label="密码" />
-							</p>
-							<p class="remember_me">
-								<label> <input type="checkbox" name="remember_me" id="remember_me"> 记住密码
-								</label>
-							</p>
-							<p class="submit">
-								<input type="submit" name="commit" value="登录">
-							</p>
-						</form>
-					</div>
-					<div class="login-help">
-						<p>
-							你是新手？<a href="register.jsp">点击这里注册账号</a>。
-						</p>
-					</div>
-				</section>-->
-				<br /> <br /> <br /><br/>
-				<div class="line"></div>
-				<div class="services-grd">
-					<div class="col-md-4 services-grd1">
-						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 services-grd1-right">
-							<h4>在线阅读PDF文件</h4>
-							<p>您可以通过上传文件或者url来阅读您的文献资料，一次上传，终生阅读！</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-md-4 services-grd1">
-						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 services-grd1-right">
-							<h4>在线记录笔记</h4>
-							<p>您可以对您的文献资料记笔记，我们会将您的笔记保存在您的账户中！</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="col-md-4 services-grd1">
-						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 services-grd1-right">
-							<h4>文献分类</h4>
-							<p>您可以手动分类您的文献资料，使您的工作效率大大提升！</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
+		<div class="container" >
+			<div style="margin-left:40px;margin-top:10px">
+				<br />
+				<h1>文献阅读笔记</h1>
+				<br /> <br /> <br />
+				<br />
 				</div>
-				<div class="services-grd">
-					<div class="col-md-4 services-grd1">
-						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+			<div class="services-grid" align="center">
+				
+				<div style="background-color: rgba(255, 255, 255, 0.5); padding-top: 25px; padding-bottom: 25px; padding-right: 50px; padding-left: 50px;border-radius: 10px;">
+					<div class="services-grd">
+						<div class="col-md-4 services-grd1">
+							<div class="col-xs-3 services-grd1-left">
+								<span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 services-grd1-right">
+								<h4>在线阅读PDF文件</h4>
+								<p>您可以通过上传文件或者url来阅读您的文献资料，一次上传，终生阅读！</p>
+							</div>
+							<div class="clearfix"></div>
 						</div>
-						<div class="col-xs-9 services-grd1-right">
-							<h4>记录您的工作日志</h4>
-							<p>我们将会自动保存您的工作日志，您可以回顾您的历史操作！</p>
+						<div class="col-md-4 services-grd1">
+							<div class="col-xs-3 services-grd1-left">
+								<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 services-grd1-right">
+								<h4>在线记录笔记</h4>
+								<p>您可以对您的文献资料记笔记，我们会将您的笔记保存在您的账户中！</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="col-md-4 services-grd1">
+							<div class="col-xs-3 services-grd1-left">
+								<span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 services-grd1-right">
+								<h4>文献分类</h4>
+								<p>您可以手动分类您的文献资料，使您的工作效率大大提升！</p>
+							</div>
+							<div class="clearfix"></div>
 						</div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="col-md-4 services-grd1">
-						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+
+					<div class="services-grd" style="margin-top: 40px">
+						<div class="col-md-4 services-grd1">
+							<div class="col-xs-3 services-grd1-left">
+								<span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 services-grd1-right">
+								<h4>记录您的工作日志</h4>
+								<p>我们将会自动保存您的工作日志，您可以回顾您的历史操作！</p>
+							</div>
+							<div class="clearfix"></div>
 						</div>
-						<div class="col-xs-9 services-grd1-right">
-							<h4>生成阅读时间线</h4>
-							<p>在什么时候，以什么方式阅读了什么，都将记录下来！</p>
+						<div class="col-md-4 services-grd1">
+							<div class="col-xs-3 services-grd1-left">
+								<span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 services-grd1-right">
+								<h4>生成阅读时间线</h4>
+								<p>在什么时候，以什么方式阅读了什么，都将记录下来！</p>
+							</div>
+							<div class="clearfix"></div>
+						</div>
+						<div class="col-md-4 services-grd1">
+							<div class="col-xs-3 services-grd1-left">
+								<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+							</div>
+							<div class="col-xs-9 services-grd1-right">
+								<h4>下载与分享</h4>
+								<p>随时随地，您可以下载与分享您的文献资料！</p>
+							</div>
+							<div class="clearfix"></div>
 						</div>
 						<div class="clearfix"></div>
 					</div>
-					<div class="col-md-4 services-grd1">
-						<div class="col-xs-3 services-grd1-left">
-							<span class="glyphicon glyphicon-share" aria-hidden="true"></span>
-						</div>
-						<div class="col-xs-9 services-grd1-right">
-							<h4>下载与分享</h4>
-							<p>随时随地，您可以下载与分享您的文献资料！</p>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-					<div class="clearfix"></div>
 				</div>
 			</div>
 
-			<link rel="stylesheet" href="css/swipebox.css">
-			<script src="js/jquery.swipebox.min.js"></script>
-			<script type="text/javascript">
-				jQuery(function($) {
-					$(".swipebox").swipebox();
-				});
-			</script>
 		</div>
 	</div>
 	<footer id="gtco-footer" role="contentinfo" class="footer">
@@ -229,7 +206,7 @@ body {
 				<div class="col-md-12 column">
 					<div class="row clearfix">
 						<div class="col-md-12 column">
-							<a href="mailto:suzichao1996@sina.com">联系我们</a> <a href="https://github.com/GeekerSu/Literature-reading-notes-manager">项目地址</a> <br>
+							<a href="mailto:suzichao1996@sina.com">联系我们</a> <a href="https://github.com/GeekerSu/Literature-reading-notes-manager" target="blank">项目地址</a> <br>
 							<hr style="height: 1px; border: none; border-top: 1px solid #555555;" />
 							Developed by: 胡锡鑫 高凯戈 苏子超
 						</div>

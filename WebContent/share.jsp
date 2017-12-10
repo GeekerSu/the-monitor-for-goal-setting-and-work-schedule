@@ -13,9 +13,9 @@
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
-                margin-bottom: 200px;
-                background-color: #0CA3D2
-            }
+	background: url(img/bgp.jpg) no-repeat;
+	background-size:cover;
+}
 .login {
   position: relative;
   margin: 0 auto;

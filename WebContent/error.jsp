@@ -20,7 +20,10 @@
 		
 		padding: 50px;			
 	} 
-		body {background-color: #0CA3D2} 
+		body {
+	background: url(img/bgp.jpg) no-repeat;
+	background-size:cover;
+}
 	</style>
 </head>
 	<body >

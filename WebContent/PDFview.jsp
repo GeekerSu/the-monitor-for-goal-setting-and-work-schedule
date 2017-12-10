@@ -8,15 +8,19 @@
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css"rel="stylesheet">
 <link href="kindeditor/themes/default/default.css" rel="stylesheet">
-
+<%--tab style --%>
+<link rel='stylesheet prefetch' href='css/tabStyle/reset.css'>
+<link rel="stylesheet" type="text/css" href="css/tabStyle/default.css">
+<link rel="stylesheet" type="text/css" href="css/tabStyle/styles.css">
+<%--tab style --%>
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
-                margin-bottom: 200px;
-                background-color: #0CA3D2
-            }
-.login {
+	background: url(img/bgp.jpg) no-repeat;
+	background-size:cover;
+}
+.frame {
   position: relative;
   margin: 0 auto;
   padding: 20px 20px 20px;
@@ -25,7 +29,7 @@ body {
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-.login:before {
+.frame:before {
   content: '';
   position: absolute;
   top: -8px;
@@ -35,8 +39,7 @@ body {
   z-index: -1;
   background: rgba(0, 0, 0, 0.08);
   border-radius: 4px;
-}
-</style>
+}</style>
 <title>阅读PDF</title>
 </head>
 <body>
@@ -48,12 +51,12 @@ body {
 		<div>
 			<ul class="nav navbar-nav">
 <!-- 				<li><a href="home.jsp">首页</a></li> -->
-				<li class="active"><a href="#">阅读笔记</a></li>
 				<li><a href="down_list.action">我的文件</a></li>
 				<li><a href="FetchClasses.action">上传文件</a></li>
 				<li><a href="getTree.action">分类树</a></li>
 				<li><a href="userLog.action">用户日志</a>
 				<li><a href="readingTimeLine.action">阅读时间线</a>
+				<li class="active"><a href="#">阅读笔记</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -61,7 +64,7 @@ body {
 						UserID:<s:property value="#session.username" /><b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="login.jsp">登出</a></li>
+						<li><a href="index.jsp">登出</a></li>
 					</ul></li>
 			</ul>
 
@@ -70,7 +73,7 @@ body {
 	</nav>
 
 	<div class="container">
-		<div class="login">
+		<div class="frame">
 		<div class="row">
 			<div class="col-md-8">
 				<b>${fileName}</b><br />

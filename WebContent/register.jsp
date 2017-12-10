@@ -7,6 +7,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>Sign Up Form</title>
   <link rel="stylesheet" href="css/login-form/8-login-form/css/style.css">
+  <style>
+  body {
+	background: url(img/bgp.jpg) no-repeat;
+	background-size:cover;
+}
+</style>
 </head>
 <body>
   <section class="container">
