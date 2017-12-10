@@ -2,6 +2,7 @@ package com;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -65,6 +66,7 @@ public class UserLog extends ActionSupport{
 			tmp.setTarget(rs.getString("Target"));
 			readList.add(tmp);
 		}
+		Collections.reverse(readList);
 		return SUCCESS;
 	}
 }
