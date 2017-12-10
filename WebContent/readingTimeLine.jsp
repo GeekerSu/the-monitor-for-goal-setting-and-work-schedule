@@ -8,21 +8,57 @@
 
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
-<link rel="stylesheet" href="css/about.css">
-<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
-<script src="js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<link href="kindeditor/themes/default/default.css" rel="stylesheet">
 
+<%--tab style --%>
+<link rel='stylesheet prefetch' href='css/tabStyle/reset.css'>
+<link rel="stylesheet" type="text/css" href="css/tabStyle/default.css">
+<link rel="stylesheet" type="text/css" href="css/tabStyle/styles.css">
+<%--tab style --%>
+<link rel="stylesheet" href="css/about.css">
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+<style>
+
+body {
+	background: url(img/bgp.jpg) no-repeat;
+	background-size:cover;
+}
+
+.frame {
+	position: relative;
+	margin: 0 auto;
+	padding: 20px 20px 20px;
+	background: white;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px
+		rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px
+		rgba(0, 0, 0, 0.3);
+}
+
+.frame:before {
+	content: '';
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	bottom: -8px;
+	left: -8px;
+	z-index: -1;
+	background: rgba(0, 0, 0, 0.08);
+	border-radius: 4px;
+}
+</style>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
 				<!-- 				<li><a href="home.jsp">首页</a></li> -->
-				<li><a href="#">阅读笔记</a></li>
 				<li><a href="down_list.action">我的文件</a></li>
 				<li><a href="FetchClasses.action">上传文件</a></li>
 				<li><a href="getTree.action">分类树</a></li>
@@ -33,29 +69,26 @@
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> UserID:<s:property value="#session.username" /><b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="login.jsp">登出</a></li>
+						<li><a href="index.jsp">登出</a></li>
 					</ul></li>
 			</ul>
 
 		</div>
 	</div>
 	</nav>
-	
-	<div class="myTabContent" id="tab-content">
-		<div class="tab-pane fade in active" id="All">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<div class="box">
-							<ul class="event_list">
-								<s:iterator value="readList" status="stat">
-										<li>
-											<span><s:property value="Time" /></span>
-											<p><span><s:property value="Operation" /></span></p>
-										</li>
-								</s:iterator>
-							</ul>
-						</div>
+	<div class="container">
+		<div class="frame" style="">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="box">
+						<ul class="event_list">
+							<s:iterator value="readList" status="stat">
+								<li><span><s:property value="Time" /></span>
+									<p>
+										<span><s:property value="Operation" /></span>
+									</p></li>
+							</s:iterator>
+						</ul>
 					</div>
 				</div>
 			</div>

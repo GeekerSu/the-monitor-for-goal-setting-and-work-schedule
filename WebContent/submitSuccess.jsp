@@ -19,7 +19,10 @@
 		
 		padding: 50px;			
 	}
-	body {background-color: #0CA3D2} 
+	body {
+	background: url(img/bgp.jpg) no-repeat;
+	background-size:cover;
+}
 	</style>
 </head>
 	<body >
@@ -27,11 +30,11 @@
     </div>
 
 	<div class="city" style="text-align:center;">				
-		<div class="alert  animated wobble"  style="background-color: rgba(255,255,255,	 0.60);">
+		<div class="alert animated wobble"  style="background-color: rgba(255,255,255,	 0.60);">
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
 			 <h4><strong>笔记保存成功！</strong></h4>
-			 <a href="fileUpload.jsp">继续上传</a>
+			<a onclick ="javascript:history.go(-1);"><font color=blue >继续编辑</font></a><br>
 			<a href="down_list.action">我的文件</a>
 		</div>
 </div>

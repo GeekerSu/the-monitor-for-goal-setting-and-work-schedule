@@ -14,7 +14,8 @@
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <style>
 body {
-	background: #0ca3d2;
+	background: url(img/bgp.jpg) no-repeat;
+	background-size: cover;
 }
 
 .login {
@@ -41,13 +42,14 @@ body {
 	border-radius: 4px;
 }
 </style>
+
 <title>您的好友给您分享了一篇文章，快来看看吧！</title>
 </head>
 <body>
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">文献阅读笔记</a>
+			<a class="navbar-brand" href="#">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
@@ -56,7 +58,11 @@ body {
 				<li class="active"><a href="#">分享页</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.jsp">登录</a></li>
+
+				<li><a href="register.jsp"><span
+						class="glyphicon glyphicon-user"></span> 注册</a></li>
+				<li><a href="login.jsp"><span
+						class="glyphicon glyphicon-log-in"></span> 登录</a></li>
 			</ul>
 		</div>
 	</div>
@@ -72,7 +78,7 @@ body {
 				</div>
 				<div>
 					<div class="bshare-custom icon-medium" align="right">
-						分享：<a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到朋友网"
+						<a title="分享到QQ空间" class="bshare-qzone"></a><a title="分享到朋友网"
 							class="bshare-qqxiaoyou"></a><a title="分享到腾讯微博"
 							class="bshare-qqmb"></a> <a title="更多平台"
 							class="bshare-more bshare-more-icon more-style-addthis"></a><span
@@ -83,7 +89,8 @@ body {
 					<script type="text/javascript" charset="utf-8"
 						src="http://static.bshare.cn/b/bshareC0.js"></script>
 				</div>
-		
+			</div>
+
 		</div>
 	</div>
 	</div>
