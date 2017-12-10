@@ -42,6 +42,18 @@ public class UserLog extends ActionSupport{
 	}
 	
 	public String readingTimeLine() throws SQLException{
+		sql="select * from `"+usr+"Log` where Otype='0'";
+		ResultSet rstmp=(new Dao()).executeQuery(sql);
+		if(rstmp.next()){
+			Log start=new Log();
+			start.setOID(rstmp.getInt("OID"));
+			start.setOperation("用户"+usr+"开始了阅读之旅");
+			start.setOtype(rstmp.getString("Otype"));
+			start.setTime(rstmp.getString("Time"));
+			start.setTarget(rstmp.getString("Target"));
+			readList.add(start);
+		}
+		
 		sql="select * from `"+usr+"Log` where Otype='3' or Otype='4'";
 		ResultSet rs=dao.executeQuery(sql);
 		while(rs.next()){
