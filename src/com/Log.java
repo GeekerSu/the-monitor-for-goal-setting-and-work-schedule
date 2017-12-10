@@ -1,6 +1,6 @@
 package com;
 
-public class Log {
+public class Log  {
 	private int OID;
 	private String Operation;
 	private String Otype;

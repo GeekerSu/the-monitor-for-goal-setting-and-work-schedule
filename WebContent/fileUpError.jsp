@@ -20,7 +20,10 @@
 		
 		padding: 50px;			
 	} 
-		body {background-color: #0CA3D2} 
+		body {
+	background: url(img/bgp.jpg) no-repeat;
+	background-size:cover;
+}
 	</style>
 </head>
 	<body >
@@ -31,8 +34,9 @@
 		<div class="alert  animated wobble"  style="background-color: rgba(255,255,255,	 0.60);">
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
-			 <h4><strong>文件上传失败！</strong></h4>
-			<a href="fileUpload.jsp">重新上传</a>
+			 <h4><strong>文件上传失败！错误信息:<s:property value="message"/></strong></h4>
+			<a href="FetchClasses.action">重新上传</a>
+			<a href="down_list.action">我的文件</a>
 		</div>
 </div>
 </body>

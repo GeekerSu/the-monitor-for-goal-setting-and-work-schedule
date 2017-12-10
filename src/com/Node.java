@@ -4,6 +4,7 @@ public class Node {
 	private int ID;
 	private int PID;
 	private String nodeName;
+	private boolean nodeType;
 	
 	public int getID(){
 		return ID;
@@ -27,6 +28,14 @@ public class Node {
 	
 	public void setNodeName(String nodeName){
 		this.nodeName=nodeName;
+	}
+	
+	public boolean getNodeType(){
+		return nodeType;
+	}
+	
+	public void setNodeType(boolean nodeType){
+		this.nodeType=nodeType;
 	}
 	
 }

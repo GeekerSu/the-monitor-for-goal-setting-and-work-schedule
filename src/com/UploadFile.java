@@ -34,6 +34,7 @@ public class UploadFile extends ActionSupport {
 	private Dao dao=new Dao();
 	private String sql;
 	private List<String> nodeList=new ArrayList<String>();
+	private String message;
 
 	public File getMyFile() {
 		return myFile;
@@ -59,13 +60,24 @@ public class UploadFile extends ActionSupport {
 	public List<String> getNodeList(){
 		return nodeList;
 	}
+	public String getMessage(){
+		return message;
+	}
 
 
 	// 通过FileUtil.copyFiles
 	public String execute() throws SQLException {
-		
+		if(myFile==null){
+			message="请选择文件!";
+			return ERROR;
+		}
 		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/books";
-
+		sql="select * from `"+usr+"` where BookName='"+myFileFileName+"'";
+		ResultSet rstmp=dao.executeQuery(sql);
+		if (rstmp.next()){
+			message="已存在同名文件";
+			return ERROR;
+		}
 
 		File dir = new File(destPath);
 		if (!dir.exists()) {

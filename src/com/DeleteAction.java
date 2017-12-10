@@ -32,6 +32,10 @@ public class DeleteAction extends ActionSupport {
 	public String getFileName() {
 		return fileName;
 	}
+	
+	public String getMessage(){
+		return message;
+	}
 
 	public String execute() throws SQLException {
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -53,8 +57,8 @@ public class DeleteAction extends ActionSupport {
 			File file = new File(filePath);
 			if (!file.exists()) {
 				System.out.println("Delete failed, file doesn't exist!");
-				message = "Delete failed, file doesn't exist!";
-				return "error";
+				message = "文件不存在！";
+				return ERROR;
 			} else {
 				if (file.isFile()) {
 					file.delete();

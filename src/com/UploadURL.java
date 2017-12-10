@@ -2,6 +2,8 @@ package com;
 
 
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -14,9 +16,11 @@ public class UploadURL extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private String bookURL;
 	private String bookName;
+	private String pnode;//父类
 	private String usr=(String) ActionContext.getContext().getSession().get("username");
 	private Dao dao=new Dao();
 	private String sql;
+	private String message;
 	
 	public void setBookURL(String bookURL){
 		this.bookURL=bookURL;
@@ -34,7 +38,22 @@ public class UploadURL extends ActionSupport{
 		return bookName;
 	}
 	
-	public String execute(){
+	public void setPnode(String pnode){
+		this.pnode=pnode;
+	}
+	
+	public String getMessage(){
+		return message;
+	}
+	
+	public String execute() throws SQLException{
+		sql="select * from `"+usr+"` where BookName='"+bookName+"'";
+		System.out.println(sql);
+		ResultSet rstmp=dao.executeQuery(sql);
+		if (rstmp.next()){
+			message="已存在同名URL";
+			return ERROR;
+		}
 		sql="insert into `"+usr
 		+"` (BookName,ReadState,BookType,BookNote,BookURL) values('" 
 		+ getBookName() + "',"
@@ -44,7 +63,15 @@ public class UploadURL extends ActionSupport{
 		+getBookURL()
 		+"')";
 		int i=dao.executeUpdate(sql);
-		sql="insert into `"+usr+"Tree` (ID,PID,NodeName) values(0,1,'"+getBookName()+"')";
+//		sql="insert into `"+usr+"Tree` (ID,PID,NodeName,NodeType) values(0,1,'"+getBookName()+"',0)";
+		sql="select * from `"+usr+"Tree` where NodeName='"+pnode+"'";
+		ResultSet rs=(new Dao()).executeQuery(sql);
+		int pid=1;
+		while(rs.next()){
+			pid=rs.getInt("ID");
+		}
+		sql="insert into `"+usr+"Tree` (ID,PID,NodeName,NodeType) values(0,"+pid+",'"+getBookName()+"',0)";
+		System.out.println(sql);
 		int j=dao.executeUpdate(sql);
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());

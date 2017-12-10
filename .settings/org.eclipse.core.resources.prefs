@@ -1,8 +1,8 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=GKG
 eclipse.preferences.version=1
-<<<<<<< HEAD
-=======
-encoding//WebContent/home.jsp=UTF-8
->>>>>>> GKG
+encoding//WebContent/index.jsp=UTF-8
 encoding//WebContent/login.jsp=UTF-8
 encoding//src/com/DownAction.java=UTF-8
 encoding//src/com/UploadFile.java=UTF-8

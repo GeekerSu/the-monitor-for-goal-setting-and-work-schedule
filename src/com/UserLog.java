@@ -2,6 +2,7 @@ package com;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -42,6 +43,18 @@ public class UserLog extends ActionSupport{
 	}
 	
 	public String readingTimeLine() throws SQLException{
+		sql="select * from `"+usr+"Log` where Otype='0'";
+		ResultSet rstmp=(new Dao()).executeQuery(sql);
+		if(rstmp.next()){
+			Log start=new Log();
+			start.setOID(rstmp.getInt("OID"));
+			start.setOperation("用户"+usr+"开始了阅读之旅");
+			start.setOtype(rstmp.getString("Otype"));
+			start.setTime(rstmp.getString("Time"));
+			start.setTarget(rstmp.getString("Target"));
+			readList.add(start);
+		}
+		
 		sql="select * from `"+usr+"Log` where Otype='3' or Otype='4'";
 		ResultSet rs=dao.executeQuery(sql);
 		while(rs.next()){
@@ -53,6 +66,7 @@ public class UserLog extends ActionSupport{
 			tmp.setTarget(rs.getString("Target"));
 			readList.add(tmp);
 		}
+		Collections.reverse(readList);
 		return SUCCESS;
 	}
 }
