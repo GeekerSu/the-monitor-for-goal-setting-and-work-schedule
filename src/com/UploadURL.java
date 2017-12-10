@@ -20,6 +20,7 @@ public class UploadURL extends ActionSupport{
 	private String usr=(String) ActionContext.getContext().getSession().get("username");
 	private Dao dao=new Dao();
 	private String sql;
+	private String message;
 	
 	public void setBookURL(String bookURL){
 		this.bookURL=bookURL;
@@ -41,7 +42,18 @@ public class UploadURL extends ActionSupport{
 		this.pnode=pnode;
 	}
 	
+	public String getMessage(){
+		return message;
+	}
+	
 	public String execute() throws SQLException{
+		sql="select * from `"+usr+"` where BookName='"+bookName+"'";
+		System.out.println(sql);
+		ResultSet rstmp=dao.executeQuery(sql);
+		if (rstmp.next()){
+			message="已存在同名URL";
+			return ERROR;
+		}
 		sql="insert into `"+usr
 		+"` (BookName,ReadState,BookType,BookNote,BookURL) values('" 
 		+ getBookName() + "',"

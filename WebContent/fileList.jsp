@@ -120,7 +120,7 @@ body {
 		</div>
 	</div>
 	</nav>
-	<div class="tabs" style="width: 1200px;">
+	<div class="tabs" style="width: 1200px;margin-top:40px">
 		<div class="tabs-header">
 			<div class="border"></div>
 			<ul>

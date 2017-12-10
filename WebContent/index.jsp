@@ -23,12 +23,14 @@ body {
 	color: #777;
 	padding: 19px 0;
 	background-color: rgba(41, 54, 89, 0.85);
-	position: absolute;
+	/*position: absolute;
 	bottom: 0;
+	*/
 	width: 100%;
 	height: 150px;
 	font-family: "Microsoft YaHei", "Arial", "Times Roman", "Courier",
 		"Verdana", "Century Gothic";
+	margin-top:40px;
 }
 h1{
 font-size:3.0em;

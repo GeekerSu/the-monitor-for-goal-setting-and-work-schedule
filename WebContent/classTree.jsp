@@ -8,7 +8,6 @@
 <title>Class Tree</title>
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="kindeditor/themes/default/default.css" rel="stylesheet">
 
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
@@ -102,7 +101,7 @@ body {
 	</div>
 	</nav>
 
-	<div class="tabs" style="width:1200px;">
+	<div class="tabs" style="width:1200px;margin-top:40px">
 		<div class="tabs-header">
 			<div class="border"></div>
 			<ul>
@@ -138,24 +137,29 @@ body {
 						</div>
 					</div>
 					<div class="col-md-8">
-						<form action="addClassNode" class="form-horizontal">
+						<form action="addClassNode" class="form-horizontal" role="form">
 							<h4>新建类</h4>
 							<label for="bookName">新类名：</label>
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="newclass" />
+									<input type="text" class="form-control" name="newclass" required />
 								</div>
 							</div>
-							<label for="bookName">父结点：</label>
+							<label for="parent">请选择父结点：</label> 
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="parent" />
+							<select id="parent" name="parent" class="selectpicker show-menu-arrow form-control">
+								<c:forEach items="${nodeList}" var="node">
+									<option value="${node }">${node }</option>
+								</c:forEach>
+							</select>
 								</div>
 							</div>
 							<button type="submit" value="Create" class="btn btn-default" />
 							确定
 							</button>
 						</form>
+						<br/>
 					</div>
 				</div>
 				<br />
@@ -186,18 +190,29 @@ body {
 							<label for="bookName">文献/类名称：</label>
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="bookName" />
+<!-- 									<input type="text" class="form-control" name="bookName" /> -->
+									<select id="parent" name="bookName" class="selectpicker show-menu-arrow form-control">
+								<c:forEach items="${allList}" var="node">
+									<option value="${node }">${node }</option>
+								</c:forEach>
+							</select>
 								</div>
 							</div>
-							<label for="bookName">父结点：</label>
+							<label for="bookName">选择父结点：</label>
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="parentb" />
+<!-- 									<input type="text" class="form-control" name="parentb" /> -->
+								<select id="parentb" name="parentb" class="selectpicker show-menu-arrow form-control">
+								<c:forEach items="${nodeList}" var="node">
+									<option value="${node }">${node }</option>
+								</c:forEach>
+							</select>
 								</div>
 							</div>
 							<button type="submit" value="Create" class="btn btn-default" />
 							确定
 							</button>
+							<br/>
 						</form>
 					</div>
 				</div>
@@ -229,17 +244,21 @@ body {
 					<div class="col-md-8">
 						<form action="deleteNode" class="form-horizontal">
 							<h4>删除分类</h4>
-							<label for="nodeToDelete">文献/类名称：</label>
+							<label for="nodeToDelete">类名称：</label>
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="nodeToDelete" />
+<!-- 									<input type="text" class="form-control" name="nodeToDelete" /> -->
+									<select id="nodeToDelete" name="nodeToDelete" class="selectpicker show-menu-arrow form-control">
+								<c:forEach items="${nodeList}" var="node">
+									<option value="${node }">${node }</option>
+								</c:forEach>
+							</select>
 								</div>
 							</div>
-
-
 							<button type="submit" class="btn btn-default" />
 							删除
 							</button>
+							<br/>
 						</form>
 					</div>
 				</div>
@@ -273,12 +292,18 @@ body {
 							<label for="classNodeName">下载结点：</label>
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="classNodeName" />
+<!-- 									<input type="text" class="form-control" name="classNodeName" /> -->
+									<select id="classNodeName" name="classNodeName" class="selectpicker show-menu-arrow form-control">
+								<c:forEach items="${nodeList}" var="node">
+									<option value="${node }">${node }</option>
+								</c:forEach>
+							</select>
 								</div>
 							</div>
 							<button type="submit" value="Create" class="btn btn-default" />
 							确定
 							</button>
+							<br/>
 						</form>
 					</div>
 				</div>

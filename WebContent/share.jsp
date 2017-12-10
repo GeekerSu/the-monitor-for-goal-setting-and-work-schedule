@@ -49,12 +49,12 @@ body {
 	<nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#">Macrosoft</a>
+			<a class="navbar-brand" href="index.jsp">Macrosoft</a>
 		</div>
 		<div>
 			<ul class="nav navbar-nav">
 				<!-- 				<li><a href="home.jsp">首页</a></li> -->
-				<li><a href="#">阅读笔记</a></li>
+				
 				<li class="active"><a href="#">分享页</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

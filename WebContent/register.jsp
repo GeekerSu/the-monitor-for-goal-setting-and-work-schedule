@@ -21,6 +21,7 @@
       <form method="post" action="regist.action">
         <p><s:textfield  name="username" label="用户名"/></p>
         <p><s:password  name="password" label="密码"/></p>
+        <p><s:password name="passwordRep" label="确认密码"/></p>
         <p class="submit"><input type="submit" name="commit" id="success" value="注册"></p>
       </form>
     </div>

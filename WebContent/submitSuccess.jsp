@@ -34,7 +34,7 @@
 			<a href="#" class="close" data-dismiss="alert" ></a>
 			 <span id="show"></span> 
 			 <h4><strong>笔记保存成功！</strong></h4>
-			<a onclick ="javascript:history.go(-1);"><font color=blue >继续编辑</font></a><br>
+			<a onclick ="javascript:history.go(-1);"><font color=blue >继续编辑</font></a>
 			<a href="down_list.action">我的文件</a>
 		</div>
 </div>

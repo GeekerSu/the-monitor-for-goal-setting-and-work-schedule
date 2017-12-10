@@ -14,6 +14,7 @@ public class UserAction extends ActionSupport {
 	private Dao dao = new Dao();
 	private String username;
 	private String password;
+	private String passwordRep;
 	private String message = "";
 
 	public String getUsername() {
@@ -35,6 +36,14 @@ public class UserAction extends ActionSupport {
 	public String getMessage() {
 		return message;
 	}
+	
+	public void setPasswordRep(String passwordRep){
+		this.passwordRep=passwordRep;
+	}
+	
+	public String getPasswordRep(){
+		return passwordRep;
+	}
 
 	public String login() {
 		String sql = "select * from user where username='" + getUsername() + "'";
@@ -49,7 +58,6 @@ public class UserAction extends ActionSupport {
 
 				else {
 					message = "Password not right!";
-
 					this.addFieldError("password", "Password not right!");
 					return "input";
 				}
@@ -102,7 +110,7 @@ public class UserAction extends ActionSupport {
 			tmpsql="CREATE TABLE `"+username +"Log` ("
 					+ "`OID` int NOT NULL AUTO_INCREMENT,"
 					+"`Operation` varchar(127) NOT NULL,"
-					+"`Otype` varchar(1) NOT NULL,"
+					+"`Otype` varchar(2) NOT NULL,"
 					+"`Time` varchar(31) NOT NULL,"
 					+"`Target` varchar(40) DEFAULT NULL,"
 					+" PRIMARY KEY (`OID`)"
@@ -164,6 +172,9 @@ public class UserAction extends ActionSupport {
 		}
 		if (password == null || password.trim().equals("")) {
 			this.addFieldError("password", "The password is required");
+		}
+		if(!password.equals(passwordRep)){
+			this.addFieldError("passwordRep", "The passwords entered twice are not the same");
 		}
 	}
 

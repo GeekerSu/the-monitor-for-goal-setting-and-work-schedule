@@ -21,6 +21,8 @@ public class TreeManage extends ActionSupport {
 	private String sql;
 	private String usr=(String) ActionContext.getContext().getSession().get("username");
 	private List<Node> list=new ArrayList<Node>();
+	private List<String> nodeList=new ArrayList<String>();//不含leaf
+	private List<String> allList=new ArrayList<String>();//不含root
 	private String parent;
 	private String newclass;
 	private String parentb;
@@ -30,6 +32,14 @@ public class TreeManage extends ActionSupport {
 	
 	public List<Node> getList(){
 		return list;
+	}
+	
+	public List<String> getNodeList(){
+		return nodeList;
+	}
+	
+	public List<String> getAllList(){
+		return allList;
 	}
 	
 	public void setParent(String parent){
@@ -59,18 +69,35 @@ public class TreeManage extends ActionSupport {
 	public String queryTreeList()  throws SQLException{
 		sql="select * from `"+usr+"Tree`";
 		ResultSet rs=dao.executeQuery(sql);
+		boolean type=false;
+		String name="";
 		while(rs.next()){
 			Node tmp=new Node();
+			type=rs.getBoolean("NodeType");
+			name=rs.getString("NodeName");
 			tmp.setID(rs.getInt("ID"));
 			tmp.setPID(rs.getInt("PID"));
-			tmp.setNodeName(rs.getString("NodeName"));
+			tmp.setNodeName(name);
+			tmp.setNodeType(type);
 			list.add(tmp);
+			if(type){//not leaf
+				nodeList.add(name);
+			}
+			if(rs.getInt("PID")!=-1){//not root
+			allList.add(name);
+			}
 		}
 		System.out.println("Query Treelist Success");
 		return SUCCESS;
 	}
 	
 	public String addClassNode() throws SQLException{
+		sql="select * from `"+usr+"Tree` where NodeName='"+newclass+"'";
+		ResultSet rstmp=(new Dao()).executeQuery(sql);
+		if(rstmp.next()){
+			message="已存在同名分类！";
+			return ERROR;
+		}
 		sql="select * from `"+usr+"Tree` where NodeName='"+parent+"'";
 		System.out.println(sql);
 		ResultSet rs=dao.executeQuery(sql);
@@ -127,6 +154,10 @@ public class TreeManage extends ActionSupport {
 		int id=1;
 		if(rs.next()){
 			pid=rs.getInt("PID");
+			if(pid==-1){
+				message="root不可被删除";
+				return ERROR;
+			}
 			id=rs.getInt("ID");
 			Boolean type=rs.getBoolean("NodeType");
 			if(!type){
@@ -141,8 +172,9 @@ public class TreeManage extends ActionSupport {
 			String current=df.format(new Date());
 			sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'删除了分类："+nodeToDelete+"','10','"
 					+current+"','"+nodeToDelete+"')";
-			dao.executeUpdate(sql);
-			System.out.println("Success Deleted Node:"+nodeToDelete);
+			System.out.println(sql);
+			if(dao.executeUpdate(sql)>-1)
+			{System.out.println("Success Deleted Node:"+nodeToDelete);}
 		}
 		else{
 			message="所要删除的分类不存在！";

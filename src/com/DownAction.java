@@ -273,7 +273,7 @@ public class DownAction extends ActionSupport {
 
 	public String view() throws Exception {
 		
-		//System.out.println(filePath);
+		
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String current=df.format(new Date());
 		sql="insert into `"+usr+"Log`(OID,Operation,Otype,Time,Target) values(0,'阅读了文章："+fileName+"','3','"
@@ -340,7 +340,7 @@ public class DownAction extends ActionSupport {
 			System.out.println(sql);
 			ResultSet rstmp=(new Dao()).executeQuery(sql);
 			if(rstmp.next()){
-			if(!rstmp.getBoolean("BookType")){
+			if(!rstmp.getBoolean("BookType")){//assure not URL
 			File filetmp=new File(rstmp.getString("BookURL"));
 			filesList.add(filetmp);
 			}

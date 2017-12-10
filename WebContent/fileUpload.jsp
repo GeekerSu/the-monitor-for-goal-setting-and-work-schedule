@@ -8,8 +8,7 @@
 <title>File Management</title>
 <link href="bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap-3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">
-<link href="bootstrap-3.3.7/css/bootstrap-select.css" rel="stylesheet">
-<link href="kindeditor/themes/default/default.css" rel="stylesheet">
+<!--  <link href="bootstrap-3.3.7/css/bootstrap-select.css" rel="stylesheet">  -->
 <%--tab style --%>
 <link rel='stylesheet prefetch' href='css/tabStyle/reset.css'>
 <link rel="stylesheet" type="text/css" href="css/tabStyle/default.css">
@@ -18,7 +17,7 @@
 <script src="js/jquery-3.1.1.min.js"></script>
 <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
 <script src="bootstrap-3.3.7/js/jasny-bootstrap.js"></script>
-<script src="bootstrap-3.3.7/js/bootstrap-select.js"></script>
+<%--  <script src="bootstrap-3.3.7/js/bootstrap-select.js"></script>  --%>
 <link rel="stylesheet" href="bootstrap-3.3.7/css/jasny-bootstrap.css">
 <style>
 .city {
@@ -100,7 +99,7 @@ body {
 
 
 
-		<div class="tabs" style="width: 1200px;">
+		<div class="tabs" style="width: 1200px;margin-top:40px">
 		<div class="tabs-header">
 			<div class="border"></div>
 			<ul>
@@ -129,7 +128,7 @@ body {
 					</div>
 
 					<div class="form-group">
-						<div class="col-md-4">
+						<div class="col-md-4" >
 							<label for="pnode">请选择文件所属分类：</label><br> <select id="pnode" name="pnode" class="selectpicker show-menu-arrow form-control">
 								<c:forEach items="${nodeList}" var="node">
 									<option value="${node }">${node }</option>
@@ -145,12 +144,12 @@ body {
 				<form action="uploadURL" method="post" class="form-horizontal" role="form">
 					<div class="form-group">
 						<div class="col-md-4">
-							<label for="bookName">请输入文献名称：</label> <input type="text" class="form-control" name="bookName" />
+							<label for="bookName">请输入文献名称：</label> <input type="text" class="form-control" name="bookName" required/>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-4">
-							<label for="bookName">请输入URL：</label> <input type="text" class="form-control" name="bookURL" value="http://" />
+							<label for="bookName">请输入URL：</label> <input type="text" class="form-control" name="bookURL" value="http://" required/>
 						</div>
 					</div>
 					<div class="form-group">
