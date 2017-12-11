@@ -64,7 +64,7 @@ body {
 						UserID:<s:property value="#session.username" /><b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="index.jsp">登出</a></li>
+						<li><a href="logout.action">登出</a></li>
 					</ul></li>
 			</ul>
 

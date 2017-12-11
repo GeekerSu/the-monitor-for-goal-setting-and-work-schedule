@@ -113,7 +113,7 @@ body {
 				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span> UserID:<s:property value="#session.username" /><b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="index.jsp">登出</a></li>
+						<li><a href="logout.action">登出</a></li>
 					</ul></li>
 			</ul>
 
@@ -202,7 +202,7 @@ body {
 												</c:url> <a href="${urldelete}">删除</a></td>
 											<td><c:url var="urlshare" value="share">
 													<c:param name="fileName" value="${fileNameU}"></c:param>
-												</c:url> <a href="${urlshareU}">分享</a></td>
+												</c:url> <a href="${urlshare}">分享</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
