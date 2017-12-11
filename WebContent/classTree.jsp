@@ -139,10 +139,10 @@ body {
 					<div class="col-md-8">
 						<form action="addClassNode" class="form-horizontal" role="form">
 							<h4>新建类</h4>
-							<label for="bookName">新类名：</label>
+							<label for="newclass">新类名：</label>
 							<div class="form-group">
 								<div class="col-md-6">
-									<input type="text" class="form-control" name="newclass" required />
+									<input type="text" class="form-control" name="newclass" required="required" placeholder="新类名不得超过40个字符"/>
 								</div>
 							</div>
 							<label for="parent">请选择父结点：</label> 

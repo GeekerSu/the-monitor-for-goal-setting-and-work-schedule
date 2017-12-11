@@ -92,6 +92,10 @@ public class TreeManage extends ActionSupport {
 	}
 	
 	public String addClassNode() throws SQLException{
+		if(newclass.length()>40){
+			message="类名过长！";
+			return ERROR;
+		}
 		sql="select * from `"+usr+"Tree` where NodeName='"+newclass+"'";
 		ResultSet rstmp=(new Dao()).executeQuery(sql);
 		if(rstmp.next()){

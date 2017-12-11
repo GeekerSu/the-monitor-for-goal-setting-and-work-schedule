@@ -39,7 +39,7 @@ body {
 				<br /> 内容类型：
 				<s:property value="myFileContentType" />
 			</p>
-			<a href="FetchClasses.action">上传文件</a> <a href="down_list.action">我的文件</a>
+			<a href="FetchClasses.action">继续上传</a> <a href="down_list.action">我的文件</a>
 		</div>
 	</div>
 </body>

@@ -201,8 +201,8 @@ body {
 													<c:param name="fileName" value="${fileNameU}"></c:param>
 												</c:url> <a href="${urldelete}">删除</a></td>
 											<td><c:url var="urlshare" value="share">
-													<c:param name="fileName" value="${fileName}"></c:param>
-												</c:url> <a href="${urlshare}">分享</a></td>
+													<c:param name="fileName" value="${fileNameU}"></c:param>
+												</c:url> <a href="${urlshareU}">分享</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -241,7 +241,7 @@ body {
 													<c:param name="fileName" value="${fileNameR}"></c:param>
 												</c:url> <a href="${urldelete}">删除</a></td>
 											<td><c:url var="urlshare" value="share">
-													<c:param name="fileName" value="${fileName}"></c:param>
+													<c:param name="fileName" value="${fileNameR}"></c:param>
 												</c:url> <a href="${urlshare}">分享</a></td>
 										</tr>
 									</c:forEach>
@@ -281,7 +281,7 @@ body {
 													<c:param name="fileName" value="${fileNameD}"></c:param>
 												</c:url> <a href="${urldelete}">删除</a></td>
 											<td><c:url var="urlshare" value="share">
-													<c:param name="fileName" value="${fileName}"></c:param>
+													<c:param name="fileName" value="${fileNameD}"></c:param>
 												</c:url> <a href="${urlshare}">分享</a></td>
 										</tr>
 									</c:forEach>

@@ -89,13 +89,8 @@ body {
 							<s:radio label="ReadState" name="State" list="readState"
 								value="defaultReadStateValue" theme="simple"/>
 							<input type="hidden" name="fileName" value="${fileName }" />
-							<button value="submit" class="btn btn-default" align="right"/>保存笔记</button>
+							<button value="submit" class="btn btn-default" style="margin-left:100px" align="right"/>保存笔记</button>
 						</s:form>
-				<%-- <br/><s:form action="share" target="blank">
-						<input type="hidden" name="fileName" value="${fileName }"/>
-						<button value="submit" class="btn btn-default" align="right"/>生成标准文档</button>
-					</s:form>
-					--%>
 				</div>
 			</div>
 		</div>

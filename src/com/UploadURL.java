@@ -47,6 +47,10 @@ public class UploadURL extends ActionSupport{
 	}
 	
 	public String execute() throws SQLException{
+		if (bookName.length()>127){
+			message="文件名过长！";
+			return ERROR;
+		}
 		sql="select * from `"+usr+"` where BookName='"+bookName+"'";
 		System.out.println(sql);
 		ResultSet rstmp=dao.executeQuery(sql);

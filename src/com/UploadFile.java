@@ -71,6 +71,10 @@ public class UploadFile extends ActionSupport {
 			message="请选择文件!";
 			return ERROR;
 		}
+		if(myFileFileName.length()>127){
+			message="文件名过长！";
+			return ERROR;
+		}
 		destPath=ServletActionContext.getServletContext().getRealPath("/work")+"/"+usr+"/books";
 		sql="select * from `"+usr+"` where BookName='"+myFileFileName+"'";
 		ResultSet rstmp=dao.executeQuery(sql);
@@ -85,9 +89,6 @@ public class UploadFile extends ActionSupport {
 			System.out.println("Create director: " + usr);
 		}
 		try {
-
-			//System.out.println("Src File name: " + myFile);
-			//System.out.println("Dst File name: " + myFileFileName);
 			System.out.println(destPath);
 			System.out.println(myFileFileName);
 			File destFile = new File(destPath, myFileFileName);

@@ -54,9 +54,9 @@ public class DownAction extends ActionSupport {
 	private String state;
 	private String message;
 
-	private static final String UNREAD = "Unread";
-	private static final String ROUGHLY = "Roughly Read";
-	private static final String DETAILED = "Detailed Read";
+	private static final String UNREAD = "未阅读";
+	private static final String ROUGHLY = "已粗读";
+	private static final String DETAILED = "已精读";
 
 	public DownAction() {
 		readState = new ArrayList<String>();

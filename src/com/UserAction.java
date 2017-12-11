@@ -85,7 +85,7 @@ public class UserAction extends ActionSupport {
 			//java.util.Map<String, Object> session = ActionContext.getContext().getSession();
 			//session.put("username", username);
 			String tmpsql="CREATE TABLE `"+username +"` ("
-					+ "`BookName` varchar(40) NOT NULL,"
+					+ "`BookName` varchar(127) NOT NULL,"
 					+"`ReadState` varchar(1) NOT NULL DEFAULT '0',"
 					+"`BookType` tinyint(1) DEFAULT '0',"
 					+"`BookNote` varchar(255) DEFAULT NULL,"
@@ -166,12 +166,18 @@ public class UserAction extends ActionSupport {
 	public void validateRegist() {
 		System.out.println("Validate start...");
 		if (username == null || username.trim().equals("")) {
-			this.addFieldError("username", "The username is required");
+			this.addFieldError("username", "Username is required");
 		} else if (!username.matches("[A-Za-z0-9]+")) {
-			this.addFieldError("username", "The username must consist of numbers or letters");
+			this.addFieldError("username", "Username must consist of numbers or letters");
+		}
+		if(username.trim().length()>20||username.trim().length()<6){
+			this.addFieldError("username", "The length of username must between 6 to 20");
 		}
 		if (password == null || password.trim().equals("")) {
-			this.addFieldError("password", "The password is required");
+			this.addFieldError("password", "Password is required");
+		}
+		if(password.trim().length()<6||password.trim().length()>20){
+			this.addFieldError("password", "The length of password must between 6 to 20");
 		}
 		if(!password.equals(passwordRep)){
 			this.addFieldError("passwordRep", "The passwords entered twice are not the same");
