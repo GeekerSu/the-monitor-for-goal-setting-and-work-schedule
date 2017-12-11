@@ -48,7 +48,7 @@ request.setAttribute("username", request.getParameter("username"));
       <h1>登录</h1>
       <form method="post" action="login.action">
         <p><label for="username">用户名</label><input type="text" name="username" value="${username }" required="required"/></p>
-        <p><label for="password">密码</label><input type="text" name="password"  required="required"/></p>
+        <p><label for="password">密码</label><input type="password" name="password"  required="required"/></p>
         <p class="remember_me">
           <label>
             <input type="checkbox" name="remember_me" id="remember_me">
